@@ -56,7 +56,7 @@ export default function TransactionsPage() {
               date: r.date_label || r.movement_date || "اليوم",
               warehouse: r.warehouse || "مخزن الأقمشة الخام",
               itemsSummary: r.items_summary || `${r.quantity} ${r.unit} ${r.item_name}`,
-              officer: r.officer || r.created_by || "أ. سامح إبراهيم",
+              officer: r.officer || r.created_by || "أ. مصطفى عبد العزيز",
               status: (r.status || "approved") as Transaction["status"],
             };
           })

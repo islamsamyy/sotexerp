@@ -1067,7 +1067,7 @@ export function ActionModal() {
             <div className="space-y-3 text-xs">
               <div>
                 <label className="block font-semibold text-on-surface mb-1">نوع التقرير المراد استخراجه</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {[
                     { key: "work_orders", label: "أوامر الإنتاج (Work Orders)" },
                     { key: "inventory", label: "تقييم المخزون (Inventory)" },
@@ -1148,7 +1148,7 @@ export function ActionModal() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary via-secondary to-[#1E232B] text-white border border-brand-gold/40 hover:border-brand-gold text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C8B276] to-[#9E7A3F] text-[#181C1E] hover:brightness-110 text-xs font-extrabold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               {submitting ? (
                 <>

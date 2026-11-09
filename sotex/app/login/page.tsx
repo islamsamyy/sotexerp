@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useERP } from "@/lib/erp-context";
-import { CORE_ROLES, INITIAL_USERS } from "@/lib/constants";
+import { CORE_ROLES, INITIAL_USERS, DEFAULT_USER_PASSWORDS } from "@/lib/constants";
 import { supabase, ROLE_DEMO_EMAILS, setSupabaseRoleHeader } from "@/lib/supabase";
 import { RoleKey } from "@/lib/types";
 
@@ -12,11 +12,20 @@ export default function LoginPage() {
   const router = useRouter();
   const { setActiveRole, users, showToast } = useERP();
   const [selectedRole, setSelectedRole] = useState<RoleKey>("OWNER_ADMIN");
-  const [email, setEmail] = useState("ahmed.sadek@sotex.eg");
-  const [password, setPassword] = useState("Sotex@2026!");
+  const [email, setEmail] = useState("islam@sotex.eg");
+  const [password, setPassword] = useState("Islam@2026!");
   const [isLoading, setIsLoading] = useState(false);
 
   const userList = users.length > 0 ? users : INITIAL_USERS;
+
+  const selectRoleCard = (roleKey: RoleKey) => {
+    setSelectedRole(roleKey);
+    const u = userList.find((user) => user.role === roleKey);
+    if (u) {
+      setEmail(u.email);
+      setPassword(DEFAULT_USER_PASSWORDS[u.email] || "Sotex@2026!");
+    }
+  };
 
   const handleQuickLoginAs = async (roleKey: RoleKey) => {
     setIsLoading(true);
@@ -24,9 +33,11 @@ export default function LoginPage() {
       setSupabaseRoleHeader(roleKey);
       localStorage.setItem("sotex_auth", "true");
       const demoEmail = ROLE_DEMO_EMAILS[roleKey];
+      const targetPass = DEFAULT_USER_PASSWORDS[demoEmail] || "Sotex@2026!";
+
       await supabase.auth.signInWithPassword({
         email: demoEmail,
-        password: "Sotex@2026!",
+        password: targetPass,
       });
 
       setActiveRole(roleKey);
@@ -55,14 +66,19 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const matchedUser = userList.find((u) => u.email.toLowerCase() === email.toLowerCase());
+      const cleanEmail = email.trim().toLowerCase();
+      const matchedUser = userList.find((u) => u.email.toLowerCase() === cleanEmail);
       const roleKey = matchedUser ? matchedUser.role : selectedRole;
 
       setSupabaseRoleHeader(roleKey);
       localStorage.setItem("sotex_auth", "true");
-      const actualPassword = password === "••••••••" ? "Sotex@2026!" : password;
+      const actualPassword =
+        password === "••••••••"
+          ? DEFAULT_USER_PASSWORDS[cleanEmail] || "Sotex@2026!"
+          : password;
+
       await supabase.auth.signInWithPassword({
-        email: email.trim(),
+        email: cleanEmail,
         password: actualPassword,
       });
 
@@ -79,14 +95,6 @@ export default function LoginPage() {
       router.push(role.defaultPath);
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const selectRoleCard = (roleKey: RoleKey) => {
-    setSelectedRole(roleKey);
-    const u = userList.find((user) => user.role === roleKey);
-    if (u) {
-      setEmail(u.email);
     }
   };
 
@@ -121,6 +129,7 @@ export default function LoginPage() {
             const r = CORE_ROLES[key];
             const u = userList.find((user) => user.role === key) || INITIAL_USERS.find((user) => user.role === key)!;
             const isSelected = selectedRole === key;
+            const rolePass = DEFAULT_USER_PASSWORDS[u.email] || "Sotex@2026!";
 
             return (
               <div
@@ -134,7 +143,7 @@ export default function LoginPage() {
               >
                 {/* Active Indicator Badge with Brand Gold */}
                 {isSelected && (
-                  <span className="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-gold text-slate-950 shadow-md flex items-center gap-1">
+                  <span className="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#C8B276] text-slate-950 shadow-md flex items-center gap-1">
                     <span className="material-symbols-outlined text-[12px]">check_circle</span>
                     محدد للدخول
                   </span>
@@ -146,7 +155,7 @@ export default function LoginPage() {
                     <img
                       src={u.avatarUrl}
                       alt={u.nameAr}
-                      className="w-12 h-12 rounded-xl object-cover border-2 border-brand-gold/40 shadow-md"
+                      className="w-12 h-12 rounded-xl object-cover border-2 border-[#C8B276]/60 shadow-md"
                     />
                     <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${r.badgeColor}`}>
                       <span className="material-symbols-outlined text-[20px]">{r.icon}</span>
@@ -155,11 +164,20 @@ export default function LoginPage() {
 
                   {/* Role and User details */}
                   <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-brand-gold transition-colors">
+                    <h3 className="text-base font-bold text-white group-hover:text-[#C8B276] transition-colors">
                       {r.nameAr}
                     </h3>
-                    <p className="text-xs font-semibold text-brand-gold mt-0.5">{u.nameAr}</p>
-                    <p className="text-[11px] text-slate-400 mt-0.5 font-mono">{u.email}</p>
+                    <p className="text-xs font-semibold text-[#C8B276] mt-0.5">{u.nameAr}</p>
+                    <div className="flex flex-col gap-0.5 mt-1.5 pt-1 border-t border-slate-700/40">
+                      <span className="text-[11px] text-slate-300 font-mono flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[13px] text-[#C8B276]">mail</span>
+                        <span className="truncate">{u.email}</span>
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[13px] text-[#C8B276]">key</span>
+                        <span>{rolePass}</span>
+                      </span>
+                    </div>
                   </div>
 
                   <p className="text-[11px] leading-relaxed text-slate-300 line-clamp-3">
@@ -171,7 +189,7 @@ export default function LoginPage() {
                 <div className="pt-4 mt-3 border-t border-slate-700/50 space-y-2">
                   <div className="flex items-center justify-between text-[11px]">
                     <span className="text-slate-400">اللوحة المخصصة:</span>
-                    <span className="font-bold text-brand-gold flex items-center gap-1 dir-ltr font-mono">
+                    <span className="font-bold text-[#C8B276] flex items-center gap-1 dir-ltr font-mono">
                       <code>{r.defaultPath}</code>
                       <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
                     </span>
@@ -186,8 +204,8 @@ export default function LoginPage() {
                     }}
                     className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 ${
                       isSelected
-                        ? "bg-gradient-to-r from-brand-gold to-brand-bronze text-slate-950 hover:brightness-110 shadow-brand-gold/20"
-                        : "bg-slate-700/80 hover:bg-slate-600 text-slate-100"
+                        ? "bg-gradient-to-r from-[#C8B276] to-[#9E7A3F] text-slate-950 hover:brightness-110 shadow-[#C8B276]/20 cursor-pointer"
+                        : "bg-slate-700/80 hover:bg-slate-600 text-slate-100 cursor-pointer"
                     }`}
                   >
                     <span className="material-symbols-outlined text-[16px]">login</span>
@@ -200,20 +218,43 @@ export default function LoginPage() {
         </div>
 
         {/* Manual Credentials Box */}
-        <div className="max-w-xl mx-auto bg-[#181B21]/95 rounded-2xl border border-brand-gold/30 p-6 sm:p-8 backdrop-blur-md shadow-2xl">
+        <div className="max-w-xl mx-auto bg-[#181B21]/95 rounded-2xl border border-[#C8B276]/30 p-6 sm:p-8 backdrop-blur-md shadow-2xl">
           <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-700">
             <div>
               <h2 className="text-base font-bold text-white flex items-center gap-2">
-                <span className="material-symbols-outlined text-[20px] text-brand-gold">lock</span>
-                <span>تسجيل الدخول بالبيانات الرسمية (Supabase Auth)</span>
+                <span className="material-symbols-outlined text-[20px] text-[#C8B276]">lock</span>
+                <span>تسجيل الدخول بالبيانات الرسمية</span>
               </h2>
               <p className="text-xs text-slate-400 mt-0.5">
-                أو اكتب بيانات الحساب مباشرة وسيتم التعرف التلقائي على دورك ولوحتك
+                اكتب بيانات الحساب أو اختر حسابه بالأعلى للدخول الفوري
               </p>
             </div>
-            <span className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-brand-gold/15 text-brand-gold border border-brand-gold/30">
+            <span className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#C8B276]/15 text-[#C8B276] border border-[#C8B276]/30">
               {CORE_ROLES[selectedRole].nameAr.split(" ")[0]}
             </span>
+          </div>
+
+          {/* Quick Click Switcher Pills */}
+          <div className="flex flex-wrap items-center gap-1.5 pb-4 border-b border-slate-700/50 mb-4">
+            <span className="text-[11px] text-slate-400 ml-1">تعبئة سريعة:</span>
+            {(Object.keys(CORE_ROLES) as RoleKey[]).map((k) => {
+              const u = userList.find((x) => x.role === k) || INITIAL_USERS.find((x) => x.role === k)!;
+              const isSelected = selectedRole === k;
+              return (
+                <button
+                  key={k}
+                  type="button"
+                  onClick={() => selectRoleCard(k)}
+                  className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-colors cursor-pointer ${
+                    isSelected
+                      ? "bg-[#C8B276] text-slate-950 border-[#C8B276]"
+                      : "bg-slate-800/80 hover:bg-slate-700 text-slate-200 border-slate-700"
+                  }`}
+                >
+                  {u.nameAr}
+                </button>
+              );
+            })}
           </div>
 
           <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -228,9 +269,9 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="user@sotex.eg"
-                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-600 bg-slate-900/80 text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-right font-mono"
+                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-600 bg-slate-900/80 text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-[#C8B276] focus:ring-1 focus:ring-[#C8B276] text-right font-mono"
                 />
-                <span className="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-brand-gold">
+                <span className="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-[#C8B276]">
                   mail
                 </span>
               </div>
@@ -239,20 +280,20 @@ export default function LoginPage() {
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <label className="block text-xs font-semibold text-slate-300">كلمة المرور</label>
-                <Link href="/access-request" className="text-[11px] text-brand-gold hover:underline">
+                <Link href="/access-request" className="text-[11px] text-[#C8B276] hover:underline">
                   طلب صلاحية جديدة أو استعادة؟
                 </Link>
               </div>
               <div className="relative">
                 <input
-                  type="password"
+                  type="text"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-600 bg-slate-900/80 text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-right"
+                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-600 bg-slate-900/80 text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-[#C8B276] focus:ring-1 focus:ring-[#C8B276] text-right font-mono"
                 />
-                <span className="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-brand-gold">
+                <span className="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-[#C8B276]">
                   key
                 </span>
               </div>
@@ -261,7 +302,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-bronze hover:brightness-110 text-slate-950 text-xs font-bold transition-all shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-2 mt-2"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#C8B276] to-[#9E7A3F] hover:brightness-110 text-slate-950 text-xs font-bold transition-all shadow-lg shadow-[#C8B276]/20 flex items-center justify-center gap-2 mt-2 cursor-pointer"
             >
               {isLoading ? (
                 <>
@@ -279,10 +320,10 @@ export default function LoginPage() {
 
           <div className="mt-5 pt-4 border-t border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#C8B276] animate-pulse" />
               متصل بقاعدة بيانات Supabase (Strict RLS)
             </span>
-            <span className="font-mono text-brand-gold">SOTEX v4.8</span>
+            <span className="font-mono text-[#C8B276]">SOTEX v4.8</span>
           </div>
         </div>
       </div>

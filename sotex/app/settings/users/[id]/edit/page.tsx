@@ -39,8 +39,8 @@ export default function UserEditPage() {
         setRole((data.role as RoleKey) || "PRODUCTION_MANAGER");
         setStatus(data.status || "ACTIVE");
       } else {
-        setName("م. أحمد صادق");
-        setEmail("ahmed.sadek@sotex.eg");
+        setName("م. إسلام");
+        setEmail("islam@sotex.eg");
         setPhone("01002345678");
         setRole("OWNER_ADMIN");
         setStatus("ACTIVE");

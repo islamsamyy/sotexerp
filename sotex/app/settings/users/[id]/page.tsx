@@ -33,8 +33,8 @@ export default function UserDetailPage() {
         setUser({
           id: userId,
           code: "EMP-1001",
-          name_ar: "م. أحمد صادق",
-          email: "ahmed.sadek@sotex.eg",
+          name_ar: "م. إسلام",
+          email: "islam@sotex.eg",
           phone: "01002345678",
           role: "OWNER_ADMIN",
           department_ar: "الإدارة العليا",

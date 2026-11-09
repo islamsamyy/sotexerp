@@ -49,10 +49,10 @@ export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKe
 });
 
 export const ROLE_DEMO_EMAILS: Record<RoleKey, string> = {
-  OWNER_ADMIN: "ahmed.sadek@sotex.eg",
-  PRODUCTION_MANAGER: "m.tarek@sotex.eg",
-  WAREHOUSE_MANAGER: "sameh.ibrahim@sotex.eg",
-  FINANCE_SALES_MANAGER: "naglaa.fahmy@sotex.eg",
+  OWNER_ADMIN: "islam@sotex.eg",
+  PRODUCTION_MANAGER: "mohamed.elsayed@sotex.eg",
+  WAREHOUSE_MANAGER: "mostafa.abdelaziz@sotex.eg",
+  FINANCE_SALES_MANAGER: "hussein@sotex.eg",
 };
 
 /**

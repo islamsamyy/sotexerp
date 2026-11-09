@@ -1,15 +1,23 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { ERPProvider } from "@/lib/erp-context";
 import AppShell from "@/components/AppShell";
+import CommandPalette from "@/components/CommandPalette";
+import { ERPProvider } from "@/lib/erp-context";
 
 export const metadata: Metadata = {
   title: "SOTEX Garment Manufacturing ERP — سوتكس لإدارة وتصنيع الملابس",
-  description: "نظام إدارة وتشغيل المصانع ومستودعات الملابس والمنسوجات المتكامل — مجمع المحلة الكبرى المركزي",
+  description: "نظام إدارة وتشغيل المصانع ومستودعات الملابس والمنسوجات المتكامل",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#202528",
 };
 
 export default function RootLayout({
@@ -34,6 +42,7 @@ export default function RootLayout({
       <body className="min-h-full bg-surface text-on-surface font-body-md antialiased overflow-x-hidden transition-colors duration-200">
         <ERPProvider>
           <AppShell>{children}</AppShell>
+          <CommandPalette />
         </ERPProvider>
       </body>
     </html>

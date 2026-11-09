@@ -3,9 +3,9 @@ import { Facility, RoleDefinition, RoleKey, UserProfile, NotificationItem, Appro
 export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
   OWNER_ADMIN: {
     key: "OWNER_ADMIN",
-    nameAr: "مالك المصنع / رئيس مجلس الإدارة",
-    nameEn: "Factory Owner & Executive Admin",
-    categoryAr: "الإدارة العليا والتحكم الشامل",
+    nameAr: "المدير التنفيذي / الإدارة العليا",
+    nameEn: "Executive Manager & Owner",
+    categoryAr: "الإدارة التنفيذية والتحكم الشامل",
     descriptionAr: "صلاحية شاملة على جميع إدارات المصنع، والبيانات المالية، وتعيين الصلاحيات وإعدادات الأمان.",
     defaultPath: "/dashboard",
     canViewCost: true,
@@ -18,8 +18,8 @@ export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
   },
   PRODUCTION_MANAGER: {
     key: "PRODUCTION_MANAGER",
-    nameAr: "مدير الإنتاج والجودة الصناعية",
-    nameEn: "Production & Quality Director",
+    nameAr: "مدير المصنع والإنتاج",
+    nameEn: "Factory & Production Manager",
     categoryAr: "التصنيع والتشغيل وخطوط الصالات",
     descriptionAr: "متابعة أوامر التشغيل، كفاءة الخطوط OEE، مراحل القص والخياطة، وقوائم BOM وفحص الجودة AQL.",
     defaultPath: "/production",
@@ -33,10 +33,10 @@ export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
   },
   WAREHOUSE_MANAGER: {
     key: "WAREHOUSE_MANAGER",
-    nameAr: "مدير المخازن والمستودعات واللوجستيات",
-    nameEn: "Warehouse & Inventory Director",
-    categoryAr: "المخازن وسلاسل الإمداد والخامات",
-    descriptionAr: "إدارة أرصدة الأقمشة والإكسسوارات، أذون الاستلام والصرف، التحويلات، الجرد الدوري والباركود.",
+    nameAr: "الميرشندايز وسلاسل الإمداد",
+    nameEn: "Merchandiser & Supply Chain",
+    categoryAr: "المخازن وسلاسل الإمداد وتتبع الطلبيات",
+    descriptionAr: "متابعة أوامر التوريد، تتبع طلبيات الأقمشة والإكسسوارات، أذون الاستلام والصرف والتحويلات.",
     defaultPath: "/inventory",
     canViewCost: false,
     canViewMargins: false,
@@ -48,8 +48,8 @@ export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
   },
   FINANCE_SALES_MANAGER: {
     key: "FINANCE_SALES_MANAGER",
-    nameAr: "المدير المالي والتجاري والمبيعات",
-    nameEn: "Finance & Commercial Director",
+    nameAr: "المدير المالي والتجاري",
+    nameEn: "Financial Director",
     categoryAr: "الإدارة المالية والمبيعات والتصدير",
     descriptionAr: "إدارة عروض الأسعار، طلبات البيع والتصدير، القيود اليومية، الخزينة، التكاليف واعتماد الخصومات.",
     defaultPath: "/finance",
@@ -78,24 +78,24 @@ export const INITIAL_USERS: UserProfile[] = [
   {
     id: "usr-1",
     code: "EMP-1001",
-    nameAr: "م. أحمد صادق",
-    email: "ahmed.sadek@sotex.eg",
+    nameAr: "م. إسلام",
+    email: "islam@sotex.eg",
     phone: "+20 100 234 5678",
     role: "OWNER_ADMIN",
-    departmentAr: "الإدارة العليا والتشغيل",
+    departmentAr: "الإدارة التنفيذية والعليا",
     facilityId: "fac-1",
     avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
     status: "active",
-    lastLogin: "منذ 5 دقائق",
+    lastLogin: "متصل الآن",
   },
   {
     id: "usr-2",
     code: "EMP-1002",
-    nameAr: "م. محمود طارق",
-    email: "m.tarek@sotex.eg",
+    nameAr: "م. محمد السيد",
+    email: "mohamed.elsayed@sotex.eg",
     phone: "+20 101 987 6543",
     role: "PRODUCTION_MANAGER",
-    departmentAr: "إدارة الإنتاج والتشغيل",
+    departmentAr: "إدارة المصنع والإنتاج",
     facilityId: "fac-1",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
     status: "active",
@@ -104,11 +104,11 @@ export const INITIAL_USERS: UserProfile[] = [
   {
     id: "usr-3",
     code: "EMP-1003",
-    nameAr: "أ. سامح إبراهيم",
-    email: "sameh.ibrahim@sotex.eg",
+    nameAr: "أ. مصطفى عبد العزيز",
+    email: "mostafa.abdelaziz@sotex.eg",
     phone: "+20 102 345 6789",
     role: "WAREHOUSE_MANAGER",
-    departmentAr: "إدارة المخازن والمستودعات",
+    departmentAr: "الميرشندايز وسلاسل الإمداد",
     facilityId: "fac-1",
     avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
     status: "active",
@@ -117,17 +117,24 @@ export const INITIAL_USERS: UserProfile[] = [
   {
     id: "usr-4",
     code: "EMP-1004",
-    nameAr: "أ. نجلاء فهمي",
-    email: "naglaa.fahmy@sotex.eg",
+    nameAr: "مستر حسين",
+    email: "hussein@sotex.eg",
     phone: "+20 109 876 5432",
     role: "FINANCE_SALES_MANAGER",
-    departmentAr: "الإدارة المالية والمبيعات",
+    departmentAr: "الإدارة المالية والحسابات",
     facilityId: "fac-1",
     avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80",
     status: "active",
     lastLogin: "اليوم 10:00 ص",
   },
 ];
+
+export const DEFAULT_USER_PASSWORDS: Record<string, string> = {
+  "islam@sotex.eg": "Islam@2026!",
+  "mohamed.elsayed@sotex.eg": "Mohamed@2026!",
+  "mostafa.abdelaziz@sotex.eg": "Mostafa@2026!",
+  "hussein@sotex.eg": "Hussein@2026!",
+};
 
 export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
   { id: "notif-1", title: "انخفاض رصيد خام حرج", message: "رصيد قماش قطن سنجل ليكرا (كحلي 402) أقل من حد الأمان (متبقي 120 متر)", time: "منذ 15 دقيقة", read: false, type: "urgent", link: "/inventory/fabrics" },
@@ -137,8 +144,8 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
 ];
 
 export const INITIAL_APPROVALS: ApprovalItem[] = [
-  { id: "app-1", title: "طلب صرف خامات قماش صوف معالج للتشغيل", requester: "م. محمود طارق", department: "الإنتاج", amount: "48,500 ج.م", date: "اليوم 09:30 ص", status: "pending", type: "stock_issue" },
-  { id: "app-2", title: "أمر شراء خيوط قطنية وسحابات مستوردة", requester: "أ. سامح إبراهيم", department: "المشتريات", amount: "124,000 ج.م", date: "اليوم 10:15 ص", status: "pending", type: "purchase_order" },
-  { id: "app-3", title: "اعتماد خصم استثنائي لطلب تصدير السعودية", requester: "أ. نجلاء فهمي", department: "المبيعات", amount: "18,200 ج.م", date: "أمس", status: "pending", type: "discount" },
+  { id: "app-1", title: "طلب صرف خامات قماش صوف معالج للتشغيل", requester: "م. محمد السيد", department: "الإنتاج", amount: "48,500 ج.م", date: "اليوم 09:30 ص", status: "pending", type: "stock_issue" },
+  { id: "app-2", title: "أمر شراء خيوط قطنية وسحابات مستوردة", requester: "أ. مصطفى عبد العزيز", department: "المشتريات والميرشندايز", amount: "124,000 ج.م", date: "اليوم 10:15 ص", status: "pending", type: "purchase_order" },
+  { id: "app-3", title: "اعتماد خصم استثنائي لطلب تصدير السعودية", requester: "مستر حسين", department: "المالية والمبيعات", amount: "18,200 ج.م", date: "أمس", status: "pending", type: "discount" },
 ];
 

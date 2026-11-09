@@ -239,7 +239,7 @@ export default function ProductionOrderDetailPage() {
               status: completedQty >= targetQty ? "completed" : "in_progress",
               target: targetQty,
               actual: completedQty,
-              supervisor: "م. محمود طارق",
+              supervisor: "م. محمد السيد",
               time: `${progress}% منجز`,
             },
             {

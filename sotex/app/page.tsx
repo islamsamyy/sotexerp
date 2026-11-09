@@ -616,7 +616,7 @@ export default function RootDashboardPage() {
             </div>
 
             {/* X-Axis Labels */}
-            <div className="grid grid-cols-4 text-center text-xs text-on-surface-variant pt-2 border-t border-outline-variant/20">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs text-on-surface-variant pt-2 border-t border-outline-variant/20">
               <div>
                 <span className="block text-on-surface font-bold">الأسبوع الأول</span>
                 <span className="text-[11px] text-[#16A36A]">270k ج.م ربح</span>
