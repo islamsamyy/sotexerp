@@ -1,0 +1,675 @@
+<main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Content Canvas Area -->
+<div class="w-full px-gutter-desktop py-space-lg space-y-space-lg max-w-[1720px] mx-auto pb-28">
+<!-- Breadcrumbs & Quick Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="space-y-space-xs">
+<nav class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">المنتجات والتصميم</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-primary font-semibold">تكويد موديل وتوصيف تصنيعي جديد</span>
+</nav>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">إضافة منتج وتوصيف تصنيعي جديد</h1>
+<span class="px-space-xs py-[2px] rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">مسودة نشطة #DRF-8492</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">
+          معالج الإعداد المتكامل لتوصيف بيانات الصنف الفنية، توليد مصفوفة المتغيرات (SKU Matrix)، شجرة التكاليف القياسية، وتعيين قنوات التوزيع والإنتاج.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="hidden sm:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm pl-space-sm">
+<span class="w-2 h-2 rounded-full bg-[#16A36A]"></span>
+<span>حفظ تلقائي قبل دقيقة واحدة</span>
+</div>
+<button class="h-9 px-space-md rounded bg-surface-container-lowest text-primary border border-outline-variant/60 hover:bg-surface-container-low transition-colors font-label-md text-label-md shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span>حفظ كمسودة</span>
+</button>
+<button class="h-9 px-space-sm rounded text-error hover:bg-error-container/40 transition-colors font-label-md text-label-md flex items-center gap-space-xs" type="button">
+<span>إلغاء</span>
+</button>
+</div>
+</div>
+<!-- Stepper / Multi-step Navigation Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-space-xs">
+<!-- Step 1: Done -->
+<div class="flex items-center gap-space-xs p-space-xs rounded group cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="w-7 h-7 rounded-full bg-[#E8F8F0] text-[#16A36A] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-on-surface-variant leading-tight">الخطوة 1</span>
+<span class="font-label-md text-label-md text-primary font-semibold truncate">البيانات الأساسية</span>
+</div>
+</div>
+<!-- Step 2: Done -->
+<div class="flex items-center gap-space-xs p-space-xs rounded group cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="w-7 h-7 rounded-full bg-[#E8F8F0] text-[#16A36A] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-on-surface-variant leading-tight">الخطوة 2</span>
+<span class="font-label-md text-primary font-semibold truncate">وسائط وصور المنتج</span>
+</div>
+</div>
+<!-- Step 3: Active -->
+<div class="flex items-center gap-space-xs p-space-xs rounded bg-surface-container-low shadow-sm ring-1 ring-primary/20">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 font-label-sm text-label-sm font-bold">
+            3
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-secondary font-semibold leading-tight">الحالية • تشغيل</span>
+<span class="font-label-md text-label-md text-primary font-bold truncate">المتغيرات والأكواد (SKUs)</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex items-center gap-space-xs p-space-xs rounded opacity-75">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 font-label-sm text-label-sm">
+            4
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-on-surface-variant leading-tight">الخطوة 4</span>
+<span class="font-label-md text-label-md text-on-surface truncate">التكاليف والتسعير</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex items-center gap-space-xs p-space-xs rounded opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 font-label-sm text-label-sm">
+            5
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-on-surface-variant leading-tight">الخطوة 5</span>
+<span class="font-label-md text-label-md text-on-surface truncate">سياسة المخزون</span>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="flex items-center gap-space-xs p-space-xs rounded opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 font-label-sm text-label-sm">
+            6
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-on-surface-variant leading-tight">الخطوة 6</span>
+<span class="font-label-md text-label-md text-on-surface truncate">قنوات البيع والتوزيع</span>
+</div>
+</div>
+<!-- Step 7 -->
+<div class="flex items-center gap-space-xs p-space-xs rounded opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 font-label-sm text-label-sm">
+            7
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-on-surface-variant leading-tight">الخطوة 7</span>
+<span class="font-label-md text-label-md text-on-surface truncate">الاعتماد والنشر</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Summary Pill Card (Data from Steps 1 & 2) -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Visual Previews -->
+<div class="flex items-center gap-space-xs">
+<div class="relative w-14 h-16 rounded overflow-hidden shadow-sm bg-surface-container">
+<img alt="SOTEX Signature Summer Tee Navy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfe9SLlHNCIYv_PLDjvf97kUC32nAYTJBtaeYSWFDvsNJVE33rM-vwNonn32t_4z6B-7eKPX-5NyWDQOiJDP1mfEuV6UaDWnEMW-2RUgngi1BFNegd3cBFiLgoxRRnW3cubKsQTfSBhEVbtBxVx2-fDorcx0sA4m9itE1fR-zIjx-s6P3RNFFGG7p2lsRSEhZNTqG3p4yxWV3fZ6RaZ20vTAnbH13layA7l5LTThvhx8t1khjh3GQc"/>
+<span class="absolute bottom-0 right-0 bg-primary/90 text-[9px] text-on-primary font-label-sm px-1">رئيسية</span>
+</div>
+<div class="relative w-14 h-16 rounded overflow-hidden shadow-sm bg-surface-container">
+<img alt="SOTEX Dual Collection T-shirts" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJkqcyvvuLVWxepUoBc4JOxOD6_SGw1tenPNMLpY8Io23kDcsoK3E7YaIPwkvCj6-SaUtFr7bIQXBrdmJfHntfGV08cATrHXJS-7IxtvyR3XxxPrfjZjbFuhr_DBMzTnGe5xAE3tMCwgMx13HXwLZXZJM2H7utsur8VOg-U3EieMQDkf0nAC8js6-fL6UmdtbYmJL4FdOJDmOfHRo-LXnwwTskS1tvgE67XqMElYRuHN29YBpKzFDn"/>
+<span class="absolute bottom-0 right-0 bg-surface-container-highest/90 text-primary text-[9px] font-label-sm px-1">+1 إضافية</span>
+</div>
+</div>
+<!-- Meta Grid -->
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-lg text-label-lg text-primary font-bold">تيشيرت سوِتكس كاجوال بشعار ذهبي (SOTEX Signature Summer Tee)</span>
+<span class="px-space-xs py-[2px] bg-surface-container text-on-surface font-data-tabular text-data-tabular rounded">كود الموديل: STX-TSH-2024</span>
+<span class="px-space-xs py-[2px] bg-[#E8F8F0] text-[#16A36A] font-label-sm text-[11px] rounded">جاهز للتصنيع الكثيف</span>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-body-sm text-body-sm flex-wrap">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">category</span>
+              التصنيف: رجالي كاجوال / تيشيرتات قطنية دائرية الرقبة
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">texture</span>
+              الخامة المعتمدة: قطن مصري 100% سينجل جيرسي 190 GSM (<span class="font-data-tabular text-primary">RAW-FAB-CTN98</span>)
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+              الموسم: صيف 2025 (Summer Drop 1)
+            </span>
+</div>
+</div>
+</div>
+<button class="self-start xl:self-center h-8 px-space-md text-secondary hover:bg-surface-container-low rounded text-label-sm font-label-sm flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>تعديل البيانات الأساسية</span>
+</button>
+</div>
+<!-- Main Grid: Step 3 Builder + Side Assistant Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Wizard Form (8 Columns) -->
+<div class="lg:col-span-8 space-y-space-lg">
+<!-- SKU Generator Configurator Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-lg shadow-sm space-y-space-lg">
+<div class="flex items-center justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">tune</span>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">توليد مصفوفة السمات والأكواد الذكية</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">حدد تركيبة الألوان والمقاسات المستهدفة لإنشاء الأكواد الفريدة (SKUs) وجداول الباركود الدولي فوراً.</p>
+</div>
+<span class="px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-sm text-label-sm">النمط: قياسي موحد</span>
+</div>
+<!-- Color Attribute Picker -->
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-primary font-semibold flex items-center gap-space-xs">
+<span>1. الألوان المقررة للموديل</span>
+<span class="text-on-surface-variant font-normal">(تم اختيار 4 ألوان)</span>
+</label>
+<button class="font-label-sm text-label-sm text-secondary hover:underline flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                إضافة درجة لون مخصصة (Pantone)
+              </button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<!-- Navy (Active) -->
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between shadow-sm cursor-pointer ring-1 ring-primary">
+<div class="flex items-center gap-space-sm">
+<span class="w-5 h-5 rounded-full bg-[#142D4E] shadow-inner ring-1 ring-black/10"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">كحلي داكن</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-data-tabular">NVY • #142D4E</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<!-- Charcoal (Active) -->
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between shadow-sm cursor-pointer ring-1 ring-primary">
+<div class="flex items-center gap-space-sm">
+<span class="w-5 h-5 rounded-full bg-[#1E1E24] shadow-inner ring-1 ring-black/10"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">أسود فحمي</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-data-tabular">BLK • #1E1E24</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<!-- Off-White (Active) -->
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between shadow-sm cursor-pointer ring-1 ring-primary">
+<div class="flex items-center gap-space-sm">
+<span class="w-5 h-5 rounded-full bg-[#FFFFFF] shadow-inner ring-1 ring-black/20"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">أبيض قطني</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-data-tabular">WHT • #FFFFFF</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<!-- Olive/Khaki (Active) -->
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between shadow-sm cursor-pointer ring-1 ring-primary">
+<div class="flex items-center gap-space-sm">
+<span class="w-5 h-5 rounded-full bg-[#4A5340] shadow-inner ring-1 ring-black/10"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">زيتي مطفأ</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-data-tabular">OLV • #4A5340</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Size Attribute Picker -->
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-primary font-semibold flex items-center gap-space-xs">
+<span>2. تشكيلة المقاسات المعتمدة</span>
+<span class="text-on-surface-variant font-normal">(جدول المقاسات الأوروبية EU Standard)</span>
+</label>
+<div class="flex items-center gap-space-sm text-label-sm text-secondary">
+<span class="cursor-pointer hover:underline">تحديد الكل</span>
+<span>•</span>
+<span class="cursor-pointer hover:underline">إلغاء التحديد</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="h-10 px-5 rounded bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors shadow-sm" type="button">XS</button>
+<button class="h-10 px-5 rounded bg-primary text-on-primary font-label-md text-label-md shadow-sm font-bold" type="button">S</button>
+<button class="h-10 px-5 rounded bg-primary text-on-primary font-label-md text-label-md shadow-sm font-bold" type="button">M</button>
+<button class="h-10 px-5 rounded bg-primary text-on-primary font-label-md text-label-md shadow-sm font-bold" type="button">L</button>
+<button class="h-10 px-5 rounded bg-primary text-on-primary font-label-md text-label-md shadow-sm font-bold" type="button">XL</button>
+<button class="h-10 px-5 rounded bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors shadow-sm" type="button">2XL</button>
+<button class="h-10 px-5 rounded bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors shadow-sm" type="button">3XL</button>
+</div>
+</div>
+<!-- Generator Action Bar -->
+<div class="p-space-md rounded bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">dataset</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">المصفوفة الناتجة: 4 ألوان × 4 مقاسات = 16 صنف فرعي</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">سيتم توليد باركودات GS1 EAN-13 معتمدة تلقائياً لكل تشكيلة</span>
+</div>
+</div>
+<button class="h-10 px-space-lg bg-primary text-on-primary rounded font-label-md text-label-md flex items-center justify-center gap-space-xs hover:bg-primary-container transition-colors shadow-sm shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>توليد وتحديث مصفوفة الـ SKUs (16 صنف)</span>
+</button>
+</div>
+</div>
+<!-- Generated SKUs Data Table -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden">
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-primary font-semibold">جدول الأكواد والأرصدة الأولية</span>
+<span class="px-space-xs py-[1px] bg-surface-container text-primary rounded font-label-sm text-[11px] font-bold">16 أصناف فرعية</span>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="relative">
+<input class="h-8 pr-7 pl-2 text-right bg-surface-container-lowest rounded text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="فلترة بالرمز أو المقاس..." type="text"/>
+<span class="material-symbols-outlined absolute right-1.5 top-2 text-outline text-[16px]">search</span>
+</div>
+<button class="h-8 px-space-sm bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm shadow-sm flex items-center gap-1 hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>طباعة باركودات مجمعة</span>
+</button>
+<button class="h-8 px-space-sm bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm shadow-sm flex items-center gap-1 hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">ios_share</span>
+<span>تصدير Excel</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-right font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md">
+<th class="py-2.5 px-space-md font-semibold">المتغير واللون</th>
+<th class="py-2.5 px-space-sm font-semibold">المقاس</th>
+<th class="py-2.5 px-space-md font-semibold">كود التخزين (SKU)</th>
+<th class="py-2.5 px-space-md font-semibold">الباركود (EAN-13)</th>
+<th class="py-2.5 px-space-sm font-semibold">الوزن (جرام)</th>
+<th class="py-2.5 px-space-sm font-semibold">حد الأمان</th>
+<th class="py-2.5 px-space-sm font-semibold text-center">حالة الصنف</th>
+<th class="py-2.5 px-space-md text-left font-semibold">الإجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1: Navy M -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-3.5 h-3.5 rounded-full bg-[#142D4E] shadow-sm shrink-0"></span>
+<span class="font-label-md text-primary font-medium">كحلي داكن (Navy)</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm font-bold">M</span>
+</td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-primary font-medium">
+                    STX-TSH-24-NVY-M
+                  </td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-on-surface-variant">
+                    6221089441021
+                  </td>
+<td class="py-2.5 px-space-sm font-data-tabular text-data-tabular">
+                    185 جم
+                  </td>
+<td class="py-2.5 px-space-sm">
+<input class="w-20 h-7 px-1.5 text-center bg-surface-container-lowest rounded font-data-tabular text-[12px] shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary" type="text" value="150 قطة"/>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="px-2 py-[2px] rounded bg-[#E8F8F0] text-[#16A36A] font-label-sm text-[11px]">مفعل للإنتاج</span>
+</td>
+<td class="py-2.5 px-space-md text-left">
+<div class="flex items-center justify-end gap-1 text-on-surface-variant">
+<button class="p-1 hover:text-primary rounded transition-colors" title="تعديل"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-primary rounded transition-colors" title="طباعة باركود"><span class="material-symbols-outlined text-[16px]">barcode</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Navy L -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-3.5 h-3.5 rounded-full bg-[#142D4E] shadow-sm shrink-0"></span>
+<span class="font-label-md text-primary font-medium">كحلي داكن (Navy)</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm font-bold">L</span>
+</td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-primary font-medium">
+                    STX-TSH-24-NVY-L
+                  </td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-on-surface-variant">
+                    6221089441022
+                  </td>
+<td class="py-2.5 px-space-sm font-data-tabular text-data-tabular">
+                    195 جم
+                  </td>
+<td class="py-2.5 px-space-sm">
+<input class="w-20 h-7 px-1.5 text-center bg-surface-container-lowest rounded font-data-tabular text-[12px] shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary" type="text" value="200 قطعة"/>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="px-2 py-[2px] rounded bg-[#E8F8F0] text-[#16A36A] font-label-sm text-[11px]">مفعل للإنتاج</span>
+</td>
+<td class="py-2.5 px-space-md text-left">
+<div class="flex items-center justify-end gap-1 text-on-surface-variant">
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">barcode</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Navy XL -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-3.5 h-3.5 rounded-full bg-[#142D4E] shadow-sm shrink-0"></span>
+<span class="font-label-md text-primary font-medium">كحلي داكن (Navy)</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm font-bold">XL</span>
+</td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-primary font-medium">
+                    STX-TSH-24-NVY-XL
+                  </td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-on-surface-variant">
+                    6221089441023
+                  </td>
+<td class="py-2.5 px-space-sm font-data-tabular text-data-tabular">
+                    205 جم
+                  </td>
+<td class="py-2.5 px-space-sm">
+<input class="w-20 h-7 px-1.5 text-center bg-surface-container-lowest rounded font-data-tabular text-[12px] shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary" type="text" value="120 قطعة"/>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="px-2 py-[2px] rounded bg-[#E8F8F0] text-[#16A36A] font-label-sm text-[11px]">مفعل للإنتاج</span>
+</td>
+<td class="py-2.5 px-space-md text-left">
+<div class="flex items-center justify-end gap-1 text-on-surface-variant">
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">barcode</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Charcoal M -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-3.5 h-3.5 rounded-full bg-[#1E1E24] shadow-sm shrink-0"></span>
+<span class="font-label-md text-primary font-medium">أسود فحمي (Charcoal)</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm font-bold">M</span>
+</td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-primary font-medium">
+                    STX-TSH-24-BLK-M
+                  </td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-on-surface-variant">
+                    6221089441024
+                  </td>
+<td class="py-2.5 px-space-sm font-data-tabular text-data-tabular">
+                    185 جم
+                  </td>
+<td class="py-2.5 px-space-sm">
+<input class="w-20 h-7 px-1.5 text-center bg-surface-container-lowest rounded font-data-tabular text-[12px] shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary" type="text" value="150 قطعة"/>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="px-2 py-[2px] rounded bg-[#E8F8F0] text-[#16A36A] font-label-sm text-[11px]">مفعل للإنتاج</span>
+</td>
+<td class="py-2.5 px-space-md text-left">
+<div class="flex items-center justify-end gap-1 text-on-surface-variant">
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">barcode</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Olive L -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-3.5 h-3.5 rounded-full bg-[#4A5340] shadow-sm shrink-0"></span>
+<span class="font-label-md text-primary font-medium">زيتي مطفأ (Olive)</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm font-bold">L</span>
+</td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-primary font-medium">
+                    STX-TSH-24-OLV-L
+                  </td>
+<td class="py-2.5 px-space-md font-data-tabular text-data-tabular text-on-surface-variant">
+                    6221089441029
+                  </td>
+<td class="py-2.5 px-space-sm font-data-tabular text-data-tabular">
+                    195 جم
+                  </td>
+<td class="py-2.5 px-space-sm">
+<input class="w-20 h-7 px-1.5 text-center bg-surface-container-lowest rounded font-data-tabular text-[12px] shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary" type="text" value="100 قطعة"/>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="px-2 py-[2px] rounded bg-[#FEF6EB] text-[#E6A23C] font-label-sm text-[11px]">تحت اعتماد العينة</span>
+</td>
+<td class="py-2.5 px-space-md text-left">
+<div class="flex items-center justify-end gap-1 text-on-surface-variant">
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 hover:text-primary rounded transition-colors"><span class="material-symbols-outlined text-[16px]">barcode</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-space-sm bg-surface-container-low flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="font-data-tabular">عرض 5 من أصل 16 متغير SKU مُسجل</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container text-primary font-semibold">1</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container transition-colors">2</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container transition-colors">3</button>
+</div>
+</div>
+</div>
+<!-- Integrated Cost Structure & Pricing Matrix (Step 4 Preview / Integration) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-lg shadow-sm space-y-space-lg">
+<div class="flex items-center justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">payments</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold">هيكل تكلفة القطعة المعيارية وهوامش التسعير المقترحة</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">محسوبة استناداً لمعدلات استهلاك شجرة المواد (BOM) الحالية وتكلفة دقيقة التشغيل بالمصنع</p>
+</div>
+<span class="px-space-sm py-1 bg-[#E8F8F0] text-[#16A36A] font-label-sm text-label-sm rounded font-bold">تحديث آلي للتكلفة</span>
+</div>
+<!-- Cost Breakdown Cards -->
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-space-sm">
+<div class="p-space-sm rounded bg-surface-container-low space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">تكلفة القماش والخام</span>
+<span class="font-headline-md text-headline-md font-data-tabular text-primary font-bold">38.50 <span class="font-label-sm text-[11px] font-normal">ج.م</span></span>
+<span class="font-label-sm text-[10px] text-on-surface-variant block">0.32 متر سينجل جيرسي</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">القص والخياطة (CMT)</span>
+<span class="font-headline-md text-headline-md font-data-tabular text-primary font-bold">15.40 <span class="font-label-sm text-[11px] font-normal">ج.م</span></span>
+<span class="font-label-sm text-[10px] text-on-surface-variant block">11 دقيقة تشغيل/عامل</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">التطريز والشعار الذهبي</span>
+<span class="font-headline-md text-headline-md font-data-tabular text-primary font-bold">9.10 <span class="font-label-sm text-[11px] font-normal">ج.م</span></span>
+<span class="font-label-sm text-[10px] text-on-surface-variant block">طباعة حرارية + بادج S</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">الهدر والتغليف والملصق</span>
+<span class="font-headline-md text-headline-md font-data-tabular text-primary font-bold">7.00 <span class="font-label-sm text-[11px] font-normal">ج.م</span></span>
+<span class="font-label-sm text-[10px] text-on-surface-variant block">كيس بولي + كارت صنف</span>
+</div>
+<div class="p-space-sm rounded bg-primary text-on-primary space-y-1 col-span-2 sm:col-span-1 shadow-sm">
+<span class="font-label-sm text-label-sm text-surface-variant block">إجمالي تكلفة الصنع (COGS)</span>
+<span class="font-headline-md text-headline-md font-data-tabular text-on-primary font-bold">70.00 <span class="font-label-sm text-[11px] font-normal text-surface-variant">ج.م</span></span>
+<span class="font-label-sm text-[10px] text-surface-variant block">تكلفة المصنع للقطعة</span>
+</div>
+</div>
+<!-- Pricing Tier Inputs -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md pt-space-xs">
+<!-- Wholesale -->
+<div class="p-space-md rounded bg-surface-container-low space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-primary font-semibold">سعر بيع الجملة (Wholesale)</label>
+<span class="px-space-xs py-[1px] bg-[#E8F8F0] text-[#16A36A] font-data-tabular text-[11px] rounded font-bold">+36.4% ربح</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-10 pr-3 pl-12 bg-surface-container-lowest rounded font-data-tabular text-data-tabular font-bold text-primary shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary text-right" type="text" value="110.00"/>
+<span class="absolute left-3 font-label-sm text-label-sm text-outline pointer-events-none">ج.م/قطعة</span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block">صافي ربح المصنع: 40.00 ج.م</span>
+</div>
+<!-- Retail -->
+<div class="p-space-md rounded bg-surface-container-low space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-primary font-semibold">سعر بيع التجزئة (Retail)</label>
+<span class="px-space-xs py-[1px] bg-[#E8F8F0] text-[#16A36A] font-data-tabular text-[11px] rounded font-bold">+57.6% ربح</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-10 pr-3 pl-12 bg-surface-container-lowest rounded font-data-tabular text-data-tabular font-bold text-primary shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary text-right" type="text" value="165.00"/>
+<span class="absolute left-3 font-label-sm text-label-sm text-outline pointer-events-none">ج.م/قطعة</span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block">صافي هامش الصنف: 95.00 ج.م</span>
+</div>
+<!-- Online / Minimum Floor -->
+<div class="p-space-md rounded bg-surface-container-low space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-primary font-semibold">سعر المتجر الإلكتروني / التصدير</label>
+<span class="px-space-xs py-[1px] bg-secondary-container text-on-secondary-container font-data-tabular text-[11px] rounded font-bold">B2C Promo</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-10 pr-3 pl-12 bg-surface-container-lowest rounded font-data-tabular text-data-tabular font-bold text-primary shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary text-right" type="text" value="149.00"/>
+<span class="absolute left-3 font-label-sm text-label-sm text-outline pointer-events-none">ج.م/قطعة</span>
+</div>
+<span class="font-label-sm text-[11px] text-error block">الحد الأدنى المسموح للبيع: 95.00 ج.م</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Assistant Panel (4 Columns Sticky) -->
+<div class="lg:col-span-4 space-y-space-md sticky top-20">
+<!-- Readiness & Progress Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">جاهزية الملف للتصنيع والاعتماد</span>
+<span class="font-data-tabular text-headline-md text-primary font-bold">75%</span>
+</div>
+<!-- Progress Track -->
+<div class="w-full h-2 rounded bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded transition-all duration-500" style="width: 75%;"></div>
+</div>
+<!-- Requirements Checklist -->
+<div class="space-y-space-xs pt-space-xs">
+<div class="flex items-start gap-space-xs p-space-xs rounded bg-[#E8F8F0]/40">
+<span class="material-symbols-outlined text-[#16A36A] text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-medium">تم التحقق من كود الموديل الأساسي وعدم تكراره</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-data-tabular">STX-TSH-2024 سليم ومسجل</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs p-space-xs rounded bg-[#E8F8F0]/40">
+<span class="material-symbols-outlined text-[#16A36A] text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-medium">تم رفع صور الكتالوج بدقة 4K للموديلين</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">2 لقطات معتمدة للملابس الرجالية والنسائية</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs p-space-xs rounded bg-[#E8F8F0]/40">
+<span class="material-symbols-outlined text-[#16A36A] text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-medium">توليد مصفوفة الألوان والمقاسات (SKUs)</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">16 صنف متزامن مع أكواد باركود دولية</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs p-space-xs rounded bg-[#FEF6EB]">
+<span class="material-symbols-outlined text-[#E6A23C] text-[18px] shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold">بانتظار تأكيد شجرة المواد (BOM)</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">مطلوب تحديد أوزان الخيوط وسوست الرقبة بالخطوة 4</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs p-space-xs rounded bg-surface-container-low">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0 mt-0.5">pending</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">تعيين مخزن استلام التشغيل النهائي</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">المقترح: مخزن العاشر من رمضان (المستودع أ)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Manufacturing Quality Note / QC Guideline -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm space-y-space-sm">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<span>توصيات إدارة الجودة (QC Alert)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            تمت مطابقة تيشيرت القطن 100% مع معايير الانكماش الحراري بعد الغسيل بنسبة لا تتعدى <strong>2.8%</strong>. يرجى التأكد من معايرة مقاسات الباترون الرقمي (Gerber AccuMark) وفقاً لجدول التصدير المرفق قبل إصدار أول أمر تشغيل قص للمصنع.
+          </p>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-[11px]">
+<span>مهندس الجودة: م. ياسر فتحي</span>
+<span class="font-data-tabular">2025-05-18</span>
+</div>
+</div>
+<!-- Quick Production Line Load Estimator Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">جاهزية خطوط الحياكة (خط 4 و 6)</span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#16A36A]"></span>
+</div>
+<div class="space-y-space-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>الطاقة الاستيعابية للوردية الواحدة:</span>
+<span class="font-data-tabular text-primary font-bold">1,800 تيشيرت / يوم</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>وقت دورة الخياطة المتوقع (Cycle Time):</span>
+<span class="font-data-tabular text-primary font-bold">4.2 دقيقة</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Persistent Bottom Navigation Action Deck (Sticky) -->
+<div class="fixed bottom-0 right-72 left-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md shadow-lg z-40 px-gutter-desktop flex items-center justify-between gap-space-md">
+<!-- Step Status -->
+<div class="flex items-center gap-space-sm">
+<span class="font-label-md text-label-md text-primary font-bold">الخطوة 3 من 7:</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">مصفوفة السمات والأكواد الذكية (SKU Matrix)</span>
+</div>
+<!-- Center Auto-save Status indicator -->
+<div class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#16A36A]">cloud_done</span>
+<span>التغييرات محفوظة تلقائياً في السجل المؤقت</span>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex items-center gap-space-sm">
+<button class="h-10 px-space-md bg-surface-container-lowest text-primary rounded border border-outline-variant/60 font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+<span>السابق: وسائط وصور المنتج</span>
+</button>
+<button class="h-10 px-space-lg bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm flex items-center gap-space-xs font-semibold" type="button">
+<span>متابعة: شجرة التكاليف والتسعير</span>
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</button>
+<button class="hidden sm:inline-block font-label-sm text-label-sm text-secondary hover:underline px-space-xs" type="button">
+        تخطي للمراجعة النهائية
+      </button>
+</div>
+</div>
+</div></main>

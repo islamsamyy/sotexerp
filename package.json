@@ -1,0 +1,12 @@
+{
+  "name": "sotex-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix sotex run dev",
+    "build": "npm --prefix sotex run build",
+    "start": "npm --prefix sotex run start",
+    "lint": "npm --prefix sotex run lint"
+  }
+}
+

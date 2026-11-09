@@ -1,0 +1,858 @@
+<main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-margin-desktop space-y-space-xl">
+<!-- Top Action & Navigation Breadcrumb Area -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs text-right">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>إدارة المنتجات والتصميم</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back_ios</span>
+<span class="text-primary font-semibold">كتالوج المنتجات والموديلات التصنيعية</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">المنتجات والموديلات التصنيعية</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">إدارة كتالوج المنتجات، أكواد SKU، تكاليف التصنيع وهوامش الربح وربطها بخطوط الخياطة والقص</p>
+</div>
+<!-- Action Buttons Toolbar -->
+<div class="flex flex-wrap items-center gap-space-xs shrink-0">
+<button class="h-10 px-space-md bg-surface-container-lowest text-primary border border-outline-variant/50 rounded-lg flex items-center gap-space-xs hover:bg-surface-container-low transition-colors shadow-sm font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px]">sell</span>
+<span>إدارة التصنيفات وقوائم الأسعار</span>
+</button>
+<button class="h-10 px-space-md bg-surface-container-lowest text-primary border border-outline-variant/50 rounded-lg flex items-center gap-space-xs hover:bg-surface-container-low transition-colors shadow-sm font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+<span>استيراد من Excel</span>
+</button>
+<button class="h-10 px-space-md bg-surface-container-lowest text-primary border border-outline-variant/50 rounded-lg flex items-center gap-space-xs hover:bg-surface-container-low transition-colors shadow-sm font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>تصدير الكتالوج (PDF/XLS)</span>
+</button>
+<button class="h-10 px-space-lg bg-primary text-on-primary rounded-lg flex items-center gap-space-xs hover:bg-primary-container transition-colors shadow-sm font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>إضافة منتج جديد (معالج متعدد الخطوات)</span>
+</button>
+</div>
+</div>
+<!-- Executive Quick Metrics Bento -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">إجمالي المنتجات المسجلة</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">styler</span>
+</div>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">142</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">موديل نشط وتجريبي</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-[#16A36A]">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+6 موديلات جديدة هذا الشهر</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">الأصناف النشطة بالإنتاج</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">precision_manufacturing</span>
+</div>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">48</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">على خطوط التشغيل</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-[#16A36A]"></span>
+<span>12 خط حياكة وقص قيد التحميل الكامل</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">متوسط هامش الربح للمنتجات</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">percent</span>
+</div>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">41.8%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">إجمالي الهامش الصناعي</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-[#16A36A]">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>+2.3% مقارنة بالربع السابق</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">تتطلب إعادة جدولة إنتاج</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-error font-bold">7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">أصناف أوشكت على النفاد</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-error">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>أوامر تصنيع مستعجلة مطلوبة فوراً</span>
+</div>
+</div>
+</div>
+<!-- Catalog Management Deck -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 flex flex-col">
+<!-- Quick Status Tab Filters -->
+<div class="p-space-md border-b border-outline-variant/30 flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-xs bg-surface-container-low p-1 rounded-lg">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm transition-all" type="button">
+            جميع المنتجات <span class="mr-1 text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-mono">142</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" type="button">
+            نشط في البيع <span class="mr-1 text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-mono">118</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" type="button">
+            منخفض المخزون <span class="mr-1 text-[11px] px-1.5 py-0.5 rounded-full bg-[#FEF6EB] text-[#E6A23C] font-mono">16</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" type="button">
+            نفد من المخزون <span class="mr-1 text-[11px] px-1.5 py-0.5 rounded-full bg-[#FCEBEB] text-error font-mono">5</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" type="button">
+            مسودة / تحت التصميم <span class="mr-1 text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-mono">3</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" title="عرض شبكي" type="button">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container text-primary font-bold" title="عرض جدول تفصيلي" type="button">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+<div class="h-5 w-px bg-outline-variant/40 mx-1"></div>
+<button class="h-9 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>تخصيص الأعمدة</span>
+</button>
+</div>
+</div>
+<!-- Advanced Filter & Multi-Criteria Search Section -->
+<div class="p-space-md bg-surface-container-low/40 border-b border-outline-variant/30 flex flex-col gap-space-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm">
+<!-- Text Search SKU / Name -->
+<div class="md:col-span-4 relative flex items-center">
+<span class="material-symbols-outlined absolute right-space-sm text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full h-10 pr-10 pl-3 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-right font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary transition-all" placeholder="بحث برقم الكود SKU، اسم المنتج، الموديل أو القماش..." type="text"/>
+</div>
+<!-- Category Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full h-10 px-space-sm bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-right font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary transition-all cursor-pointer">
+<option value="">جميع التصنيفات الرئيسية</option>
+<option value="men">رجالي (كاجوال / رسمي)</option>
+<option value="women">حريمي (تيشيرتات / عبايات)</option>
+<option value="kids">أطفال ومواليد</option>
+<option value="uniform">يونيفورم وشركات (B2B)</option>
+</select>
+</div>
+<!-- Season Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full h-10 px-space-sm bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-right font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary transition-all cursor-pointer">
+<option value="">الموسم والمجموعة</option>
+<option value="summer2024">صيف 2024 (Summer Core)</option>
+<option value="winter2024">شتاء 2024 (Winter Warm)</option>
+<option value="allseason">طوال العام (Basics)</option>
+</select>
+</div>
+<!-- Availability Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full h-10 px-space-sm bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-right font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary transition-all cursor-pointer">
+<option value="">حالة التوفر بالمستودعات</option>
+<option value="in_stock">متوفر (&gt; 500 قطعة)</option>
+<option value="low_stock">منخفض (&lt; 100 قطعة)</option>
+<option value="out_stock">نفد بالكامل</option>
+<option value="in_production">تحت خطوط الإنتاج</option>
+</select>
+</div>
+<!-- Profit Margin Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full h-10 px-space-sm bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-right font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary transition-all cursor-pointer">
+<option value="">هامش الربح الإجمالي</option>
+<option value="high">مرتفع (&gt; 50%)</option>
+<option value="medium">متوسط (35% - 50%)</option>
+<option value="low">اقتصادي (&lt; 35%)</option>
+</select>
+</div>
+</div>
+<!-- Filter Tags Bar -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="text-outline">الفلاتر المطبقة:</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-mono text-[11px]">
+              الموسم: صيف 2024
+              <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-mono text-[11px]">
+              نوع النسيج: قطن 100%
+              <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error">close</span>
+</span>
+<button class="text-secondary hover:underline mr-space-xs" type="button">إعادة ضبط الكل</button>
+</div>
+<span class="text-outline font-data-tabular">عرض 4 من إجمالي 142 منتج</span>
+</div>
+</div>
+<!-- Bulk Actions Bar (Shown dynamically or subtle state) -->
+<div class="px-space-md py-2 bg-surface-container-low flex items-center justify-between text-on-surface-variant border-b border-outline-variant/20 font-label-sm text-label-sm">
+<div class="flex items-center gap-space-md">
+<label class="flex items-center gap-space-xs cursor-pointer">
+<input class="w-4 h-4 rounded text-primary focus:ring-secondary border-outline-variant/60" type="checkbox"/>
+<span class="text-primary font-medium">تحديد الكل (142 صنف)</span>
+</label>
+<span class="text-outline">|</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-2 py-1 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span> طباعة باركودات
+            </button>
+<button class="px-2 py-1 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">price_change</span> تحديث الأسعار
+            </button>
+<button class="px-2 py-1 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">archive</span> أرشفة
+            </button>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-data-tabular">
+<span>الترتيب حسب: الأحدث إضافة</span>
+<span class="material-symbols-outlined text-[16px]">swap_vert</span>
+</div>
+</div>
+<!-- Advanced Data Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-outline-variant/30 text-on-surface-variant font-label-md text-label-md select-none">
+<th class="p-space-sm text-center w-10">
+<input class="w-4 h-4 rounded text-primary border-outline-variant/60" type="checkbox"/>
+</th>
+<th class="p-space-sm text-right w-16">المعاينة</th>
+<th class="p-space-sm text-right min-w-[220px]">اسم المنتج والموديل</th>
+<th class="p-space-sm text-right min-w-[140px]">كود الصنف (SKU)</th>
+<th class="p-space-sm text-right min-w-[150px]">التصنيف والخامة</th>
+<th class="p-space-sm text-right min-w-[180px]">الألوان والمقاسات</th>
+<th class="p-space-sm text-left min-w-[120px]">تكلفة الإنتاج</th>
+<th class="p-space-sm text-left min-w-[110px]">سعر الجملة</th>
+<th class="p-space-sm text-left min-w-[110px]">سعر التجزئة</th>
+<th class="p-space-sm text-center min-w-[120px]">هامش الربح</th>
+<th class="p-space-sm text-right min-w-[180px]">المخزون الفعلي (WIP)</th>
+<th class="p-space-sm text-center min-w-[120px]">الحالة التشغيلية</th>
+<th class="p-space-sm text-center min-w-[120px]">الإجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm text-on-surface">
+<!-- Row 1: Men's Navy T-Shirt (Reference Image 1) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary border-outline-variant/60" type="checkbox"/>
+</td>
+<td class="p-space-sm">
+<div class="w-14 h-16 rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container relative shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Male model wearing a sharp navy blue crewneck t-shirt with premium golden embroidered spiral logo on the chest, studio photography, clean architectural shadows, luxurious apparel showcase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6EAtxklIQ5bCg7MiBszjr_SRKF1nGvAsg5rcGSZtFpQmnns7XnPue5w2m-t5aEeEajiDEIi-Y5NgUf5_yDBqvPWluaa-ODALkZ70G7IlAtHHjgjp2KJeuBNhhVTOJC9iQissnFK6-XkHX4nLabdr3Zla3VOOGa0hiESHW-MaAflbX_CFhVVMjl-3qlGDVqeVCueT7Wiuo58rSXL8A5zL1DOuv65tMoVxFSQE1BwM"/>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<a class="font-label-lg text-label-lg text-primary hover:text-secondary font-semibold transition-colors flex items-center gap-1" href="#">
+                    تيشيرت رجالي كاجوال بشعار سوِتكس
+                    <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</a>
+<span class="text-on-surface-variant font-body-sm text-[12px]">موديل: SOTEX Signature Summer Tee 2024</span>
+<div class="flex items-center gap-1 mt-1 text-[11px] text-outline">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> صيف 2024
+                  </div>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-mono font-medium text-primary text-[12px] bg-surface-container px-2 py-0.5 rounded w-fit">STX-TSH-01-NVY</span>
+<span class="text-outline font-data-tabular text-[11px] mt-0.5">باركد: 622400192801</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-medium text-on-surface">رجالي كاجوال</span>
+<span class="text-on-surface-variant text-[11px]">قطن مصري 100% سنغل جيرسي 180 جم</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col gap-1 text-right">
+<div class="flex items-center gap-1">
+<span class="w-3.5 h-3.5 rounded-full bg-[#142D4E] border border-outline-variant/40" title="كحلي داكن"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#3E6186] border border-outline-variant/40" title="أزرق بترولي"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#1D3052] border border-outline-variant/40" title="كحلي فحمي"></span>
+<span class="text-[11px] text-outline font-data-tabular">(3 ألوان)</span>
+</div>
+<div class="flex items-center gap-1 flex-wrap">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">S</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">M</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary font-bold">L</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">XL</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">2XL</span>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-primary">70.00 ج.م</span>
+<span class="text-[10px] text-outline">خامات: 48 | تشغيل: 22</span>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-medium text-on-surface">130.00 ج.م</span>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-bold text-primary">220.00 ج.م</span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex flex-col items-center">
+<span class="font-semibold text-[#16A36A] font-data-tabular text-[13px] bg-[#E8F8F0] border border-[#B8E8D2] px-2 py-0.5 rounded-full">
+                    +46.1%
+                  </span>
+<span class="text-[10px] text-outline mt-0.5">هامش صافي 60 ج.م</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right gap-1">
+<div class="flex items-center justify-between text-[11px] font-data-tabular">
+<span class="text-[#16A36A] font-semibold">متاح: 1,420</span>
+<span class="text-outline">WIP: 650</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden flex">
+<div class="bg-[#16A36A] h-full" style="width: 65%" title="جاهز ومتاح"></div>
+<div class="bg-[#3E96FA] h-full" style="width: 25%" title="تحت التشغيل WIP"></div>
+<div class="bg-[#E6A23C] h-full" style="width: 10%" title="محجوز للعملاء"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant font-data-tabular">محجوز: 210 قطعة</span>
+</div>
+</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-[#E8F8F0] text-[#16A36A] border border-[#B8E8D2]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A36A]"></span>
+                  نشط بالمبيعات
+                </span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="تفاصيل الصنف وشجرة المواد BOM" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded transition-colors" title="تعديل الموديل والتسعير" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="طباعة كود التتبع والباركود" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1 text-outline hover:text-on-surface hover:bg-surface-container rounded transition-colors" title="خيارات إضافية" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Women's Dual Apparel (Reference Image 2) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary border-outline-variant/60" type="checkbox"/>
+</td>
+<td class="p-space-sm">
+<div class="w-14 h-16 rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container relative shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Two female models standing side by side wearing minimalist modern crewneck t-shirts in olive charcoal grey and pure white with golden chest logo emblem, studio fashion catalog aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB11kFDKx6D8hBjylgmp3iihayfa4c4ubPKrFzCAl82t3dOS5YuXH78UsfMMblqaJ_FT4yUzLNHQs5u5hp7-JUc4bo97ewUGmYJQbNYeFTYl1ztZqCJaEUk1a5swy7hmq3hAn9vYpB3o0v8AVykxUq5FyPTrjnAMZR11BxCWAs_Hvqz5jZmcOG0XFjpH6YGjgPhLS-HeZL79Ha0A0PDxfhpI-423zujm08Ad4kkkxc"/>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<a class="font-label-lg text-label-lg text-primary hover:text-secondary font-semibold transition-colors flex items-center gap-1" href="#">
+                    تيشيرت حريمي رمادي بشعار سوِتكس
+                    <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</a>
+<span class="text-on-surface-variant font-body-sm text-[12px]">موديل: SOTEX Women Modern Fitted Tee</span>
+<div class="flex items-center gap-1 mt-1 text-[11px] text-outline">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> ربيع / صيف 2024
+                  </div>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-mono font-medium text-primary text-[12px] bg-surface-container px-2 py-0.5 rounded w-fit">STX-TSH-02-GRY</span>
+<span class="text-outline font-data-tabular text-[11px] mt-0.5">باركد: 622400192844</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-medium text-on-surface">حريمي كاجوال</span>
+<span class="text-on-surface-variant text-[11px]">قطن 95% ليكرا 5% مريح ومطاطي</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col gap-1 text-right">
+<div class="flex items-center gap-1">
+<span class="w-3.5 h-3.5 rounded-full bg-[#52564F] border border-outline-variant/40" title="رمادي زيتي"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFFFFF] border border-outline-variant/60" title="أبيض ناصع"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#202022] border border-outline-variant/40" title="أسود كلاسيك"></span>
+<span class="text-[11px] text-outline font-data-tabular">(4 ألوان)</span>
+</div>
+<div class="flex items-center gap-1 flex-wrap">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary font-bold">XS</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">S</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary font-bold">M</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">L</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">XL</span>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-primary">64.50 ج.م</span>
+<span class="text-[10px] text-outline">خامات: 42 | تشغيل: 22.5</span>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-medium text-on-surface">120.00 ج.م</span>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-bold text-primary">195.00 ج.م</span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex flex-col items-center">
+<span class="font-semibold text-[#16A36A] font-data-tabular text-[13px] bg-[#E8F8F0] border border-[#B8E8D2] px-2 py-0.5 rounded-full">
+                    +46.2%
+                  </span>
+<span class="text-[10px] text-outline mt-0.5">هامش صافي 55.5 ج.م</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right gap-1">
+<div class="flex items-center justify-between text-[11px] font-data-tabular">
+<span class="text-[#E6A23C] font-semibold">متاح: 180 (منخفض)</span>
+<span class="text-outline">WIP: 1,200</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden flex">
+<div class="bg-[#E6A23C] h-full" style="width: 20%" title="المتاح حاليا"></div>
+<div class="bg-[#3E96FA] h-full" style="width: 75%" title="جاري تشغيله في خط الخياطة"></div>
+<div class="bg-[#BA1A1A] h-full" style="width: 5%"></div>
+</div>
+<span class="text-[10px] text-error font-medium">أمر تشغيل عاجل رقم #WO-8842</span>
+</div>
+</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-[#FEF6EB] text-[#E6A23C] border border-[#FCDFB0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E6A23C]"></span>
+                  منخفض المخزون
+                </span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="تفاصيل الصنف" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded transition-colors" title="تعديل الموديل" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-secondary hover:text-primary hover:bg-surface-container rounded transition-colors" title="أمر تصنيع سريع" type="button">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+</button>
+<button class="p-1 text-outline hover:text-on-surface hover:bg-surface-container rounded transition-colors" title="خيارات إضافية" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Men's Tailored Chino Trousers -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary border-outline-variant/60" type="checkbox"/>
+</td>
+<td class="p-space-sm">
+<div class="w-14 h-16 rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container relative shrink-0 shadow-sm flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="High quality men slim fit chino trousers in navy blue and charcoal wool blend fabric, folded neatly on industrial warehouse staging table, soft directional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrzJoj0xd9-1xEDNsYyZUvswfcPCFMJlZ1KkVuZKQZ9Us761qhi8vgpQXi2v8_GeXDZjlvplHIgop_zuLKqVH-A3FghfcvNJ4e88kmwEw1YPh06ot1UPBSYVQZsun8IpLFDjBd1SvRaba1XexyKyFlFD2mc1mNFVw8MvDHcXgMuiw3s_xSRyF4LUgVNRQWJkwKH9XSaxeoyzxhpD1emj3KUo78TM9pWl4C7u7gOks"/>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<a class="font-label-lg text-label-lg text-primary hover:text-secondary font-semibold transition-colors flex items-center gap-1" href="#">
+                    بنطلون تشينو كاجوال قطني مطاط
+                    <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</a>
+<span class="text-on-surface-variant font-body-sm text-[12px]">موديل: SOTEX Comfort Flex Chino</span>
+<div class="flex items-center gap-1 mt-1 text-[11px] text-outline">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> تشكيلة الخريف
+                  </div>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-mono font-medium text-primary text-[12px] bg-surface-container px-2 py-0.5 rounded w-fit">STX-PNT-09-BLK</span>
+<span class="text-outline font-data-tabular text-[11px] mt-0.5">باركد: 622400193108</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-medium text-on-surface">بناطيل رجالي</span>
+<span class="text-on-surface-variant text-[11px]">تويل جبردين قطن 97% سباندكس 3%</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col gap-1 text-right">
+<div class="flex items-center gap-1">
+<span class="w-3.5 h-3.5 rounded-full bg-[#181B20] border border-outline-variant/40" title="أسود ليلي"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#2B3547] border border-outline-variant/40" title="كحلي غامق"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#C2B299] border border-outline-variant/40" title="بيج كاكي"></span>
+<span class="text-[11px] text-outline font-data-tabular">(3 ألوان)</span>
+</div>
+<div class="flex items-center gap-1 flex-wrap">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">30</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">32</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">34</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">36</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">38</span>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-primary">138.00 ج.م</span>
+<span class="text-[10px] text-outline">خامات: 94 | تشغيل: 44</span>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-medium text-on-surface">240.00 ج.م</span>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-bold text-primary">390.00 ج.م</span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex flex-col items-center">
+<span class="font-semibold text-[#16A36A] font-data-tabular text-[13px] bg-[#E8F8F0] border border-[#B8E8D2] px-2 py-0.5 rounded-full">
+                    +42.5%
+                  </span>
+<span class="text-[10px] text-outline mt-0.5">هامش صافي 102 ج.م</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right gap-1">
+<div class="flex items-center justify-between text-[11px] font-data-tabular">
+<span class="text-[#16A36A] font-semibold">متاح: 920</span>
+<span class="text-outline">WIP: 400</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden flex">
+<div class="bg-[#16A36A] h-full" style="width: 58%"></div>
+<div class="bg-[#3E96FA] h-full" style="width: 25%"></div>
+<div class="bg-[#E6A23C] h-full" style="width: 17%"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant font-data-tabular">محجوز لطلبيات التصدير: 150</span>
+</div>
+</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-[#E8F8F0] text-[#16A36A] border border-[#B8E8D2]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A36A]"></span>
+                  نشط بالمبيعات
+                </span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="تفاصيل الصنف" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded transition-colors" title="تعديل الموديل" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="طباعة كود التتبع" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1 text-outline hover:text-on-surface hover:bg-surface-container rounded transition-colors" title="خيارات إضافية" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Corporate Uniform Polo (In Production) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary border-outline-variant/60" type="checkbox"/>
+</td>
+<td class="p-space-sm">
+<div class="w-14 h-16 rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container relative shrink-0 shadow-sm flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Corporate uniform polo shirt in crisp pique fabric with custom woven collar and embroidered chest insignia, studio garment product photography on clean light grey backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApLhzFmy4miGK2rnut-i2dmVQ63gp33AfM_2kH4a-bRi6eXXl_UJuPpLiom7efA4RDVxiBNTC5--lQoxtpurN4c1gC5Z7fEDYBjAMVCRkc2YZhqD37WMiqJGUopEsUFQt16FdBRWfGIt06AEzmMf1ZqB371y4RSTTU2JC_rGDHYORvcH1o9hadBCLA6BG2isSG1TQVdqa2PB07toHYq1GiDywX9an4pUiTO4xDe2g"/>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<a class="font-label-lg text-label-lg text-primary hover:text-secondary font-semibold transition-colors flex items-center gap-1" href="#">
+                    بولو شيرت موحد للشركات (B2B Heavy Pique)
+                    <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</a>
+<span class="text-on-surface-variant font-body-sm text-[12px]">موديل: SOTEX Pro-Wear Corporate Polo</span>
+<div class="flex items-center gap-1 mt-1 text-[11px] text-outline">
+<span class="material-symbols-outlined text-[14px]">domain</span> تعاقدات سنوية
+                  </div>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-mono font-medium text-primary text-[12px] bg-surface-container px-2 py-0.5 rounded w-fit">STX-POL-04-WHT</span>
+<span class="text-outline font-data-tabular text-[11px] mt-0.5">باركد: 622400194012</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-medium text-on-surface">يونيفورم موحد</span>
+<span class="text-on-surface-variant text-[11px]">بيكيه قطن 65% بوليستر 35% ضد الانكماش</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col gap-1 text-right">
+<div class="flex items-center gap-1">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFFFFF] border border-outline-variant/60" title="أبيض"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#142D4E] border border-outline-variant/40" title="كحلي"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#800020] border border-outline-variant/40" title="نبيتي"></span>
+<span class="text-[11px] text-outline font-data-tabular">(5 ألوان)</span>
+</div>
+<div class="flex items-center gap-1 flex-wrap">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">M</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">L</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">XL</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-[10px] font-mono text-primary">3XL</span>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-primary">82.00 ج.م</span>
+<span class="text-[10px] text-outline">خامات: 54 | تشغيل: 28</span>
+</div>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-medium text-on-surface">145.00 ج.م</span>
+</td>
+<td class="p-space-sm text-left font-data-tabular">
+<span class="font-bold text-primary">240.00 ج.م</span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex flex-col items-center">
+<span class="font-semibold text-[#2B84C6] font-data-tabular text-[13px] bg-[#EAF3FC] border border-[#B6D7F4] px-2 py-0.5 rounded-full">
+                    +43.4%
+                  </span>
+<span class="text-[10px] text-outline mt-0.5">هامش صافي 63 ج.م</span>
+</div>
+</td>
+<td class="p-space-sm">
+<div class="flex flex-col text-right gap-1">
+<div class="flex items-center justify-between text-[11px] font-data-tabular">
+<span class="text-[#2B84C6] font-semibold">متاح: 50</span>
+<span class="text-[#2B84C6] font-bold">WIP: 2,500</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden flex">
+<div class="bg-[#16A36A] h-full" style="width: 5%"></div>
+<div class="bg-[#3E96FA] h-full" style="width: 90%" title="تحت التشغيل للطلبية"></div>
+<div class="bg-[#E6A23C] h-full" style="width: 5%"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant font-data-tabular">تشغيل صالة الحياكة رقم 3</span>
+</div>
+</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-[#EAF3FC] text-[#2B84C6] border border-[#B6D7F4]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2B84C6] animate-pulse"></span>
+                  قيد الإنتاج المكثف
+                </span>
+</td>
+<td class="p-space-sm text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="تفاصيل الصنف" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded transition-colors" title="متابعة خط الإنتاج" type="button">
+<span class="material-symbols-outlined text-[18px]">monitoring</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="طباعة باركودات" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</button>
+<button class="p-1 text-outline hover:text-on-surface hover:bg-surface-container rounded transition-colors" title="خيارات إضافية" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Advanced Pagination and Summary Footer -->
+<div class="p-space-md bg-surface-container-low/50 border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span>عرض</span>
+<select class="h-8 px-2 bg-surface-container-lowest border border-outline-variant/40 rounded text-right font-data-tabular">
+<option value="15">15</option>
+<option selected="" value="25">25</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select>
+<span>عنصر لكل صفحة</span>
+</div>
+<span class="text-outline">|</span>
+<span class="font-data-tabular">عرض 1 - 4 من إجمالي 142 منتج مسجل</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-8 px-space-sm rounded bg-surface-container-lowest border border-outline-variant/30 text-outline cursor-not-allowed flex items-center justify-center font-label-sm" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+<span>السابق</span>
+</button>
+<button class="h-8 w-8 rounded bg-primary text-on-primary font-label-sm flex items-center justify-center font-data-tabular shadow-sm" type="button">1</button>
+<button class="h-8 w-8 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface hover:bg-surface-container font-label-sm flex items-center justify-center font-data-tabular transition-colors" type="button">2</button>
+<button class="h-8 w-8 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface hover:bg-surface-container font-label-sm flex items-center justify-center font-data-tabular transition-colors" type="button">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="h-8 w-8 rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface hover:bg-surface-container font-label-sm flex items-center justify-center font-data-tabular transition-colors" type="button">6</button>
+<button class="h-8 px-space-sm rounded bg-surface-container-lowest border border-outline-variant/30 text-on-surface hover:bg-surface-container cursor-pointer flex items-center justify-center font-label-sm transition-colors" type="button">
+<span>التالي</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back_ios</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Production Insight & Color Matrix Secondary Card -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Matrix Helper 1: Category Distribution -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-md text-headline-md text-primary">توزيع الموديلات حسب الفئة</h2>
+<span class="material-symbols-outlined text-outline text-[20px]">pie_chart</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">نسب الأصناف المتوفرة داخل خطة تصنيع موسم 2024</p>
+<div class="space-y-space-sm">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface mb-1">
+<span>تيشيرتات وبولو قطن رجالي</span>
+<span class="font-data-tabular">54 موديل (38%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container overflow-hidden">
+<div class="h-full bg-primary" style="width: 38%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface mb-1">
+<span>أزياء حريمي وتوب ليكرا</span>
+<span class="font-data-tabular">42 موديل (30%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary" style="width: 30%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface mb-1">
+<span>بناطيل وشورتات كاجوال</span>
+<span class="font-data-tabular">28 موديل (20%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary-fixed-variant" style="width: 20%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface mb-1">
+<span>يونيفورم وملابس شركات B2B</span>
+<span class="font-data-tabular">18 موديل (12%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container overflow-hidden">
+<div class="h-full bg-outline" style="width: 12%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الكتالوجات المصدرة المعتمدة</span>
+<span class="font-label-md text-label-md text-primary font-semibold">4 ملفات نشطة</span>
+</div>
+</div>
+<!-- Matrix Helper 2: Production Cost Structure Breakdown -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-md text-headline-md text-primary">هيكل تكلفة القطعة المعياري</h2>
+<span class="material-symbols-outlined text-outline text-[20px]">account_balance_wallet</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">المتوسط الموزون لتكلفة إنتاج التيشيرت الصيفي (70 ج.م)</p>
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm">غزول وأقمشة خام (قطن ممشط)</span>
+</div>
+<span class="font-data-tabular font-semibold text-primary">38.50 ج.م (55%)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm">أجور حياكة وقص مباشرة</span>
+</div>
+<span class="font-data-tabular font-semibold text-primary">15.40 ج.م (22%)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-[#E6A23C]"></span>
+<span class="font-body-sm text-body-sm">تطريز، طباعة الشعار، وإكسسوارات</span>
+</div>
+<span class="font-data-tabular font-semibold text-primary">9.10 ج.م (13%)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-outline"></span>
+<span class="font-body-sm text-body-sm">هدر صناعي وتعبئة وتغليف</span>
+</div>
+<span class="font-data-tabular font-semibold text-primary">7.00 ج.م (10%)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<a class="font-label-sm text-label-sm text-secondary hover:underline flex items-center gap-1" href="#">
+<span>تعديل مصفوفة تكاليف BOM</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</a>
+<span class="font-data-tabular text-label-sm text-[#16A36A]">تحديث دوري: اليوم</span>
+</div>
+</div>
+<!-- Matrix Helper 3: Quick Inventory Replenishment Alert -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-md text-headline-md text-primary">تنبيهات نقطة إعادة الطلب</h2>
+<span class="material-symbols-outlined text-error text-[20px]">notification_important</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">موديلات تجاوزت حد الأمان وتتطلب إصدار إذن تشغيل</p>
+<div class="space-y-space-xs">
+<div class="p-space-sm rounded-lg border border-[#FCDFB0] bg-[#FEF6EB] flex items-center justify-between">
+<div class="flex flex-col text-right">
+<span class="font-label-md text-label-md text-primary font-semibold">تيشيرت حريمي رمادي (M)</span>
+<span class="text-[11px] text-on-surface-variant font-data-tabular">المتبقي: 42 قطعة | حد الأمان: 200</span>
+</div>
+<button class="px-space-sm py-1 bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm border border-outline-variant/30 hover:bg-surface-container shadow-xs" type="button">
+                أمر تشغيل
+              </button>
+</div>
+<div class="p-space-sm rounded-lg border border-[#FCDFB0] bg-[#FEF6EB] flex items-center justify-between">
+<div class="flex flex-col text-right">
+<span class="font-label-md text-label-md text-primary font-semibold">بولو شيرت كحلي (L)</span>
+<span class="text-[11px] text-on-surface-variant font-data-tabular">المتبقي: 15 قطعة | حد الأمان: 150</span>
+</div>
+<button class="px-space-sm py-1 bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm border border-outline-variant/30 hover:bg-surface-container shadow-xs" type="button">
+                أمر تشغيل
+              </button>
+</div>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">جدولة التوريد الآلي</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-[#16A36A]">
+<span class="w-2 h-2 rounded-full bg-[#16A36A]"></span> مفعل تلقائياً
+          </span>
+</div>
+</div>
+</div>
+</div>
+</div></main>

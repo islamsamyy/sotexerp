@@ -1,0 +1,2949 @@
+# SOTEX ERP — Advanced Roles, Permissions & Access Control System
+## Complete Arabic RTL User Management and RBAC Design Specification
+
+---
+
+# 1. PROJECT OBJECTIVE
+
+Design a comprehensive enterprise-grade user management, roles, permissions, and access control module for the SOTEX ERP manufacturing system.
+
+This module is responsible for managing every employee, administrator, manager, accountant, warehouse operator, production worker, supervisor, and external business user who accesses the ERP.
+
+The system must control:
+
+- Who can log in.
+- Which modules users can access.
+- Which pages they can view.
+- Which records they can see.
+- Which operations they can perform.
+- Which transactions they can approve.
+- Which departments they can manage.
+- Which branches they can access.
+- Which warehouses they can operate.
+- Which financial information they can view.
+- Which sensitive employee information they can access.
+
+Create a complete visual interface for an enterprise-grade Role-Based Access Control system (RBAC), with optional data-scope restrictions and configurable approval workflows.
+
+**The entire interface must be in Arabic and fully RTL.**
+
+Do not create a simple list of users with a basic role dropdown. Build a complete permission management platform.
+
+# 2. SYSTEM ARCHITECTURE
+
+The permissions system must have four separate but connected layers.
+
+## Layer 1 — Users
+
+Users represent the actual people who log into the ERP.
+
+Each user has:
+
+- User ID.
+- Full name.
+- Profile photo.
+- Email.
+- Mobile number.
+- Employee ID.
+- Department.
+- Job title.
+- Assigned branch.
+- Assigned warehouses.
+- Assigned roles.
+- Account status.
+- Last login.
+- Login history.
+- Account creation date.
+
+A user may have one or multiple assigned roles, according to administrator policy.
+
+## Layer 2 — Roles
+
+Roles represent job responsibilities.
+
+Examples:
+
+- مالك المصنع.
+- المدير العام.
+- مدير العمليات.
+- مدير الإنتاج.
+- مدير المخازن.
+- محاسب.
+- موظف مبيعات.
+- أمين مخزن.
+
+Each role contains a predefined set of permissions.
+
+Allow administrators to:
+
+- Create roles.
+- Edit roles.
+- Duplicate roles.
+- Assign permissions.
+- Assign data scopes.
+- Configure approval limits.
+- Activate or deactivate roles.
+- View users assigned to each role.
+- View role activity history.
+
+## Layer 3 — Permissions
+
+Permissions control specific actions inside every module.
+
+Do not define permissions only at the module level.
+
+For example, a warehouse employee may be allowed to:
+
+- View inventory.
+- Search products.
+- Create goods receiving records.
+- Create stock issue requests.
+- Perform assigned stock counts.
+
+But may not be allowed to:
+
+- Edit product costs.
+- Approve stock adjustments.
+- Delete inventory transactions.
+- View financial reports.
+- Change warehouse settings.
+
+## Layer 4 — Data Scope
+
+Data scope controls which records users are allowed to access.
+
+Possible scopes:
+
+1. كل الشركة.
+2. فرع محدد.
+3. قسم محدد.
+4. مخزن محدد.
+5. خطوط إنتاج محددة.
+6. العملاء المخصصون للمستخدم.
+7. المهام المخصصة للمستخدم.
+8. السجلات التي أنشأها المستخدم.
+9. السجلات التي يشرف عليها المستخدم.
+
+A permission to view a page must not automatically grant access to every record in the company.
+
+---
+
+# 3. ROLE STRUCTURE — COMPLETE SOTEX ROLE DIRECTORY
+
+Create the following roles as predefined system roles.
+
+Organize them into categories.
+
+## A. EXECUTIVE MANAGEMENT
+
+### Role 01 — مالك المصنع
+System role: OWNER
+
+Description:
+
+The factory owner has the highest business-level access and can review the overall performance and financial position of SOTEX.
+
+Responsibilities:
+
+- Monitor overall business performance.
+- Review sales and profitability.
+- Review manufacturing performance.
+- Review inventory valuation.
+- Review financial reports.
+- Monitor all departments.
+- Review strategic business indicators.
+- Manage executive-level decisions.
+
+Default access:
+
+- All business modules.
+- All branches and warehouses.
+- All departmental dashboards.
+- Executive reports.
+- Financial reports.
+- Business analytics.
+- Company-wide audit reports.
+
+Special permissions:
+
+- View all financial data.
+- View all product costs and profit margins.
+- View all department performance.
+- Review all transactions.
+- Manage executive settings.
+- Assign business-level roles.
+- Approve exceptional transactions according to configured policy.
+
+Security restrictions:
+
+- High-risk operations must still be recorded in the audit log.
+- Financial transactions must not be silently deleted or rewritten.
+- All account and system changes must be traceable.
+
+Dashboard:
+
+- إجمالي المبيعات.
+- صافي الأرباح.
+- إجمالي المصروفات.
+- قيمة المخزون.
+- الإنتاج الفعلي.
+- كفاءة الإنتاج.
+- المديونيات.
+- التدفق النقدي.
+- أداء الأقسام.
+- المخاطر والتنبيهات.
+
+### Role 02 — المدير العام
+System role: GENERAL_MANAGER
+
+Description:
+
+Responsible for managing the overall daily business operations and supervising department managers.
+
+Access:
+
+- All department dashboards.
+- Sales reports.
+- Production reports.
+- Inventory reports.
+- Procurement reports.
+- Quality reports.
+- Financial summary.
+- Marketing reports.
+- HR summary.
+- Task and approval center.
+
+Permissions:
+
+- View all operational information.
+- Create company-wide tasks.
+- Assign responsibilities.
+- Review department performance.
+- Approve designated operational transactions.
+- Approve selected purchases and expenses.
+- Review production plans.
+- Review sales targets.
+- Access company-wide reports.
+
+Restrictions:
+
+- Financial posting and payment execution should remain subject to assigned finance permissions.
+- Sensitive payroll information requires explicit authorization.
+- System infrastructure settings remain restricted unless separately authorized.
+
+Dashboard:
+
+- أداء جميع الإدارات.
+- المهام المتأخرة.
+- أوامر الإنتاج.
+- الطلبات غير المكتملة.
+- طلبات الموافقة.
+- المبيعات.
+- مؤشرات الربحية.
+- ملخص المخزون.
+
+### Role 03 — مدير العمليات
+System role: OPERATIONS_MANAGER
+
+Description:
+
+Responsible for coordinating factory operations and ensuring that production, inventory, procurement, and fulfillment work together.
+
+Access:
+
+- Production.
+- Warehouses.
+- Procurement.
+- Quality.
+- Sales fulfillment.
+- Operational reports.
+- Tasks.
+- Approvals.
+
+Permissions:
+
+- Review production schedules.
+- Monitor production lines.
+- Monitor stock availability.
+- Review procurement requests.
+- Review warehouse performance.
+- Monitor order fulfillment.
+- Assign operational tasks.
+- Escalate delays.
+- Approve authorized operational activities.
+
+Restrictions:
+
+- Does not automatically receive access to employee salary details.
+- Does not automatically receive accounting posting permissions.
+- Does not automatically manage user security settings.
+
+---
+
+## B. SYSTEM ADMINISTRATION
+
+### Role 04 — مدير النظام
+System role: SYSTEM_ADMIN
+
+Description:
+
+Responsible for technical administration of the ERP system.
+
+Access:
+
+- User management.
+- Role management.
+- Permission management.
+- Company configuration.
+- Branch configuration.
+- Warehouse configuration.
+- System logs.
+- Integrations.
+- Backup settings.
+- Notification settings.
+
+Permissions:
+
+- Create user accounts.
+- Update user information.
+- Disable user accounts.
+- Reset access credentials.
+- Create custom roles.
+- Configure role assignments.
+- Configure module access.
+- Review authentication history.
+- Review system activity.
+- Configure system settings.
+- Manage approved integrations.
+
+Important separation of responsibilities:
+
+System administration must not automatically grant accounting permissions.
+
+A technical administrator should not be able to create, approve, or post business transactions unless separately assigned an appropriate business role.
+
+All high-privilege security changes must be audited.
+
+### Role 05 — مسؤول مراجعة النظام
+System role: SYSTEM_AUDITOR
+
+Description:
+
+Read-only oversight of user activity, role assignments, security changes, and system audit trails.
+
+Permissions:
+
+- View audit logs.
+- View user activity.
+- View permission changes.
+- View approval histories.
+- Export authorized audit reports.
+
+Restrictions:
+
+- Cannot edit business transactions.
+- Cannot change user roles.
+- Cannot change permission configurations.
+- Cannot delete logs.
+
+---
+
+## C. SALES DEPARTMENT
+
+### Role 06 — مدير المبيعات
+System role: SALES_MANAGER
+
+Access:
+
+- Sales dashboard.
+- Sales orders.
+- Quotations.
+- Customers.
+- Wholesale management.
+- Retail management.
+- Sales returns.
+- Sales performance reports.
+- Sales team tasks.
+
+Permissions:
+
+- View all sales data.
+- Create and edit sales orders.
+- Assign sales representatives.
+- Manage sales targets.
+- Review quotations.
+- Approve authorized discounts.
+- Review returns.
+- View sales performance.
+- Access customer balances according to finance policy.
+- Export authorized sales reports.
+
+Restrictions:
+
+- Cannot modify posted accounting entries.
+- Cannot access unrestricted payroll records.
+- Cannot change warehouse valuation.
+- Cannot approve their own high-risk transactions.
+
+### Role 07 — موظف المبيعات
+System role: SALES_REPRESENTATIVE
+
+Access:
+
+- Sales workspace.
+- Customer list.
+- Product catalog.
+- Sales order creation.
+- Quotations.
+- Assigned tasks.
+- Personal sales performance.
+
+Permissions:
+
+- View permitted products.
+- View available stock.
+- Create sales orders.
+- Create quotations.
+- View assigned customers.
+- Update permitted customer information.
+- Track order statuses.
+- Request discounts.
+- Submit orders for approval.
+
+Restrictions:
+
+- Cannot approve their own discount requests.
+- Cannot change product costs.
+- Cannot view confidential profit margins.
+- Cannot modify inventory quantities.
+- Cannot delete confirmed orders.
+- Cannot view all customers unless assigned.
+
+Data scope:
+
+- Assigned customers.
+- Assigned orders.
+- Assigned quotations.
+- Personal sales targets.
+
+### Role 08 — مسؤول مبيعات الجملة
+System role: WHOLESALE_SALES
+
+Access:
+
+- Wholesale customers.
+- Distributor accounts.
+- Wholesale orders.
+- Wholesale price lists.
+- Credit information according to policy.
+
+Permissions:
+
+- Create wholesale quotations.
+- Create bulk orders.
+- View authorized wholesale prices.
+- Request special pricing.
+- Monitor customer order history.
+- Follow up customer balances.
+
+Restrictions:
+
+- Cannot edit product costs.
+- Cannot issue payments.
+- Cannot approve unrestricted credit limits.
+
+### Role 09 — كاشير / موظف نقطة البيع
+System role: POS_CASHIER
+
+Access:
+
+- Retail POS.
+- Product search.
+- Barcode scanning.
+- Shopping cart.
+- Retail receipts.
+- Own shift summary.
+
+Permissions:
+
+- Create retail sales.
+- Scan products.
+- Apply permitted discounts.
+- Accept authorized payment methods.
+- Print receipts.
+- Process permitted exchanges and returns.
+
+Restrictions:
+
+- Cannot alter product costs.
+- Cannot modify stock directly.
+- Cannot access general ledger.
+- Cannot change POS prices outside allowed limits.
+- Cannot approve their own cash discrepancies.
+
+---
+
+## D. WAREHOUSE AND INVENTORY
+
+### Role 10 — مدير المخازن
+System role: WAREHOUSE_MANAGER
+
+Access:
+
+- Warehouse dashboard.
+- All assigned warehouses.
+- Inventory balances.
+- Receipts.
+- Issues.
+- Transfers.
+- Stock counts.
+- Adjustments.
+- Reorder alerts.
+- Inventory reports.
+
+Permissions:
+
+- View warehouse stock.
+- Manage warehouse operations.
+- Create and approve authorized transfers.
+- Assign warehouse employees.
+- Approve stock receiving.
+- Review stock discrepancies.
+- Review inventory valuation according to financial policy.
+- Prepare adjustment requests.
+- Approve permitted stock operations.
+- Generate stock reports.
+
+Restrictions:
+
+- Cannot post unrelated financial transactions.
+- Cannot modify historical posted inventory movements without an authorized reversal process.
+- Cannot approve restricted high-value adjustments outside configured limits.
+
+### Role 11 — أمين المخزن
+System role: STOREKEEPER
+
+Access:
+
+- Assigned warehouse.
+- Inventory search.
+- Receiving.
+- Stock issue.
+- Transfer requests.
+- Assigned stock counts.
+- Assigned warehouse tasks.
+
+Permissions:
+
+- Scan product barcodes.
+- Record physical quantities.
+- Create receiving records.
+- Create issue requests.
+- Prepare warehouse transfers.
+- Record received transfer quantities.
+- Report damaged goods.
+- View available quantities.
+
+Restrictions:
+
+- Cannot change product costs.
+- Cannot approve sensitive adjustments.
+- Cannot delete confirmed transactions.
+- Cannot access other warehouses.
+- Cannot view company-wide financial reports.
+
+### Role 12 — مراقب المخزون
+System role: INVENTORY_CONTROLLER
+
+Access:
+
+- Inventory balances.
+- Stock movement history.
+- Stock counts.
+- Inventory reports.
+- Reorder alerts.
+
+Permissions:
+
+- Review discrepancies.
+- Prepare stock count sessions.
+- Compare system and physical quantities.
+- Investigate inventory variances.
+- Create adjustment requests.
+- Review stock movement history.
+
+Restrictions:
+
+- Cannot directly approve their own adjustment requests.
+- Cannot issue stock without an assigned operational role.
+
+---
+
+## E. PROCUREMENT AND SUPPLIERS
+
+### Role 13 — مدير المشتريات
+System role: PROCUREMENT_MANAGER
+
+Access:
+
+- Procurement dashboard.
+- Suppliers.
+- Purchase requests.
+- Supplier quotations.
+- Supplier comparisons.
+- Purchase orders.
+- Receiving status.
+- Purchasing reports.
+
+Permissions:
+
+- Manage suppliers.
+- Create purchase requests.
+- Review supplier offers.
+- Compare prices.
+- Create purchase orders.
+- Submit purchase orders for approval.
+- Approve assigned purchasing transactions.
+- Monitor supplier performance.
+- Review purchasing reports.
+
+Restrictions:
+
+- Cannot independently approve and pay the same supplier invoice.
+- Cannot change posted accounting entries.
+- Cannot authorize payments without the required finance role.
+
+### Role 14 — موظف المشتريات
+System role: PURCHASING_OFFICER
+
+Access:
+
+- Purchase requests.
+- Supplier directory.
+- Supplier quotations.
+- Purchase order preparation.
+- Purchasing tasks.
+
+Permissions:
+
+- Create purchase requests.
+- Contact suppliers.
+- Record supplier quotations.
+- Compare prices.
+- Prepare purchase orders.
+- Update expected delivery dates.
+- Track orders.
+
+Restrictions:
+
+- Cannot approve their own purchase orders.
+- Cannot authorize supplier payments.
+- Cannot modify supplier financial balances directly.
+
+---
+
+## F. PRODUCTION AND MANUFACTURING
+
+### Role 15 — مدير الإنتاج
+System role: PRODUCTION_MANAGER
+
+Access:
+
+- Production dashboard.
+- Production planning.
+- Production orders.
+- BOM.
+- Production lines.
+- Shifts.
+- Material consumption.
+- Work in progress.
+- Finished goods.
+- Production costs.
+- Production reports.
+
+Permissions:
+
+- Create production plans.
+- Create production orders.
+- Approve authorized production orders.
+- Assign production lines.
+- Allocate production capacity.
+- Monitor production performance.
+- Review material shortages.
+- Review labor productivity.
+- Monitor delays.
+- Review production costs.
+- Approve production stage completion according to policy.
+
+Restrictions:
+
+- Cannot approve their own sensitive production cost adjustments.
+- Cannot alter warehouse stock directly.
+- Cannot post accounting journal entries without finance permissions.
+
+### Role 16 — مخطط الإنتاج
+System role: PRODUCTION_PLANNER
+
+Access:
+
+- Production demand.
+- Sales demand.
+- Finished goods availability.
+- Raw material availability.
+- Production schedules.
+- Line capacity.
+- Production orders.
+
+Permissions:
+
+- Prepare production plans.
+- Create draft production orders.
+- Schedule production lines.
+- Estimate material requirements.
+- View BOM.
+- Identify capacity shortages.
+- Reschedule pending production.
+
+Restrictions:
+
+- Cannot approve final production orders unless separately authorized.
+- Cannot confirm material consumption.
+- Cannot change inventory balances.
+
+### Role 17 — مشرف الإنتاج
+System role: PRODUCTION_SUPERVISOR
+
+Access:
+
+- Assigned production lines.
+- Current production orders.
+- Assigned workers.
+- Shift management.
+- Production stages.
+- Production output.
+- Production defects.
+
+Permissions:
+
+- Assign workers.
+- Start production stages.
+- Record completed quantities.
+- Review production targets.
+- Report production delays.
+- Record material shortages.
+- Review stage performance.
+- Submit stage completion.
+
+Restrictions:
+
+- Cannot change BOM costing.
+- Cannot approve financial transactions.
+- Cannot modify completed production orders without an authorized reopening process.
+
+Data scope:
+
+- Assigned production lines.
+- Assigned shifts.
+- Assigned production orders.
+
+### Role 18 — عامل إنتاج
+System role: PRODUCTION_WORKER
+
+Access:
+
+- Personal production dashboard.
+- Assigned orders.
+- Assigned production stage.
+- Assigned tasks.
+- Personal shift information.
+
+Permissions:
+
+- View assigned work.
+- View product instructions.
+- Record completed units.
+- Report defects.
+- Report material shortages.
+- Start and complete assigned tasks.
+- Submit stage progress.
+
+Restrictions:
+
+- Cannot view financial costs.
+- Cannot edit production plans.
+- Cannot assign employees.
+- Cannot approve production orders.
+- Cannot edit other employees' production records.
+
+### Role 19 — مسؤول صيانة
+System role: MAINTENANCE_TECHNICIAN
+
+Access:
+
+- Assigned machines.
+- Maintenance tasks.
+- Machine breakdown reports.
+- Maintenance schedule.
+- Spare-part requests.
+
+Permissions:
+
+- Record maintenance activities.
+- Report equipment failures.
+- Update machine maintenance status.
+- Request spare parts.
+- Complete assigned maintenance tasks.
+
+Restrictions:
+
+- Cannot modify production financial records.
+- Cannot approve purchases unless separately authorized.
+
+---
+
+## G. QUALITY CONTROL
+
+### Role 20 — مدير الجودة
+System role: QUALITY_MANAGER
+
+Access:
+
+- Quality dashboard.
+- Inspection records.
+- Defect management.
+- Corrective actions.
+- Production quality reports.
+- Supplier quality reports.
+
+Permissions:
+
+- Create inspection plans.
+- Assign inspectors.
+- Review inspection results.
+- Approve quality decisions.
+- Reject defective batches.
+- Create corrective actions.
+- Monitor defect rates.
+- Generate quality reports.
+
+Restrictions:
+
+- Cannot change production quantities directly.
+- Cannot modify accounting entries.
+- Cannot erase historical inspection records.
+
+### Role 21 — مفتش الجودة
+System role: QUALITY_INSPECTOR
+
+Access:
+
+- Assigned inspections.
+- Assigned production orders.
+- Quality checklists.
+- Defect reporting.
+
+Permissions:
+
+- Start inspections.
+- Record accepted quantities.
+- Record rejected quantities.
+- Select defect categories.
+- Upload inspection photos.
+- Submit inspection results.
+- Record corrective observations.
+
+Restrictions:
+
+- Cannot approve their own restricted inspection decisions when independent approval is required.
+- Cannot edit published inspection history.
+- Cannot access unrelated modules.
+
+---
+
+## H. FINANCE AND ACCOUNTING
+
+### Role 22 — المدير المالي
+System role: FINANCE_MANAGER
+
+Access:
+
+- Finance dashboard.
+- Accounting.
+- General ledger.
+- Customer balances.
+- Supplier balances.
+- Cash and banks.
+- Expenses.
+- Cost centers.
+- Financial reports.
+- Product costing.
+- Production costing.
+
+Permissions:
+
+- Review financial transactions.
+- Approve authorized expenses.
+- Approve payment requests.
+- Manage financial reporting.
+- Review accounting periods.
+- Review account reconciliations.
+- Monitor cash flow.
+- Review product profitability.
+- Supervise accountants.
+
+Restrictions:
+
+- Financial period closure and sensitive changes must be audited.
+- Cannot silently delete posted transactions.
+- Payment and journal permissions must be assigned separately when duties are separated.
+
+### Role 23 — رئيس الحسابات
+System role: CHIEF_ACCOUNTANT
+
+Access:
+
+- Chart of accounts.
+- Journal entries.
+- General ledger.
+- Customer accounts.
+- Supplier accounts.
+- Financial documents.
+- Financial reports.
+
+Permissions:
+
+- Prepare journal entries.
+- Review accounting documents.
+- Validate transactions.
+- Post authorized journal entries.
+- Reconcile assigned accounts.
+- Review financial reports.
+- Prepare period closing.
+
+Restrictions:
+
+- Cannot approve their own restricted journal entries.
+- Cannot create and independently approve the same high-risk payment.
+
+### Role 24 — محاسب
+System role: ACCOUNTANT
+
+Access:
+
+- Assigned accounting functions.
+- Invoices.
+- Receipts.
+- Payments preparation.
+- Expenses.
+- Customer accounts.
+- Supplier accounts.
+
+Permissions:
+
+- Create invoice drafts.
+- Record receipts.
+- Prepare payment vouchers.
+- Record approved expenses.
+- Reconcile assigned accounts.
+- View relevant accounting records.
+
+Restrictions:
+
+- Cannot post restricted journal entries without authorization.
+- Cannot approve their own financial requests.
+- Cannot alter closed periods.
+- Cannot modify account structures unless assigned.
+
+### Role 25 — أمين خزينة
+System role: CASHIER
+
+Access:
+
+- Assigned treasury.
+- Receipts.
+- Cash payments.
+- Cash closing.
+- Cash movement reports.
+
+Permissions:
+
+- Record cash receipts.
+- Execute approved cash payments.
+- Print receipts.
+- Review assigned cash transactions.
+- Perform daily cash closing.
+
+Restrictions:
+
+- Cannot approve their own cash payments.
+- Cannot alter posted journal entries.
+- Cannot access all bank accounts by default.
+
+### Role 26 — محاسب تكاليف
+System role: COST_ACCOUNTANT
+
+Access:
+
+- Product costing.
+- BOM cost.
+- Material consumption cost.
+- Production labor cost.
+- Manufacturing overhead.
+- Production orders.
+- Inventory valuation reports.
+
+Permissions:
+
+- Calculate planned production cost.
+- Review actual production cost.
+- Analyze cost variance.
+- Prepare cost allocations.
+- Prepare profitability reports.
+
+Restrictions:
+
+- Cannot change actual physical inventory.
+- Cannot independently approve sensitive cost adjustments.
+
+---
+
+## I. MARKETING AND ECOMMERCE
+
+### Role 27 — مدير التسويق
+System role: MARKETING_MANAGER
+
+Access:
+
+- Marketing dashboard.
+- Advertising campaigns.
+- Marketing channels.
+- Product profitability.
+- Marketing reports.
+- Content calendar.
+- Marketing assets.
+
+Permissions:
+
+- Create campaigns.
+- Manage campaign budgets.
+- Assign marketing tasks.
+- Review advertising performance.
+- Review campaign ROAS.
+- Review CAC.
+- Analyze product profitability.
+- Approve content according to policy.
+- Generate marketing reports.
+
+Restrictions:
+
+- Cannot modify actual product costs.
+- Cannot post accounting transactions.
+- Cannot change stock quantities.
+
+### Role 28 — أخصائي التسويق والإعلانات
+System role: DIGITAL_MARKETER
+
+Access:
+
+- Assigned advertising campaigns.
+- Advertising metrics.
+- Marketing assets.
+- Products included in assigned campaigns.
+
+Permissions:
+
+- Create campaign drafts.
+- Record campaign metrics.
+- Update campaign information.
+- Upload creatives.
+- Monitor advertising performance.
+- Prepare optimization recommendations.
+
+Restrictions:
+
+- Cannot approve advertising budgets beyond assigned limits.
+- Cannot view confidential company-wide accounting information.
+- Cannot modify product costs.
+
+### Role 29 — مسؤول المحتوى
+System role: CONTENT_MANAGER
+
+Access:
+
+- Content calendar.
+- Marketing assets.
+- Product descriptions.
+- Social content.
+- Assigned campaigns.
+
+Permissions:
+
+- Create content.
+- Edit drafts.
+- Upload images and videos.
+- Schedule content.
+- Submit content for approval.
+- Manage content status.
+
+Restrictions:
+
+- Cannot approve their own content when separate approval is required.
+- Cannot edit product prices or inventory.
+- Cannot view confidential financial records.
+
+### Role 30 — مدير التجارة الإلكترونية
+System role: ECOMMERCE_MANAGER
+
+Access:
+
+- Ecommerce dashboard.
+- Ecommerce orders.
+- Online products.
+- Promotions.
+- Coupons.
+- Shipping.
+- Ecommerce customers.
+- Ecommerce reports.
+
+Permissions:
+
+- Manage online catalog.
+- Manage online product visibility.
+- Prepare promotions.
+- Manage ecommerce orders.
+- Coordinate fulfillment.
+- Review ecommerce performance.
+- Manage authorized coupon rules.
+
+Restrictions:
+
+- Cannot directly alter warehouse balances.
+- Cannot issue unauthorized refunds.
+- Cannot modify accounting postings.
+
+### Role 31 — مسؤول تجهيز وشحن الطلبات
+System role: ECOMMERCE_FULFILLMENT
+
+Access:
+
+- Ecommerce orders awaiting fulfillment.
+- Picking lists.
+- Packing lists.
+- Shipping records.
+- Delivery updates.
+
+Permissions:
+
+- Prepare orders.
+- Confirm picked products.
+- Confirm packaging.
+- Add shipping tracking.
+- Update delivery status.
+- Report failed deliveries.
+
+Restrictions:
+
+- Cannot change product pricing.
+- Cannot approve refunds outside assigned policy.
+- Cannot access unrelated customer financial records.
+
+---
+
+## J. HUMAN RESOURCES
+
+### Role 32 — مدير الموارد البشرية
+System role: HR_MANAGER
+
+Access:
+
+- HR dashboard.
+- Employees.
+- Departments.
+- Attendance.
+- Shifts.
+- Leave.
+- Payroll oversight.
+- Employee records.
+- Performance management.
+
+Permissions:
+
+- Create employee profiles.
+- Edit employee information.
+- Manage departments.
+- Manage job titles.
+- Review attendance.
+- Approve assigned leave requests.
+- Manage employee documents.
+- Review payroll information.
+- Generate HR reports.
+
+Restrictions:
+
+- Payroll execution must follow designated approval policies.
+- Access to bank details and sensitive personal information must be limited.
+- Cannot alter accounting postings.
+
+### Role 33 — أخصائي موارد بشرية
+System role: HR_SPECIALIST
+
+Access:
+
+- Employee records within assigned scope.
+- Attendance.
+- Leave requests.
+- Employee documents.
+- Recruitment or onboarding records, if enabled.
+
+Permissions:
+
+- Create employee profiles.
+- Update permitted employee information.
+- Record attendance corrections for approval.
+- Process leave requests.
+- Manage employee documentation.
+- Prepare HR reports.
+
+Restrictions:
+
+- Cannot view confidential payroll details unless explicitly authorized.
+- Cannot approve their own attendance corrections.
+- Cannot change salary structures.
+
+### Role 34 — مسؤول الرواتب
+System role: PAYROLL_OFFICER
+
+Access:
+
+- Payroll periods.
+- Salary components.
+- Allowances.
+- Deductions.
+- Advances.
+- Overtime.
+- Payslip preparation.
+
+Permissions:
+
+- Prepare payroll.
+- Calculate allowances.
+- Record deductions.
+- Prepare payslips.
+- Review payroll discrepancies.
+- Submit payroll for approval.
+
+Restrictions:
+
+- Cannot independently approve and execute their own payroll batch.
+- Cannot alter accounting records directly.
+- Bank account information must be masked unless required for assigned duties.
+
+### Role 35 — الموظف
+System role: EMPLOYEE
+
+Access:
+
+- Personal profile.
+- Personal attendance.
+- Personal leave.
+- Personal tasks.
+- Personal notifications.
+- Personal payslips, if enabled.
+
+Permissions:
+
+- View own information.
+- Submit leave requests.
+- View attendance.
+- View personal tasks.
+- Update permitted contact details.
+- View authorized payslips.
+
+Restrictions:
+
+- Cannot view other employees' records.
+- Cannot access company financial information.
+- Cannot change their own salary or attendance history.
+- Cannot approve their own requests.
+
+---
+
+# 4. ROLE SUMMARY AND CATEGORIES
+
+Create a visual role directory grouped into these categories:
+
+| Category | Roles |
+|---|---|
+| الإدارة التنفيذية | مالك المصنع، المدير العام، مدير العمليات |
+| إدارة النظام | مدير النظام، مراجع النظام |
+| المبيعات | مدير المبيعات، موظف المبيعات، مسؤول مبيعات الجملة، كاشير |
+| المخازن | مدير المخازن، أمين المخزن، مراقب المخزون |
+| المشتريات | مدير المشتريات، موظف المشتريات |
+| الإنتاج | مدير الإنتاج، مخطط الإنتاج، مشرف الإنتاج، عامل الإنتاج، مسؤول الصيانة |
+| الجودة | مدير الجودة، مفتش الجودة |
+| الحسابات | المدير المالي، رئيس الحسابات، محاسب، أمين خزينة، محاسب تكاليف |
+| التسويق | مدير التسويق، أخصائي الإعلانات، مسؤول المحتوى |
+| التجارة الإلكترونية | مدير التجارة الإلكترونية، مسؤول تجهيز وشحن الطلبات |
+| الموارد البشرية | مدير الموارد البشرية، أخصائي الموارد البشرية، مسؤول الرواتب، الموظف |
+
+Design all role cards with:
+
+- Role name.
+- Role category.
+- Role description.
+- Number of assigned users.
+- Number of permissions.
+- Access scope.
+- Status.
+- Last modified.
+- Edit button.
+- Duplicate button.
+- View permissions button.
+
+Allow adding custom roles without modifying the predefined roles.
+
+---
+
+# 5. PERMISSION MODEL
+
+The system must support granular permissions.
+
+## 5.1 Standard Actions
+
+For every module and applicable resource, create the following permission actions:
+
+| Permission | Arabic label | Description |
+|---|---|---|
+| View | عرض | View records and information |
+| Create | إنشاء | Create new records |
+| Edit | تعديل | Update permitted records |
+| Delete | حذف | Delete or archive permitted drafts |
+| Submit | إرسال للموافقة | Submit records into approval workflows |
+| Approve | اعتماد | Approve requests |
+| Reject | رفض | Reject requests |
+| Post | ترحيل | Post accounting or inventory transactions |
+| Reverse | عكس العملية | Reverse a posted transaction through an audited process |
+| Cancel | إلغاء | Cancel eligible records |
+| Export | تصدير | Export permitted data |
+| Print | طباعة | Print permitted records |
+| Assign | إسناد | Assign work or records |
+| Manage | إدارة | Manage module configuration |
+| View Cost | عرض التكلفة | View actual and planned cost |
+| View Margin | عرض هامش الربح | View product and sales margins |
+| View Sensitive Data | عرض البيانات الحساسة | View designated confidential data |
+
+Not every action applies to every module. Display only relevant permissions.
+
+## 5.2 Fine-Grained Permission Examples
+
+### Inventory
+
+Permissions:
+
+- عرض المخزون.
+- عرض المخزون حسب المخزن.
+- إنشاء استلام مخزني.
+- اعتماد استلام مخزني.
+- إنشاء طلب صرف.
+- اعتماد الصرف.
+- إنشاء تحويل.
+- اعتماد تحويل.
+- تسجيل الجرد.
+- إنشاء تسوية.
+- اعتماد التسوية.
+- عرض تكلفة الأصناف.
+- تصدير تقرير المخزون.
+- إدارة إعدادات المخزن.
+
+### Sales
+
+Permissions:
+
+- عرض الطلبات.
+- إنشاء طلبات.
+- تعديل الطلبات المسودة.
+- إرسال الطلب للموافقة.
+- اعتماد الطلب.
+- إلغاء الطلب.
+- عرض العملاء.
+- إضافة عميل.
+- تعديل بيانات العميل.
+- عرض مديونية العميل.
+- تطبيق الخصومات.
+- اعتماد الخصومات.
+- عرض سعر التكلفة.
+- عرض هامش الربح.
+- إدارة قوائم الأسعار.
+- تسجيل المرتجعات.
+- اعتماد المرتجعات.
+- تصدير تقارير المبيعات.
+
+### Production
+
+Permissions:
+
+- عرض أوامر الإنتاج.
+- إنشاء أمر إنتاج.
+- تعديل أمر إنتاج مسودة.
+- اعتماد أمر الإنتاج.
+- إسناد خط الإنتاج.
+- إدارة الورديات.
+- عرض BOM.
+- تعديل BOM.
+- عرض تكلفة الخامات.
+- صرف خامات.
+- تسجيل استهلاك الخامات.
+- تسجيل الإنتاج الفعلي.
+- اعتماد استلام الإنتاج التام.
+- إلغاء أمر الإنتاج.
+- عرض تكلفة أمر الإنتاج.
+- تصدير تقارير الإنتاج.
+
+### Accounting
+
+Permissions:
+
+- عرض الحسابات.
+- إنشاء قيد يومية.
+- تعديل قيد غير مرحل.
+- اعتماد القيد.
+- ترحيل القيد.
+- عكس قيد.
+- عرض الأستاذ العام.
+- تسجيل سند قبض.
+- اعتماد سند قبض.
+- تسجيل سند صرف.
+- اعتماد سند صرف.
+- عرض أرصدة العملاء.
+- عرض أرصدة الموردين.
+- إدارة الخزائن.
+- عرض الرواتب.
+- عرض تكلفة المنتج.
+- إغلاق الفترة المالية.
+- تصدير التقارير المالية.
+
+### Human Resources
+
+Permissions:
+
+- عرض الموظفين.
+- إضافة موظف.
+- تعديل بيانات موظف.
+- عرض الملفات الشخصية الحساسة.
+- عرض الحضور.
+- تعديل الحضور.
+- اعتماد تصحيح الحضور.
+- عرض الإجازات.
+- تقديم طلب إجازة.
+- اعتماد الإجازات.
+- عرض الرواتب.
+- تجهيز الرواتب.
+- اعتماد الرواتب.
+- تنفيذ صرف الرواتب.
+- عرض بيانات الحسابات البنكية.
+- تصدير تقارير الموارد البشرية.
+
+---
+
+# 6. MODULE-BY-MODULE PERMISSION MATRIX
+
+Create a comprehensive permission matrix.
+
+Rows represent modules and operations.
+
+Columns represent roles.
+
+Include the following modules:
+
+1. Dashboard.
+2. Products.
+3. Product pricing.
+4. Customers.
+5. Sales.
+6. Quotations.
+7. Sales returns.
+8. Warehouses.
+9. Inventory.
+10. Receiving.
+11. Stock issue.
+12. Transfers.
+13. Stock count.
+14. Stock adjustments.
+15. Suppliers.
+16. Purchasing.
+17. Purchase orders.
+18. Supplier invoices.
+19. Production planning.
+20. Production orders.
+21. BOM.
+22. Cutting.
+23. Sewing.
+24. Production lines.
+25. Shifts.
+26. Material consumption.
+27. Finished goods.
+28. Quality.
+29. Inspections.
+30. Finance.
+31. Journal entries.
+32. Receipts.
+33. Payments.
+34. Expenses.
+35. Treasury.
+36. Banks.
+37. Cost centers.
+38. Product costing.
+39. Marketing.
+40. Campaigns.
+41. Product profitability.
+42. Ecommerce.
+43. Shipping.
+44. HR.
+45. Attendance.
+46. Leave.
+47. Payroll.
+48. Tasks.
+49. Approvals.
+50. Reports.
+51. Users.
+52. Roles.
+53. Permissions.
+54. System settings.
+55. Audit logs.
+
+For each role, visually show which operations are granted.
+
+Use an editable matrix with:
+
+- Checkbox per permission.
+- Select all per module.
+- Clear all per module.
+- Copy permissions from another role.
+- Compare roles.
+- Search permissions.
+- Show inherited permissions.
+- Show custom overrides.
+- Save changes.
+- Cancel changes.
+
+Do not grant every permission to every manager automatically.
+
+Use the recommended role definitions as initial defaults and allow authorized administrators to customize them.
+
+---
+
+# 7. DATA ACCESS SCOPES
+
+Create a dedicated data-scope configuration system.
+
+A user may have permission to view inventory but only inside an assigned warehouse.
+
+## Available scopes
+
+### Company-wide
+
+كل الشركة
+
+Access to all permitted branches, departments, and records.
+
+### Branch scope
+
+فرع محدد
+
+Access only to selected branch or branches.
+
+### Department scope
+
+قسم محدد
+
+Access only to selected department records.
+
+### Warehouse scope
+
+مخزن محدد
+
+Access only to assigned warehouse or warehouses.
+
+### Production line scope
+
+خط إنتاج محدد
+
+Access only to assigned production lines.
+
+### Assigned records
+
+السجلات المسندة للمستخدم
+
+Access only to records assigned to the current user.
+
+### Created by user
+
+السجلات التي أنشأها المستخدم
+
+Access only to records created by that user, unless broader access is separately granted.
+
+### Customer assignment
+
+العملاء المخصصون للمستخدم
+
+Access only to customers assigned to the sales representative.
+
+### Employee self-service
+
+البيانات الشخصية فقط
+
+Access to the authenticated employee's own authorized records.
+
+## Data Scope Interface
+
+Create a scope selector with:
+
+- Scope type.
+- Branch selector.
+- Department selector.
+- Warehouse multi-select.
+- Production line multi-select.
+- User assignment.
+- Effective date.
+- Expiration date.
+- Scope status.
+
+Show the assigned scope as readable Arabic chips.
+
+Example:
+
+النطاق: مخزن المنتجات التامة فقط.
+
+النطاق: فرع المحلة الكبرى.
+
+النطاق: خطوط الإنتاج 1 و2.
+
+---
+
+# 8. APPROVAL WORKFLOW MANAGEMENT
+
+Build a complete visual approval management module.
+
+Approval permissions must be separate from create and edit permissions.
+
+A user may prepare a transaction without being allowed to approve it.
+
+## 8.1 Approval Workflows
+
+Create workflows for:
+
+### Purchase Orders
+
+طلب شراء ← مراجعة المشتريات ← اعتماد المدير المختص ← اعتماد المدير العام عند الحاجة.
+
+### Stock Adjustments
+
+إنشاء طلب التسوية ← مراجعة مراقب المخزون ← اعتماد مدير المخازن ← اعتماد إضافي وفق حد القيمة أو الكمية.
+
+### Sales Discounts
+
+طلب الخصم ← مراجعة مدير المبيعات ← اعتماد مستوى إداري أعلى عند تجاوز الحدود المسموحة.
+
+### Expenses
+
+تسجيل المصروف ← مراجعة المحاسب ← اعتماد المدير المالي ← اعتماد إضافي وفق قيمة المصروف.
+
+### Supplier Payments
+
+إعداد طلب الدفع ← مراجعة الحسابات ← اعتماد المدير المالي ← تنفيذ أمين الخزينة أو البنك.
+
+### Production Orders
+
+إنشاء أمر الإنتاج ← مراجعة مخطط الإنتاج ← اعتماد مدير الإنتاج ← جدولة التنفيذ.
+
+### Quality Decisions
+
+الفحص ← تسجيل النتيجة ← مراجعة مدير الجودة عند الحاجة ← اعتماد القرار النهائي.
+
+### Leave Requests
+
+طلب الإجازة ← مراجعة المدير المباشر ← اعتماد الموارد البشرية وفق سياسة الشركة.
+
+### Payroll
+
+تجهيز كشف الرواتب ← مراجعة مسؤول الرواتب ← اعتماد المدير المالي أو المسؤول المخول ← تنفيذ الدفع.
+
+## 8.2 Approval Rules
+
+Allow the administrator to configure:
+
+- Approval levels.
+- Minimum and maximum transaction amounts.
+- Quantity thresholds.
+- Department.
+- Branch.
+- Transaction type.
+- Required approver role.
+- Number of required approvals.
+- Escalation time.
+- Delegated approver.
+- Effective date.
+- Workflow active/inactive.
+
+Do not hard-code financial approval thresholds. Create editable policy settings.
+
+## 8.3 Approval Separation
+
+Implement a maker-checker concept:
+
+- The creator prepares the transaction.
+- The approver reviews and approves it.
+- The executor completes an authorized operation when required.
+
+By default, a user cannot approve their own restricted transaction.
+
+Support documented exceptions only through explicit administrator policies with full audit logging.
+
+---
+
+# 9. USER MANAGEMENT PAGES
+
+Design all pages in this section as complete, high-fidelity Arabic RTL screens.
+
+## Page 1 — إدارة المستخدمين
+
+Route example:
+
+/settings/users
+
+Page title:
+
+إدارة المستخدمين
+
+Subtitle:
+
+إدارة حسابات الموظفين وتحديد الأدوار والصلاحيات.
+
+Header actions:
+
+- إضافة مستخدم.
+- استيراد مستخدمين.
+- تصدير.
+- إدارة الأدوار.
+
+KPI cards:
+
+- إجمالي المستخدمين.
+- المستخدمون النشطون.
+- المستخدمون المعطلون.
+- المستخدمون الجدد.
+- المستخدمون المتصلون حاليًا.
+- الحسابات المعلقة.
+
+Table columns:
+
+- صورة المستخدم.
+- اسم المستخدم.
+- البريد الإلكتروني.
+- الرقم الوظيفي.
+- القسم.
+- المسمى الوظيفي.
+- الأدوار.
+- الفرع.
+- حالة الحساب.
+- آخر تسجيل دخول.
+- الإجراءات.
+
+Filters:
+
+- اسم المستخدم.
+- الدور.
+- القسم.
+- الفرع.
+- حالة الحساب.
+- آخر تسجيل دخول.
+
+Row actions:
+
+- عرض الملف.
+- تعديل المستخدم.
+- إدارة الأدوار.
+- تغيير حالة الحساب.
+- إعادة تعيين كلمة المرور.
+- عرض سجل النشاط.
+
+## Page 2 — إضافة مستخدم جديد
+
+Route example:
+
+/settings/users/new
+
+Create a multi-step user creation workflow.
+
+### Step 1 — Personal Information
+
+Fields:
+
+- الاسم الكامل.
+- البريد الإلكتروني.
+- رقم الهاتف.
+- الرقم الوظيفي.
+- الصورة الشخصية.
+
+### Step 2 — Employment Information
+
+Fields:
+
+- القسم.
+- المسمى الوظيفي.
+- المدير المباشر.
+- تاريخ التعيين.
+- الفرع.
+- حالة الموظف.
+
+### Step 3 — Access Configuration
+
+Fields:
+
+- Username.
+- Assigned roles.
+- Branch access.
+- Department access.
+- Warehouse access.
+- Production line access.
+- Account expiration date, if required.
+
+### Step 4 — Security
+
+Fields:
+
+- Login method.
+- Initial password or invitation.
+- Require password change on first login.
+- Multi-factor authentication policy.
+- Account status.
+
+### Step 5 — Review
+
+Show an access summary before saving.
+
+Actions:
+
+- حفظ المستخدم.
+- إرسال دعوة.
+- حفظ كمسودة.
+- إلغاء.
+
+## Page 3 — User Details
+
+Route example:
+
+/settings/users/[id]
+
+Header:
+
+- Employee image.
+- Full name.
+- Job title.
+- Department.
+- Account status.
+- Last login.
+
+Tabs:
+
+1. نظرة عامة.
+2. البيانات الشخصية.
+3. الأدوار والصلاحيات.
+4. نطاق الوصول.
+5. سجل الدخول.
+6. سجل النشاط.
+7. المهام.
+8. الجلسات والأجهزة.
+
+Show a visual permission summary.
+
+Actions:
+
+- تعديل.
+- إسناد دور.
+- إيقاف الحساب.
+- إعادة تعيين كلمة المرور.
+- مراجعة الصلاحيات.
+
+## Page 4 — Edit User
+
+Create a structured form with separate sections:
+
+- User information.
+- Employment details.
+- Assigned roles.
+- Data scope.
+- Security settings.
+- Account status.
+
+Show warning when changing a role affects existing access.
+
+## Page 5 — User Activity
+
+Show a timeline:
+
+- Login.
+- Logout.
+- Failed login.
+- Password changed.
+- Role assigned.
+- Permission changed.
+- Transaction created.
+- Approval performed.
+- Record exported.
+
+Columns:
+
+- Date/time.
+- Activity.
+- Module.
+- Record.
+- IP/device.
+- Result.
+
+---
+
+# 10. ROLE MANAGEMENT PAGES
+
+## Page 6 — Role Directory
+
+Route:
+
+/settings/roles
+
+Title:
+
+إدارة الأدوار الوظيفية
+
+Subtitle:
+
+إنشاء وإدارة الأدوار وتحديد صلاحيات كل وظيفة داخل النظام.
+
+KPI cards:
+
+- إجمالي الأدوار.
+- أدوار النظام الأساسية.
+- الأدوار المخصصة.
+- المستخدمون المرتبطون بالأدوار.
+- الأدوار غير المستخدمة.
+
+Display categorized role cards.
+
+Each card:
+
+- Role name.
+- Description.
+- Category.
+- Assigned users.
+- Permissions count.
+- Data scope.
+- System/custom indicator.
+- Active/inactive.
+
+Actions:
+
+- إضافة دور.
+- عرض الصلاحيات.
+- تعديل.
+- نسخ الدور.
+- مقارنة الأدوار.
+- تعطيل الدور.
+
+## Page 7 — Create Custom Role
+
+Route:
+
+/settings/roles/new
+
+Multi-step wizard.
+
+### Step 1 — Role Information
+
+Fields:
+
+- اسم الدور بالعربية.
+- الاسم التقني.
+- الوصف.
+- التصنيف.
+- اللون أو الرمز.
+- حالة الدور.
+
+### Step 2 — Select Base Role
+
+Options:
+
+- Start from scratch.
+- Copy existing role.
+- Use predefined template.
+
+### Step 3 — Module Access
+
+Select the modules the role can access.
+
+### Step 4 — Fine-Grained Permissions
+
+Configure each permitted action per module.
+
+### Step 5 — Data Scope
+
+Configure branches, departments, warehouses, and assigned records.
+
+### Step 6 — Approval Limits
+
+Configure approval authority.
+
+### Step 7 — Review
+
+Show the final permission summary and save.
+
+## Page 8 — Role Details
+
+Route:
+
+/settings/roles/[id]
+
+Header:
+
+- Role name.
+- Role category.
+- Description.
+- System/custom badge.
+- Assigned users.
+- Active status.
+
+Tabs:
+
+1. Overview.
+2. Permissions.
+3. Data scope.
+4. Approval rules.
+5. Assigned users.
+6. Audit history.
+
+## Page 9 — Role Permission Editor
+
+Route:
+
+/settings/roles/[id]/permissions
+
+Create a full permission editor.
+
+Left side:
+
+- Module navigation.
+- Search permissions.
+- Permission categories.
+
+Main area:
+
+- Permission table.
+- Individual permission checkboxes.
+- Select all.
+- Clear all.
+- Inherited permissions.
+- Custom permission overrides.
+
+Example:
+
+**المخازن**
+
+| الصلاحية | الحالة |
+|---|---|
+| عرض المخزون | مفعلة |
+| إنشاء استلام | مفعلة |
+| اعتماد استلام | غير مفعلة |
+| إنشاء صرف | مفعلة |
+| اعتماد صرف | غير مفعلة |
+| إنشاء تحويل | مفعلة |
+| اعتماد تحويل | غير مفعلة |
+| إنشاء تسوية | مفعلة |
+| اعتماد تسوية | غير مفعلة |
+| عرض تكلفة الأصناف | غير مفعلة |
+| تصدير التقارير | مفعلة |
+
+This is an editable UI, not a static presentation.
+
+## Page 10 — Permission Matrix
+
+Route:
+
+/settings/permissions/matrix
+
+Create an advanced matrix:
+
+- Roles as columns.
+- Modules and permissions as rows.
+- Checkbox permissions.
+- Search.
+- Department filtering.
+- Role comparison.
+- Bulk editing.
+- Export.
+
+Allow switching between:
+
+- عرض حسب الدور.
+- عرض حسب القسم.
+- عرض حسب الوحدة.
+- مقارنة دورين أو أكثر.
+
+Highlight differences between roles.
+
+## Page 11 — Compare Roles
+
+Route:
+
+/settings/roles/compare
+
+Allow selecting 2–4 roles.
+
+Display:
+
+- Role descriptions.
+- Module access.
+- Granted permissions.
+- Restricted permissions.
+- Data scopes.
+- Approval authority.
+
+Clearly highlight differences.
+
+## Page 12 — Data Scope Management
+
+Route:
+
+/settings/permissions/data-scope
+
+Create an interface to configure where each role can access records.
+
+Display:
+
+- Role.
+- Module.
+- Scope type.
+- Assigned branches.
+- Assigned warehouses.
+- Assigned departments.
+- Assigned production lines.
+- Effective date.
+- Expiration.
+- Status.
+
+---
+
+# 11. APPROVAL MANAGEMENT PAGES
+
+## Page 13 — Approval Workflow Directory
+
+Route:
+
+/settings/approvals/workflows
+
+Display all configured approval workflows.
+
+Cards or table:
+
+- Workflow name.
+- Transaction type.
+- Number of approval steps.
+- Assigned roles.
+- Active status.
+- Last modified.
+
+## Page 14 — Workflow Builder
+
+Route:
+
+/settings/approvals/workflows/new
+
+Create a visual workflow editor.
+
+Use connected approval nodes:
+
+- Start.
+- Request creation.
+- Department review.
+- Manager approval.
+- Finance approval.
+- Executive approval.
+- Execution.
+- Completion.
+
+Allow:
+
+- Adding steps.
+- Removing steps.
+- Changing approval roles.
+- Defining conditions.
+- Setting amount thresholds.
+- Setting quantity thresholds.
+- Setting required approvals.
+- Setting escalation.
+- Saving workflow as draft.
+- Activating workflow.
+
+Use a clear visual timeline or node-based workflow design.
+
+## Page 15 — Approval Limits
+
+Route:
+
+/settings/approvals/limits
+
+Create a configurable policy table.
+
+Columns:
+
+- Transaction type.
+- Minimum amount.
+- Maximum amount.
+- Required role.
+- Approval level.
+- Required number of approvals.
+- Branch scope.
+- Status.
+
+Use EGP as the default currency.
+
+The values shown in the mockup must be labeled sample values and remain configurable.
+
+## Page 16 — Delegation Management
+
+Route:
+
+/settings/approvals/delegation
+
+Allow an authorized manager to temporarily delegate approvals.
+
+Fields:
+
+- Original approver.
+- Substitute approver.
+- Approval type.
+- Start date.
+- End date.
+- Branch scope.
+- Reason.
+- Status.
+
+Do not allow unrestricted delegation of system-owner or critical security privileges.
+
+Show delegation history.
+
+---
+
+# 12. SECURITY AND AUDIT PAGES
+
+## Page 17 — Security Dashboard
+
+Route:
+
+/settings/security
+
+KPI cards:
+
+- Active users.
+- Locked accounts.
+- Failed login attempts.
+- Users with privileged access.
+- Roles changed recently.
+- Suspicious activity alerts.
+
+Widgets:
+
+- Recent security events.
+- Accounts requiring review.
+- Privileged role assignments.
+- Expiring delegations.
+- Unusual login activity.
+
+## Page 18 — Audit Log
+
+Route:
+
+/settings/audit-log
+
+Table:
+
+- Timestamp.
+- User.
+- Event.
+- Module.
+- Record.
+- Previous value.
+- New value.
+- IP address.
+- Device.
+- Result.
+
+Filters:
+
+- User.
+- Module.
+- Event type.
+- Date.
+- Record reference.
+- Result.
+
+Audit events must be append-only in the underlying system. The interface must not offer ordinary delete or edit actions for audit history.
+
+## Page 19 — Login and Session Management
+
+Route:
+
+/settings/security/sessions
+
+Show:
+
+- User.
+- Device.
+- Browser.
+- Location when available.
+- IP address.
+- Login time.
+- Last activity.
+- Session status.
+
+Actions:
+
+- Revoke session.
+- Force logout.
+- Require password reset.
+- Disable account.
+
+## Page 20 — Access Denied
+
+Design an Arabic access-denied page.
+
+Title:
+
+ليس لديك صلاحية للوصول إلى هذه الصفحة.
+
+Description:
+
+لا يمتلك حسابك الصلاحيات المطلوبة لتنفيذ هذا الإجراء. يمكنك التواصل مع مسؤول النظام لطلب الصلاحية المناسبة.
+
+Show:
+
+- Current user.
+- Restricted page.
+- Required permission, if safe to disclose.
+- Return to dashboard.
+- Request access button.
+
+## Page 21 — Access Request
+
+Allow users to request access to a module or permission.
+
+Fields:
+
+- Requested permission.
+- Module.
+- Reason.
+- Business justification.
+- Required duration.
+- Manager.
+
+Display approval status and comments.
+
+---
+
+# 13. ROLE-BASED DASHBOARDS
+
+The homepage must change according to the user's assigned role.
+
+Do not show every dashboard widget to every user.
+
+Create these separate role-based experiences:
+
+### Owner dashboard
+
+- Company financial overview.
+- Profitability.
+- Sales.
+- Inventory valuation.
+- Production.
+- Business risks.
+- Strategic alerts.
+
+### General Manager dashboard
+
+- Department performance.
+- Department targets.
+- Pending approvals.
+- Delays.
+- Important tasks.
+- Company-wide KPIs.
+
+### System Administrator dashboard
+
+- Users.
+- Roles.
+- Security events.
+- Login activity.
+- System configuration.
+- Integration status.
+
+### Sales Manager dashboard
+
+- Sales targets.
+- Orders.
+- Sales team performance.
+- Customers.
+- Discounts requiring approval.
+- Sales trends.
+
+### Sales Representative dashboard
+
+- My customers.
+- My orders.
+- My quotations.
+- My tasks.
+- My targets.
+- Follow-up reminders.
+
+### Warehouse Manager dashboard
+
+- Warehouse balances.
+- Pending receipts.
+- Pending issues.
+- Transfers.
+- Stock discrepancies.
+- Low-stock alerts.
+
+### Storekeeper dashboard
+
+- My warehouse.
+- Assigned tasks.
+- Receiving.
+- Issue requests.
+- Stock count tasks.
+- Barcode scanner.
+
+### Procurement Manager dashboard
+
+- Purchase requests.
+- Supplier quotations.
+- Purchase orders.
+- Supplier delivery performance.
+- Pending approvals.
+- Procurement budget.
+
+### Production Manager dashboard
+
+- Active production orders.
+- Planned versus actual production.
+- Line efficiency.
+- Material shortages.
+- Production delays.
+- Quality issues.
+
+### Production Supervisor dashboard
+
+- Assigned lines.
+- Current shift.
+- Current production order.
+- Team members.
+- Production target.
+- Actual output.
+- Reported defects.
+
+### Production Worker dashboard
+
+- My assigned production task.
+- My production stage.
+- Target quantity.
+- Completed quantity.
+- Work instructions.
+- Report an issue button.
+
+### Quality Manager dashboard
+
+- Inspection queue.
+- Accepted/rejected quantities.
+- Defect rate.
+- Quality issues.
+- Corrective actions.
+
+### Quality Inspector dashboard
+
+- Assigned inspections.
+- Pending inspections.
+- Inspection checklist.
+- Record defect.
+- Submit inspection.
+
+### Finance Manager dashboard
+
+- Revenue.
+- Expenses.
+- Profit.
+- Cash flow.
+- Receivables.
+- Payables.
+- Pending financial approvals.
+
+### Accountant dashboard
+
+- Assigned invoices.
+- Receipts.
+- Payment preparations.
+- Expense records.
+- Journal entry drafts.
+
+### Cost Accountant dashboard
+
+- Product costing.
+- Production costing.
+- Material variances.
+- Unit costs.
+- Profitability reports.
+
+### Marketing Manager dashboard
+
+- Ad spend.
+- ROAS.
+- CAC.
+- Campaign performance.
+- Product profitability.
+- Marketing tasks.
+
+### Content Manager dashboard
+
+- Content calendar.
+- Drafts.
+- Pending approvals.
+- Scheduled posts.
+- Marketing assets.
+
+### HR Manager dashboard
+
+- Employees.
+- Attendance.
+- Leave approvals.
+- Payroll overview.
+- HR requests.
+- Department headcount.
+
+### Employee dashboard
+
+- My profile.
+- My attendance.
+- My leave requests.
+- My tasks.
+- My notifications.
+- My payslips, if authorized.
+
+---
+
+# 14. SPECIAL SECURITY RULES
+
+The design must clearly represent the following policies.
+
+## Rule 1 — Least Privilege
+
+Users receive only the permissions needed for their jobs.
+
+Do not grant all permissions automatically to every manager.
+
+## Rule 2 — Separation of Duties
+
+High-risk business processes must be separable.
+
+Examples:
+
+- The user who creates a payment should not automatically approve it.
+- The user who creates a stock adjustment should not automatically approve it.
+- The user who prepares payroll should not automatically be authorized to approve and execute it.
+- The user who enters a journal should not automatically approve restricted journal entries.
+
+## Rule 3 — No Silent Deletion
+
+Important posted transactions must not be physically deleted through standard screens.
+
+Use:
+
+- Cancellation.
+- Reversal.
+- Correction.
+- Adjustment.
+
+Require appropriate authorization and an audit trail.
+
+## Rule 4 — Sensitive Financial Access
+
+Separate:
+
+- View financial summaries.
+- View exact product costs.
+- View profit margins.
+- View account balances.
+- Prepare payments.
+- Approve payments.
+- Execute payments.
+- Post journal entries.
+- Close accounting periods.
+
+## Rule 5 — Sensitive HR Access
+
+Separate:
+
+- View employee profile.
+- View personal documents.
+- View salary.
+- View bank details.
+- Prepare payroll.
+- Approve payroll.
+- Execute payroll.
+
+## Rule 6 — Data Isolation
+
+An employee assigned to one warehouse must not access another warehouse's stock simply by changing a URL.
+
+An employee assigned to one branch must not access another branch's records without authorization.
+
+## Rule 7 — Permission Changes
+
+Role changes and privilege escalation must:
+
+- Require appropriate administrator authority.
+- Be recorded in the audit log.
+- Display a confirmation screen.
+- Show a preview of affected users and permissions.
+
+## Rule 8 — Temporary Permissions
+
+Support temporary access with:
+
+- Start date.
+- Expiration date.
+- Reason.
+- Approver.
+- Automatic expiry.
+- Audit history.
+
+## Rule 9 — Emergency Access
+
+Support a restricted emergency access process.
+
+It must require:
+
+- Justification.
+- Authorized approval.
+- Limited duration.
+- Limited permissions.
+- Detailed audit logging.
+
+---
+
+# 15. USER EXPERIENCE AND INTERACTION RULES
+
+Make this module practical for administrators.
+
+### Create Role Interaction
+
+When an administrator selects a role:
+
+- Show role details.
+- Show assigned users.
+- Show granted permissions.
+- Show data scope.
+- Show approval limits.
+
+### Permission Dependency
+
+If an administrator enables an action that requires viewing a record, display the relevant dependency or explain why the permission is incomplete.
+
+For example:
+
+A user should not receive an approval action without being able to review the request details necessary for that approval.
+
+### Permission Inheritance
+
+Show whether a permission comes from:
+
+- Base role.
+- Assigned additional role.
+- Custom override.
+
+Make it clear where the permission originated.
+
+### Multi-Role Users
+
+Allow a user to hold more than one role when company policy permits.
+
+Calculate effective permissions from assigned roles.
+
+Explicitly show permission conflicts and overrides.
+
+Do not allow custom permission inheritance to silently bypass restricted administrative or security policies.
+
+### Role Preview
+
+Add a button:
+
+معاينة النظام بهذا الدور
+
+This allows the administrator to preview the interface as a given role without changing the actual logged-in user's permissions.
+
+Clearly label preview mode. It must not perform real business actions under the administrator's identity.
+
+### Permission Search
+
+Search by:
+
+- Module.
+- Permission name.
+- Action.
+- Role.
+- User.
+
+### Bulk Operations
+
+Allow:
+
+- Assign role to selected users.
+- Remove role from selected users.
+- Copy role permissions.
+- Enable permissions for an entire module.
+- Export permission matrix.
+
+Every bulk change must have a confirmation and audit record.
+
+---
+
+# 16. VISUAL DESIGN REQUIREMENTS
+
+Use the existing SOTEX ERP visual identity.
+
+- Deep navy primary.
+- White surfaces.
+- Light gray application background.
+- Electric blue accent.
+- Emerald success.
+- Amber warning.
+- Red danger.
+- Arabic IBM Plex Sans Arabic typography.
+- Lucide icons.
+- shadcn/ui components.
+- Radix UI primitives.
+- Radian-inspired enterprise design language.
+
+Design characteristics:
+
+- Professional.
+- Premium.
+- Modern.
+- Minimal.
+- Information-dense.
+- Easy to navigate.
+- Consistent with the main ERP application.
+
+Sidebar location: Right side.
+
+Page direction: RTL.
+
+Tables: RTL.
+
+Forms: RTL.
+
+Dialogs: RTL-aware.
+
+Charts: Arabic labels.
+
+Use role colors only as subtle visual identifiers, not as the sole indication of access or status.
+
+---
+
+# 17. RESPONSIVE DESIGN
+
+Desktop:
+
+- Full permissions matrix.
+- Detailed user tables.
+- Multi-section role editor.
+- Advanced approval workflow builder.
+
+Tablet:
+
+- Collapsible filters.
+- Scrollable matrix.
+- Drawer-based details.
+- Responsive forms.
+
+Mobile:
+
+- User profile.
+- Assigned roles.
+- Basic permission summaries.
+- Pending approvals.
+- Access requests.
+- Security notifications.
+
+Do not force an extensive permission matrix into a small mobile screen. Use a module-by-module expandable view.
+
+---
+
+# 18. SAMPLE ARABIC INTERFACE CONTENT
+
+Use realistic Arabic text throughout the screens.
+
+Examples:
+
+**Page titles**
+
+- إدارة المستخدمين.
+- الأدوار الوظيفية.
+- مصفوفة الصلاحيات.
+- إعدادات الوصول.
+- نطاق البيانات.
+- مسارات الموافقات.
+- سجل النشاطات.
+- سجل الدخول.
+- إعدادات الأمان.
+
+**Buttons**
+
+- إضافة مستخدم.
+- إنشاء دور جديد.
+- حفظ التغييرات.
+- نسخ الدور.
+- إدارة الصلاحيات.
+- إسناد دور.
+- تعديل النطاق.
+- اعتماد الطلب.
+- إلغاء التغييرات.
+- معاينة الدور.
+- تصدير الصلاحيات.
+
+**Status labels**
+
+- نشط.
+- غير نشط.
+- معطل.
+- دعوة معلقة.
+- بانتظار الموافقة.
+- منتهي الصلاحية.
+- وصول مؤقت.
+- صلاحية موروثة.
+- صلاحية مخصصة.
+
+**Warnings**
+
+- أنت على وشك منح المستخدم صلاحيات إضافية.
+- سيؤثر هذا التغيير على جميع المستخدمين المرتبطين بهذا الدور.
+- لا يمكن للمستخدم اعتماد معاملة أنشأها بنفسه وفق سياسة الفصل بين المهام.
+- هذا الإجراء سيؤدي إلى إنهاء الجلسات النشطة للمستخدم.
+
+---
+
+# 19. REQUIRED DESIGN DELIVERABLES
+
+Create a complete high-fidelity multi-page design for:
+
+1. User management dashboard.
+2. Users list.
+3. Create user.
+4. User details.
+5. Edit user.
+6. User activity.
+7. Role directory.
+8. Create custom role.
+9. Role details.
+10. Role permission editor.
+11. Permission matrix.
+12. Role comparison.
+13. Data scope configuration.
+14. Approval workflow directory.
+15. Approval workflow builder.
+16. Approval limits.
+17. Delegation management.
+18. Security dashboard.
+19. Audit log.
+20. Active sessions.
+21. Access denied page.
+22. Access request page.
+23. Role-based dashboard examples.
+
+Create reusable components:
+
+- User card.
+- Role card.
+- Permission checkbox.
+- Permission matrix cell.
+- Scope selector.
+- Approval step.
+- Workflow node.
+- Security status badge.
+- Role assignment dialog.
+- Permission summary.
+- Role comparison component.
+- Audit timeline.
+
+---
+
+# 20. GOOGLE STITCH EXECUTION INSTRUCTIONS
+
+This is a complete access management subsystem, not one dashboard.
+
+Create the designs in the following order:
+
+### Phase 1 — Core Security Interface
+
+- Application shell.
+- Users dashboard.
+- Users list.
+- Add user.
+- User details.
+
+### Phase 2 — Roles and Permissions
+
+- Role directory.
+- Role creation wizard.
+- Role details.
+- Permission editor.
+- Permission matrix.
+- Role comparison.
+
+### Phase 3 — Data Scope
+
+- Branch permissions.
+- Department scope.
+- Warehouse scope.
+- Production line scope.
+- Assigned-record access.
+
+### Phase 4 — Approval Management
+
+- Approval workflows.
+- Workflow builder.
+- Approval limits.
+- Delegation.
+
+### Phase 5 — Security and Auditing
+
+- Security dashboard.
+- Audit log.
+- Login sessions.
+- Access denied.
+- Access request.
+
+### Phase 6 — Role-Based Experiences
+
+Create a distinct dashboard and navigation experience for the most important roles.
+
+### Final requirements
+
+- Use the same SOTEX design system as the complete ERP.
+- Use Arabic only for visible interface text.
+- Support full RTL.
+- Create realistic user and role data.
+- Make permission controls editable in the prototype wherever practical.
+- Use consistent navigation and component patterns.
+- Do not produce generic placeholder pages.
+- Do not grant unrestricted permissions to all management roles.
+- Do not mix technical administration with financial authority.
+- Do not treat module visibility as the only security control.
+- Show the relationship between users, roles, permissions, data scopes, and approvals.
+
+**The final design should be a professional enterprise access-control system that can be handed to a Next.js and Supabase development team as the UI/UX specification for the SOTEX ERP security and authorization module.**

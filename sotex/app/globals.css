@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode: Warm Stone Gray + SOTEX Matte Charcoal (#202528) + Champagne Gold (#C8B276) */
+    --primary: 32 37 40;
+    --on-primary: 255 255 255;
+    --primary-container: 44 51 56;
+    --on-primary-container: 200 178 118;
+
+    --secondary: 158 122 63;
+    --on-secondary: 255 255 255;
+    --secondary-container: 244 238 225;
+    --on-secondary-container: 92 70 32;
+
+    --tertiary: 42 48 52;
+    --on-tertiary: 255 255 255;
+    --tertiary-container: 55 63 68;
+    --on-tertiary-container: 200 178 118;
+
+    --background: 244 245 246;
+    --on-background: 24 28 30;
+    --surface: 244 245 246;
+    --surface-bright: 255 255 255;
+    --surface-dim: 222 225 228;
+    --surface-container-lowest: 255 255 255;
+    --surface-container-low: 240 241 242;
+    --surface-container: 232 235 237;
+    --surface-container-high: 223 227 230;
+    --surface-container-highest: 212 217 221;
+    --surface-variant: 226 230 233;
+
+    --on-surface: 24 28 30;
+    --on-surface-variant: 82 90 96;
+    --outline: 110 119 126;
+    --outline-variant: 205 210 215;
+
+    --error: 186 26 26;
+    --on-error: 255 255 255;
+    --error-container: 255 218 214;
+    --on-error-container: 147 0 10;
+  }
+
+  .dark {
+    /* Dark Mode: Exact SOTEX Brand Palette (#202528 Charcoal + #C8B276 Champagne Gold + #161A1D Obsidian) */
+    --primary: 200 178 118;
+    --on-primary: 24 28 30;
+    --primary-container: 48 55 60;
+    --on-primary-container: 200 178 118;
+
+    --secondary: 158 122 63;
+    --on-secondary: 255 255 255;
+    --secondary-container: 46 42 34;
+    --on-secondary-container: 200 178 118;
+
+    --tertiary: 42 48 52;
+    --on-tertiary: 243 244 246;
+    --tertiary-container: 52 59 64;
+    --on-tertiary-container: 200 178 118;
+
+    --background: 22 26 29;
+    --on-background: 243 244 246;
+    --surface: 22 26 29;
+    --surface-bright: 44 51 56;
+    --surface-dim: 17 20 23;
+    --surface-container-lowest: 32 37 40;
+    --surface-container-low: 27 32 35;
+    --surface-container: 38 44 48;
+    --surface-container-high: 46 53 58;
+    --surface-container-highest: 55 63 70;
+    --surface-variant: 44 51 56;
+
+    --on-surface: 243 244 246;
+    --on-surface-variant: 163 172 178;
+    --outline: 122 132 139;
+    --outline-variant: 56 64 70;
+
+    --error: 248 113 113;
+    --on-error: 24 28 30;
+    --error-container: 69 10 10;
+    --on-error-container: 254 202 202;
+  }
+
+  * {
+    border-color: rgb(var(--outline-variant) / 0.5);
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    text-align: right;
+  }
+
+  body {
+    overscroll-behavior: none;
+    font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: rgb(var(--background));
+    color: rgb(var(--on-surface));
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Dark Mode Adaptive Refinements for Badges, Inputs, and High-Contrast Buttons */
+.dark .bg-primary.text-white {
+  color: #181C1E !important;
+}
+
+.dark .bg-emerald-50,
+.dark .bg-emerald-100,
+.dark .bg-\[\#E8F8F0\],
+.dark .bg-\[\#ECFDF5\] {
+  background-color: rgba(16, 185, 129, 0.14) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.dark .text-emerald-700,
+.dark .text-emerald-800,
+.dark .text-\[\#065F46\],
+.dark .text-\[\#047857\] {
+  color: #34D399 !important;
+}
+
+.dark .bg-amber-50,
+.dark .bg-amber-100,
+.dark .bg-\[\#FEF6EB\],
+.dark .bg-\[\#FFF9E6\] {
+  background-color: rgba(200, 178, 118, 0.14) !important;
+  border-color: rgba(200, 178, 118, 0.32) !important;
+}
+
+.dark .text-amber-700,
+.dark .text-amber-800,
+.dark .text-\[\#78350F\],
+.dark .text-\[\#92400E\],
+.dark .text-\[\#B45309\] {
+  color: #DFCFA3 !important;
+}
+
+.dark .bg-rose-50,
+.dark .bg-rose-100,
+.dark .bg-\[\#FCEBEB\] {
+  background-color: rgba(244, 63, 94, 0.15) !important;
+  border-color: rgba(244, 63, 94, 0.3) !important;
+}
+
+.dark .text-rose-700,
+.dark .text-rose-800 {
+  color: #FDA4AF !important;
+}
+
+.dark .bg-purple-100 {
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  color: #D8B4FE !important;
+}
+
+.dark .text-purple-800 {
+  color: #D8B4FE !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: rgba(55, 63, 70, 0.5) !important;
+  color: #D1D5DB !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-700 {
+  color: #D1D5DB !important;
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.dark select,
+.dark textarea {
+  background-color: #1B2023;
+  color: #F3F4F6;
+  border-color: #384046;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #7A848B;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 178, 118, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 178, 118, 0.5);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-data-tabular {
+  font-variant-numeric: tabular-nums;
+}

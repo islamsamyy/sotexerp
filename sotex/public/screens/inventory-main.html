@@ -1,0 +1,655 @@
+<main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-margin-desktop space-y-space-xl">
+<!-- Top Operational Header Bar -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">warehouse</span>
+</span>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">إدارة المخازن والمستودعات السحابية</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">تتبع أرصدة الخامات، مستلزمات الإنتاج، المنتجات التامة، والتحويلات اللحظية بدقة متناهية</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons Row -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="px-space-md py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center gap-space-xs hover:bg-primary-container transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add_box</span>
+<span>إذن استلام مخزني جديد</span>
+</button>
+<button class="px-space-md py-2 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md flex items-center gap-space-xs hover:bg-secondary/90 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">output</span>
+<span>إذن صرف خامات للتشغيل</span>
+</button>
+<button class="px-space-md py-2 bg-surface-container-low text-on-surface rounded-lg font-label-md text-label-md flex items-center gap-space-xs hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+<span>تحويل بين المستودعات</span>
+</button>
+<button class="px-space-md py-2 bg-surface-container-low text-on-surface rounded-lg font-label-md text-label-md flex items-center gap-space-xs hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+<span>بدء جرد دوري</span>
+</button>
+<button class="px-space-sm py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md flex items-center gap-space-xs hover:bg-surface-container-highest transition-all" title="تصدير كشف الأرصدة (Excel/PDF)" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>تصدير كشف الأرصدة</span>
+</button>
+</div>
+</div>
+<!-- Primary Warehouse KPI Deck -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">إجمالي قيمة المخزون الحالي</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</span>
+</div>
+<div class="my-space-md">
+<div class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">
+            18,450,000 <span class="font-label-sm text-label-sm text-on-surface-variant font-normal">ج.م</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-[#16A36A]">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+4.2% تقييم إيجابي دورة الربع الحالي</span>
+</div>
+<div class="absolute -bottom-6 -left-6 w-24 h-24 bg-surface-container-high/40 rounded-full pointer-events-none"></div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">عدد الأصناف المسجلة</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">category</span>
+</span>
+</div>
+<div class="my-space-md">
+<div class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">
+            428 <span class="font-label-sm text-label-sm text-on-surface-variant font-normal">صنف وخامة</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">inventory</span>
+<span>موزعة على 4 مستودعات رئيسية</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-error">أصناف تحت حد الأمان</span>
+<span class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</span>
+</div>
+<div class="my-space-md">
+<div class="font-headline-xl text-headline-xl text-error font-bold tracking-tight">
+            14 <span class="font-label-sm text-label-sm text-error/80 font-normal">صنفاً يتطلب إعادة طلب</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-error">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+<span>منها 5 خامات نسيج تعطل أوامر قص</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">أذونات صرف معلقة</span>
+<span class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</span>
+</div>
+<div class="my-space-md">
+<div class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">
+            6 <span class="font-label-sm text-label-sm text-on-surface-variant font-normal">أذونات صرف معتمدة</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]">conveyor_belt</span>
+<span>موجهة لمصنع الحياكة والتشطيب</span>
+</div>
+</div>
+</div>
+<!-- Storage Allocation & Capacity Visual Bar -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<span class="font-label-lg text-label-lg text-primary">توزيع الأرصدة والقيمة التخزينية حسب المستودع</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">رؤية تحليلية للمخزون النشط والمحجوز بفرع العاشر من رمضان</p>
+</div>
+<span class="font-data-tabular text-data-tabular px-space-sm py-1 bg-surface-container-high rounded text-on-surface-variant">
+          تحديث لحظي تلقائي (SAP / IoT)
+        </span>
+</div>
+<!-- Multi-segmented Progress Bar -->
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex flex-row">
+<div class="h-full bg-primary" style="width: 53%;" title="مخزن الخامات الرئيسية: 53%"></div>
+<div class="h-full bg-secondary" style="width: 34%;" title="مخزن المنتجات التامة: 34%"></div>
+<div class="h-full bg-secondary-fixed-dim" style="width: 9%;" title="مخزن مستلزمات الإنتاج: 9%"></div>
+<div class="h-full bg-error/70" style="width: 4%;" title="مخزن الهالك والفرز الثاني: 4%"></div>
+</div>
+<!-- Segment Badges Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-primary mt-1 shrink-0"></span>
+<div>
+<div class="font-label-md text-label-md text-primary">مخزن الخامات الرئيسية (غزل، أقمشة)</div>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-0.5">9,800,000 <span class="font-label-sm text-label-sm font-normal">ج.م</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">53% من إجمالي الأصول المخزنية</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-secondary mt-1 shrink-0"></span>
+<div>
+<div class="font-label-md text-label-md text-primary">مخزن المنتجات التامة (جاهز للشحن)</div>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-0.5">6,200,000 <span class="font-label-sm text-label-sm font-normal">ج.م</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">34% متاح لأوامر البيع والتوزيع</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-secondary-fixed-dim mt-1 shrink-0"></span>
+<div>
+<div class="font-label-md text-label-md text-primary">مخزن مستلزمات الإنتاج (إكسسوارات)</div>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-0.5">1,650,000 <span class="font-label-sm text-label-sm font-normal">ج.م</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">9% تشمل خيوط، أزرار، بطانات وليبل</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-error/70 mt-1 shrink-0"></span>
+<div>
+<div class="font-label-md text-label-md text-primary">مخزن الهالك والفرز الثاني</div>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-0.5">800,000 <span class="font-label-sm text-label-sm font-normal">ج.م</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">4% قيد التقييم وإعادة التدوير</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Layout (Table + Realtime Feed Sidebar) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Advanced Stock Balance Grid (Span 9 Columns) -->
+<div class="xl:col-span-9 bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Filter Toolbar -->
+<div class="p-space-md bg-surface-container-low/60 flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-lg text-label-lg text-primary ml-space-sm">أرصدة المخزون المتكاملة</span>
+<button class="px-space-sm py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm" type="button">الكل (428)</button>
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm" type="button">خامات قطنية</button>
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm" type="button">منتجات تامة</button>
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm" type="button">إكسسوارات وليبل</button>
+<button class="px-space-sm py-1 rounded bg-error-container text-error font-label-sm text-label-sm flex items-center gap-1" type="button">
+<span>نواقص حرجة</span>
+<span class="w-4 h-4 rounded-full bg-error text-on-error text-[10px] flex items-center justify-center">14</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<input class="h-8 pr-7 pl-3 bg-surface-container-lowest rounded text-right font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-low transition-all" placeholder="تصفية بالكود، الاسم، أو الرف..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[16px] text-outline pointer-events-none">filter_alt</span>
+</div>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" title="خيارات إضافية" type="button">
+<span class="material-symbols-outlined text-[18px]">view_column</span>
+</button>
+</div>
+</div>
+<!-- Tabular Grid View -->
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-3">كود الصنف والباركود</th>
+<th class="py-2.5 px-3">اسم الخامة / المنتج</th>
+<th class="py-2.5 px-3">المستودع والموقع</th>
+<th class="py-2.5 px-3 text-center">الرصيد الفعلي</th>
+<th class="py-2.5 px-3 text-center">المحجوز</th>
+<th class="py-2.5 px-3 text-center">الرصيد المتاح</th>
+<th class="py-2.5 px-3 text-center">بالطريق</th>
+<th class="py-2.5 px-3 text-left">التكلفة (ج.م)</th>
+<th class="py-2.5 px-3 text-left">القيمة الدفترية</th>
+<th class="py-2.5 px-3 text-center">حالة الطلب</th>
+<th class="py-2.5 px-3 text-center">إجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container/60 font-body-sm text-body-sm">
+<!-- Row 1: قماش قطن بيور -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">TEX-FAB-092</div>
+<div class="font-label-sm text-[11px] text-outline">622108920114</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded object-cover shrink-0" data-alt="Rolls of premium high-grade charcoal grey 100% combed cotton jersey knit fabric neatly stored inside a textile industrial warehouse facility with bright soft natural lighting and subtle navy tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOjQlcXTcJwDEBxiJhKGb6egCCkFnw9ReudwJcRv_64ykRTsCEe8vRwKiS_9Tx9oYsVOUC576h3IIouDmV1yIu-hIHlzzGx0Celp2NaftYy2leUmzInTljJdhEJ6cVAfXTEahciSLUy20QFJgXEmQneZOO-H6UcFNXlO74gjY_Cev5j7pBFuSxB8J7jciiFFRB32VpS26SWEZcLx67nqMuyIg0uRoQHOvkJBfAmAE"/>
+<div>
+<div class="font-label-md text-label-md text-primary font-medium">قماش قطن بيور 100% رمادي غامق</div>
+<div class="font-label-sm text-[11px] text-on-surface-variant">عرض 185 سم - وزن 190 جم/م²</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">مخزن الخامات الرئيسي</div>
+<div class="font-label-sm text-[11px] text-secondary">رف R-04 / ممر A3</div>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-semibold text-primary">
+                  12,450 <span class="text-[10px] text-outline">كجم</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-on-surface-variant">
+                  3,200 <span class="text-[10px] text-outline">كجم</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-bold text-[#16A36A]">
+                  9,250 <span class="text-[10px] text-outline">كجم</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-secondary">
+                  5,000 <span class="text-[10px] text-outline">كجم</span>
+</td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular text-on-surface">
+                  285.00
+                </td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular font-bold text-primary">
+                  3,548,250
+                </td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-sm bg-[#E8F8F0] text-[#16A36A]">
+                    رصيد آمن
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-primary" title="سجل حركة الصنف KARDEX" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-secondary" title="طلب توريد" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline" title="طباعة ملصق الباركود" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: تيشيرت سوِتكس أسود مقاس L (From Inspiration Image) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">GAR-TSH-088</div>
+<div class="font-label-sm text-[11px] text-outline">622108920448</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded object-cover shrink-0" data-alt="Two professional young female models wearing premium dark olive grey and pure white tailored branded t-shirts with an elegant gold embroidery monogram emblem logo on chest posing gracefully against a modern bright minimalist studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq3NM-LChOt3ZSOQrZCCwNQSiWTuZb3kJcW5OcX3ETboDqH9QDbx3hO4BEYzcxlh_SOsxoljNbUrwA0KeFEMYTVzgDMmKKLC9PYDp11F01KNA7Vdh3Aih7h_t1tRV0HSvlqsAMXfAeITrk7otKImA6PEmNratc4KrAP0DU3RYuRIPvgveDNtRKhb8Q3ii0bf2uBLHlB0_MscgHlI29YkLtkm7QIBi8-x_jsTgpiJU"/>
+<div>
+<div class="font-label-md text-label-md text-primary font-medium">تيشيرت سوِتكس أوفرسايز (رمادي زيتي / شعار ذهبي) L</div>
+<div class="font-label-sm text-[11px] text-on-surface-variant">منتج تام كود STX-LUX-2025</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">مخزن المنتجات التامة</div>
+<div class="font-label-sm text-[11px] text-secondary">ممر C-12 / طرد B-09</div>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-semibold text-primary">
+                  1,850 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-on-surface-variant">
+                  1,400 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-bold text-[#E6A23C]">
+                  450 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-secondary">
+                  2,000 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular text-on-surface">
+                  195.00
+                </td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular font-bold text-primary">
+                  360,750
+                </td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-sm bg-[#FEF6EB] text-[#E6A23C]">
+                    قريب من الحد
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-primary" title="سجل حركة الصنف KARDEX" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-secondary" title="طلب توريد" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline" title="طباعة ملصق الباركود" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: خيط خياطة عالي الشد -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">ACC-THR-402</div>
+<div class="font-label-sm text-[11px] text-outline">622108920781</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded object-cover shrink-0" data-alt="High quality industrial spools of polyester core spun sewing threads in matte charcoal grey and navy tones placed orderly on an industrial shelving background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg7GJEQomIEa8QJmIiwtuWru45cJv9Zu5W9f17Tpybhx9Ph4m04F-rAuMlQWEhSkL-cThtmoIFPQhJ_j91z4FskDaAhAcja-rJ16WtfX-2YYyQAkHzYa7qkHewUUtES0Ot9wqMyeHCPXfEFBaIKFBMiAJvcoFuZqOHskFWl4-4MbbV2tavBtFeVb-tghdRjoNP3o2UoqfHVk484ssCHOJuGxqvixtRIeJCAQFT7jo"/>
+<div>
+<div class="font-label-md text-label-md text-primary font-medium">خيط خياطة بولستر عالي الشد 40/2 أسود ملكي</div>
+<div class="font-label-sm text-[11px] text-on-surface-variant">بكرات 5,000 ياردة - درجة أولى تصدير</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">مستلزمات الإنتاج</div>
+<div class="font-label-sm text-[11px] text-secondary">رف T-08 / درج 14</div>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-semibold text-primary">
+                  120 <span class="text-[10px] text-outline">بكرة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-on-surface-variant">
+                  95 <span class="text-[10px] text-outline">بكرة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-bold text-error">
+                  25 <span class="text-[10px] text-outline">بكرة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-on-surface-variant">
+                  0 <span class="text-[10px] text-outline">بكرة</span>
+</td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular text-on-surface">
+                  85.00
+                </td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular font-bold text-primary">
+                  10,200
+                </td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-sm bg-[#FCEBEB] text-[#DC4C4C]">
+                    نقص حرج جداً
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-primary" title="سجل حركة الصنف KARDEX" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-error" title="طلب توريد عاجل" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline" title="طباعة ملصق الباركود" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: ليبل سوِتكس ذهبي مطرز -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">ACC-LBL-019</div>
+<div class="font-label-sm text-[11px] text-outline">622108920993</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded object-cover shrink-0" data-alt="Close up of metallic golden woven brand label patches with the monogram 'S' emblem on dark luxury fabric rolls ready for garment collar stitching" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQBbuwodwEmLS3Xu1UY5dPOqHUpmvr3HrOYw19STSusrduR-w4ckFcuaAxDKiRX54J7gh4RYla8rU7qo5vpC2clnkZLTKh8ZncI16gMUPQQnxLNBs81GE-mdSFvco-34XZgYCGZJvFRgrsWQGMuHBT9vjGWW_kXJvrzV8GhzwDZVeeMnCAUbYmG3IFrbPsiRh2kwma0kDxuWOK8lDAmmOh1GVGcs04CKW4U6cz-AA"/>
+<div>
+<div class="font-label-md text-label-md text-primary font-medium">ليبل سوِتكس ذهبي فاخر مطرز (ياقة وسوار)</div>
+<div class="font-label-sm text-[11px] text-on-surface-variant">نسيج جاكار خيط ذهبي مقاوم للغسيل</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">مستلزمات الإنتاج</div>
+<div class="font-label-sm text-[11px] text-secondary">خزينة الإكسسوار S-02</div>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-semibold text-primary">
+                  18,500 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-on-surface-variant">
+                  4,000 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-bold text-[#16A36A]">
+                  14,500 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-secondary">
+                  10,000 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular text-on-surface">
+                  4.80
+                </td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular font-bold text-primary">
+                  88,800
+                </td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-sm bg-[#E8F8F0] text-[#16A36A]">
+                    رصيد آمن
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-primary" title="سجل حركة الصنف KARDEX" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-secondary" title="طلب توريد" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline" title="طباعة ملصق الباركود" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: تيشيرت سوِتكس أبيض مقاس M (From Inspiration Image) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">GAR-TSH-089</div>
+<div class="font-label-sm text-[11px] text-outline">622108920449</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded object-cover shrink-0" data-alt="Classic crisp white cotton jersey t-shirt with small sophisticated gold embroidered monogram logo worn by modern professional model against minimalist aesthetic wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCW1NI6fbkQYbyKHHN409IfXEUCje602NnZjAWdDsta-qMeSBKP816UQiT2IY2kPOTb-5SMj3dp4RLUEEbTIt5Qg7xkzn_XwWi1c66kGIfsKEmC0_weKnQiFNmX6u5M_sLMy9PU2PWGoXVVJVfxXqmNt5i0OlpKNsD3EnHcw-zA20S-ACM_nEQoMS8eH6UU2jDhEP53pOJTN8KWZQTYWmnmf9SDfVh4nZxC7aDqpc"/>
+<div>
+<div class="font-label-md text-label-md text-primary font-medium">تيشيرت سوِتكس كلاسيك (أبيض ناصع / شعار ذهبي) M</div>
+<div class="font-label-sm text-[11px] text-on-surface-variant">جاهز للشحن والتوزيع المحلي</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">مخزن المنتجات التامة</div>
+<div class="font-label-sm text-[11px] text-secondary">ممر C-14 / طرد A-02</div>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-semibold text-primary">
+                  3,120 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-on-surface-variant">
+                  800 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular font-bold text-[#16A36A]">
+                  2,320 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-center font-data-tabular text-data-tabular text-secondary">
+                  1,500 <span class="text-[10px] text-outline">قطعة</span>
+</td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular text-on-surface">
+                  190.00
+                </td>
+<td class="py-2.5 px-3 text-left font-data-tabular text-data-tabular font-bold text-primary">
+                  592,800
+                </td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-sm bg-[#E8F8F0] text-[#16A36A]">
+                    رصيد آمن
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-primary" title="سجل حركة الصنف KARDEX" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-secondary" title="طلب توريد" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline" title="طباعة ملصق الباركود" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination and Counters -->
+<div class="p-space-sm bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant">
+<div class="font-body-sm text-body-sm">
+            عرض 5 من أصل 428 صنفاً مسجلاً في قاعدة بيانات المستودع
+          </div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<button class="px-2 py-1 bg-surface-container-lowest rounded hover:bg-surface-container text-on-surface-variant" type="button">السابق</button>
+<span class="px-2 py-1 bg-primary text-on-primary rounded font-bold">1</span>
+<button class="px-2 py-1 bg-surface-container-lowest rounded hover:bg-surface-container text-on-surface-variant" type="button">2</button>
+<button class="px-2 py-1 bg-surface-container-lowest rounded hover:bg-surface-container text-on-surface-variant" type="button">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-2 py-1 bg-surface-container-lowest rounded hover:bg-surface-container text-on-surface-variant" type="button">86</button>
+<button class="px-2 py-1 bg-surface-container-lowest rounded hover:bg-surface-container text-on-surface-variant" type="button">التالي</button>
+</div>
+</div>
+</div>
+<!-- Real-time Warehouse Movement Stream (Span 3 Columns) -->
+<div class="xl:col-span-3 space-y-space-md">
+<!-- Live Movement Feed Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container/60">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-[#16A36A] animate-ping"></span>
+<span class="font-label-lg text-label-lg text-primary">حركات المخزن اللحظية</span>
+</div>
+<span class="font-label-sm text-[11px] text-secondary bg-secondary-container/40 px-2 py-0.5 rounded">بث مباشر</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Feed Item 1: صرف قماش -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex items-start gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-[#FCEBEB] text-[#DC4C4C] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">outbox</span>
+</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">صرف خامات تشغيل</span>
+<span class="font-label-sm text-[11px] text-outline">منذ 8 دقائق</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  صرف <span class="font-bold text-primary">450 كجم</span> قماش قطن رمادي لخط إنتاج التيشيرتات
+                </p>
+<div class="mt-2 flex items-center justify-between text-[11px] font-label-sm text-secondary">
+<span class="bg-surface-container-highest px-1.5 py-0.5 rounded">أمر تشغيل #PO-884</span>
+<span class="text-on-surface-variant">المرسل: مصطفى سالم</span>
+</div>
+</div>
+</div>
+<!-- Feed Item 2: استلام تيشيرت تام -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex items-start gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-[#E8F8F0] text-[#16A36A] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">move_to_inbox</span>
+</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">استلام إنتاج تام</span>
+<span class="font-label-sm text-[11px] text-outline">منذ 24 دقيقة</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  استلام <span class="font-bold text-[#16A36A]">2,000 قطعة</span> تيشيرت تام الصنع من خط التشطيب إلى مخزن التام
+                </p>
+<div class="mt-2 flex items-center justify-between text-[11px] font-label-sm text-secondary">
+<span class="bg-surface-container-highest px-1.5 py-0.5 rounded">إذن توريد #GRN-1102</span>
+<span class="text-on-surface-variant">فاحص الجودة: م. كمال</span>
+</div>
+</div>
+</div>
+<!-- Feed Item 3: صرف طلبية جملة -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex items-start gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">شحن طلبية جملة</span>
+<span class="font-label-sm text-[11px] text-outline">منذ 52 دقيقة</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  صرف طلبية جملة <span class="font-bold text-primary">#SO-992</span> لتاجر القاهرة (الموزع المعتمد)
+                </p>
+<div class="mt-2 flex items-center justify-between text-[11px] font-label-sm text-secondary">
+<span class="bg-surface-container-highest px-1.5 py-0.5 rounded">1,200 قطعة تيشيرت</span>
+<span class="text-[#16A36A]">جاهز للخروج</span>
+</div>
+</div>
+</div>
+<!-- Feed Item 4: تسوية مخزنية دورية -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex items-start gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">تسوية وجرد جزئي</span>
+<span class="font-label-sm text-[11px] text-outline">منذ ساعتين</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  تسوية رصيد بطاقات الليبل المطرزة وحسم 12 قطعة عوادم جودة
+                </p>
+<div class="mt-2 flex items-center justify-between text-[11px] font-label-sm text-secondary">
+<span class="bg-surface-container-highest px-1.5 py-0.5 rounded">محضر رقم #ADJ-44</span>
+<span class="text-on-surface-variant">أمين المخزن: عادل</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span>عرض سجل الحركات الكامل (KARDEX)</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</button>
+</div>
+<!-- Quick Warehouse Storage Map Snapshot -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-semibold">مخطط الإشغال المكاني للمخزن</span>
+<span class="font-label-sm text-label-sm text-secondary">إشغال 78%</span>
+</div>
+<div class="space-y-space-xs font-body-sm text-body-sm">
+<div class="flex justify-between items-center text-[12px]">
+<span class="text-on-surface-variant">هانجر الأقمشة والغزول (A1-A8)</span>
+<span class="font-bold text-primary">88%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 88%;"></div>
+</div>
+<div class="flex justify-between items-center text-[12px] pt-1">
+<span class="text-on-surface-variant">عنابر المنتجات التامة (B1-B12)</span>
+<span class="font-bold text-secondary">64%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 64%;"></div>
+</div>
+<div class="flex justify-between items-center text-[12px] pt-1">
+<span class="text-on-surface-variant">منطقة التجهيز والشحن السريع (Dock 1-4)</span>
+<span class="font-bold text-[#16A36A]">45%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-[#16A36A]" style="width: 45%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction: Keyboard shortcut or quick filter toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('button');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.innerText.includes('نواقص')) {
+          this.classList.toggle('ring-2');
+        }
+      });
+    });
+  });
+</script></main>

@@ -1,0 +1,977 @@
+<main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full px-gutter-desktop py-space-lg space-y-space-lg">
+<!-- Top Page Header Bar & Global Action Toolbar -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex flex-col space-y-1">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary/10 text-primary">لوحة القيادة المركزية</span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E8F8F0] text-[#16A36A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A36A] animate-ping"></span>
+          مباشر ومحدث لحظياً
+        </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">لوحة التحكم الرئيسية</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">نظرة شاملة ولحظية على مؤشرات الأداء التشغيلي والمالي لمصنع سوِتكس للصناعات النسيجية</p>
+</div>
+<!-- Actions & Filters (RTL-aware) -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Date Selector Filter -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">calendar_today</span>
+<span class="font-label-md text-label-md">اليوم: 24 أكتوبر 2024 (مقارنة بالشهر السابق)</span>
+<span class="material-symbols-outlined text-outline text-[16px]">expand_more</span>
+</div>
+<!-- Facility Dropdown -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">precision_manufacturing</span>
+<span class="font-label-md text-label-md">مصنع العاشر من رمضان - المجمع الصناعي</span>
+<span class="material-symbols-outlined text-outline text-[16px]">expand_more</span>
+</div>
+<!-- Refresh Trigger Button -->
+<button class="flex items-center gap-space-xs bg-surface-container-low text-primary px-space-sm py-1.5 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors" id="refreshMetricsBtn" title="تحديث المؤشرات" type="button">
+<span class="material-symbols-outlined text-[18px] transition-transform duration-500" id="refreshIcon">refresh</span>
+<span>تحديث</span>
+</button>
+<!-- Export Combined Dossier -->
+<button class="flex items-center gap-space-xs bg-primary text-on-primary px-space-md py-1.5 rounded-lg font-label-md text-label-md hover:bg-primary-container shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span>تصدير تقرير شامل (PDF/Excel)</span>
+</button>
+</div>
+</div>
+<!-- 10 Primary Manufacturing & Financial KPIs Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-space-md">
+<!-- KPI 1: إجمالي المبيعات -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">إجمالي المبيعات (الشهر الحالي)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight">4,850,200</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ج.م</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-[#16A36A] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+14.2%</span>
+<span class="text-on-surface-variant/70 font-body-sm text-[11px]">مقارنة بالفترة السابقة</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94.8%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 2: صافي الأرباح -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">صافي الأرباح المحققة</span>
+<div class="w-8 h-8 rounded-lg bg-[#E8F8F0] flex items-center justify-center text-[#16A36A]">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">1,120,400</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ج.م</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-[#16A36A] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>+8.6%</span>
+<span class="text-on-surface-variant/70 font-body-sm text-[11px]">(هامش ربح 23.1%)</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-[#16A36A] h-full w-[82%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 3: إجمالي المصروفات -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">إجمالي المصروفات التشغيلية</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">3,729,800</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ج.م</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>+3.1%</span>
+<span class="text-on-surface-variant/70 font-body-sm text-[11px]">تحت سقف الموازنة الشهرية</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[78%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 4: قيمة المخزون الكلي -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">قيمة المخزون الحالي</span>
+<div class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">warehouse</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">18,450,000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ج.م</span>
+</div>
+<div class="flex items-center gap-1 mt-1 font-body-sm text-[11px] text-on-surface-variant truncate">
+<span>خامات: 9.8M</span>
+<span class="text-outline-variant">|</span>
+<span>تام: 6.2M</span>
+<span class="text-outline-variant">|</span>
+<span>WIP: 2.45M</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-[53%]"></div>
+<div class="bg-secondary h-full w-[34%]"></div>
+<div class="bg-secondary-fixed-dim h-full w-[13%]"></div>
+</div>
+</div>
+<!-- KPI 5: أوامر الإنتاج النشطة -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">أوامر الإنتاج والتشغيل</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">conveyor_belt</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">18</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">أمر تشغيل نشط</span>
+</div>
+<div class="flex items-center gap-2 mt-1 font-label-sm text-[11px]">
+<span class="text-[#16A36A]">12 في الموعد</span>
+<span class="text-outline-variant">•</span>
+<span class="text-[#2B84C6]">4 تجميع</span>
+<span class="text-outline-variant">•</span>
+<span class="text-error font-semibold">2 متأخرة</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden flex">
+<div class="bg-[#16A36A] h-full w-[66%]"></div>
+<div class="bg-[#2B84C6] h-full w-[22%]"></div>
+<div class="bg-error h-full w-[12%]"></div>
+</div>
+</div>
+<!-- KPI 6: نسبة تحقيق المستهدف -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">تحقيق مستهدف المبيعات</span>
+<div class="w-8 h-8 rounded-lg bg-[#EAF3FC] flex items-center justify-center text-[#2B84C6]">
+<span class="material-symbols-outlined text-[18px]">track_changes</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight">94.8%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">من الخطة</span>
+</div>
+<div class="flex items-center justify-between mt-1 font-body-sm text-[11px] text-on-surface-variant">
+<span>المستهدف: 5,120,000 ج.م</span>
+<span class="font-label-sm text-[#16A36A]">باقي 269.8k</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-[#2B84C6] h-full w-[94.8%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 7: كفاءة خطوط الإنتاج OEE -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">كفاءة المعدات OEE الإجمالية</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight">88.4%</span>
+<span class="inline-flex px-1.5 py-0.5 rounded text-[10px] bg-[#E8F8F0] text-[#16A36A] font-semibold">عالمي ممتاز</span>
+</div>
+<div class="flex items-center gap-2 mt-1 font-body-sm text-[11px] text-on-surface-variant">
+<span>خط التيشيرت: 92%</span>
+<span class="text-outline-variant">•</span>
+<span>خط البنطلون: 84%</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88.4%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 8: نسبة عيوب الجودة Defect Rate -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">معدل العيوب الجودوية AQL</span>
+<div class="w-8 h-8 rounded-lg bg-[#E8F8F0] flex items-center justify-center text-[#16A36A]">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-[#16A36A] tracking-tight">1.42%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">من الإنتاج الكلي</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-[#16A36A] font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+<span>أقل من الحد الأقصى المسموح (2.0%)</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-[#16A36A] h-full w-[28%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 9: الطلبات المتأخرة Overdue Orders -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الطلبات المتأخرة عن الشحن</span>
+<div class="w-8 h-8 rounded-lg bg-[#FCEBEB] flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">pending_actions</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-error tracking-tight">3</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">طلبات عملاء</span>
+</div>
+<div class="flex items-center gap-1 mt-1 text-error font-body-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>قيد المعالجة العاجلة مع قسم التعبئة</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-error h-full w-[15%] rounded-full"></div>
+</div>
+</div>
+<!-- KPI 10: التدفق النقدي الحر Free Cash Flow -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">السيولة النقدية المتاحة</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight">+845,300</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ج.م</span>
+</div>
+<div class="flex items-center justify-between mt-1 font-body-sm text-[11px] text-on-surface-variant">
+<span>البنك الأهلي: 520k</span>
+<span class="text-outline-variant">•</span>
+<span>بنك مصر: 325.3k</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Primary Interactive Analytics Deck (Main Chart + Donut Sales Channel) -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-space-lg">
+<!-- Large Comparative Cashflow & Revenue Bar/Line Chart (2 Cols) -->
+<div class="xl:col-span-2 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface">الإيرادات مقابل المصروفات وصافي الربح (أسبوعي)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">مقارنة حركة الدخول والخروج النقدي ووتيرة نمو هامش الربح خلال شهر أكتوبر 2024</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-3 h-3 rounded bg-primary"></span> الإيراد
+          </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant mr-space-sm">
+<span class="w-3 h-3 rounded bg-secondary"></span> المصروفات
+          </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant mr-space-sm">
+<span class="w-3 h-1.5 rounded-full bg-[#16A36A]"></span> صافي الربح
+          </span>
+</div>
+</div>
+<!-- Weekly Chart Visualization (Inline High-Performance SVG with Tooltips) -->
+<div class="w-full h-72 relative flex items-end pt-4 pb-2">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 760 260">
+<defs>
+<lineargradient id="profitFill" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#16A36A" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#16A36A" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Grid Lines -->
+<line stroke="#E2E8F0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="760" y1="40" y2="40"></line>
+<line stroke="#E2E8F0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="760" y1="100" y2="100"></line>
+<line stroke="#E2E8F0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="760" y1="160" y2="160"></line>
+<line stroke="#E2E8F0" stroke-width="1" x1="0" x2="760" y1="220" y2="220"></line>
+<!-- Axis Values (EGP Thousand) -->
+<text fill="#74777F" font-family="IBM Plex Sans" font-size="10" text-anchor="start" x="755" y="38">1,500k ج.م</text>
+<text fill="#74777F" font-family="IBM Plex Sans" font-size="10" text-anchor="start" x="755" y="98">1,000k ج.م</text>
+<text fill="#74777F" font-family="IBM Plex Sans" font-size="10" text-anchor="start" x="755" y="158">500k ج.م</text>
+<text fill="#74777F" font-family="IBM Plex Sans" font-size="10" text-anchor="start" x="755" y="218">0 ج.م</text>
+<!-- Week 1 Bars (X: 70 - 140) -->
+<rect class="hover:opacity-80 transition-opacity" fill="#001835" height="150" rx="3" width="28" x="75" y="70"><title>أسبوع 1 - الإيرادات: 1,180,000 ج.م</title></rect>
+<rect class="hover:opacity-80 transition-opacity" fill="#3E6186" height="115" rx="3" width="28" x="107" y="105"><title>أسبوع 1 - المصروفات: 910,000 ج.م</title></rect>
+<!-- Week 2 Bars (X: 230 - 300) -->
+<rect class="hover:opacity-80 transition-opacity" fill="#001835" height="135" rx="3" width="28" x="235" y="85"><title>أسبوع 2 - الإيرادات: 1,060,000 ج.م</title></rect>
+<rect class="hover:opacity-80 transition-opacity" fill="#3E6186" height="102" rx="3" width="28" x="267" y="118"><title>أسبوع 2 - المصروفات: 820,000 ج.م</title></rect>
+<!-- Week 3 Bars (X: 390 - 460) -->
+<rect class="hover:opacity-80 transition-opacity" fill="#001835" height="165" rx="3" width="28" x="395" y="55"><title>أسبوع 3 - الإيرادات: 1,290,000 ج.م</title></rect>
+<rect class="hover:opacity-80 transition-opacity" fill="#3E6186" height="122" rx="3" width="28" x="427" y="98"><title>أسبوع 3 - المصروفات: 960,000 ج.م</title></rect>
+<!-- Week 4 Bars (X: 550 - 620) -->
+<rect class="hover:opacity-80 transition-opacity" fill="#001835" height="172" rx="3" width="28" x="555" y="48"><title>أسبوع 4 - الإيرادات: 1,320,200 ج.م</title></rect>
+<rect class="hover:opacity-80 transition-opacity" fill="#3E6186" height="128" rx="3" width="28" x="587" y="92"><title>أسبوع 4 - المصروفات: 1,039,800 ج.م</title></rect>
+<!-- Smooth Area + Profit Trend Line -->
+<path d="M 105 175 Q 265 185, 425 150 T 585 142 L 585 220 L 105 220 Z" fill="url(#profitFill)"></path>
+<path d="M 105 175 Q 265 185, 425 150 T 585 142" fill="none" stroke="#16A36A" stroke-linecap="round" stroke-width="3"></path>
+<!-- Points -->
+<circle cx="105" cy="175" fill="#FFFFFF" r="4.5" stroke="#16A36A" stroke-width="2.5"></circle>
+<circle cx="265" cy="185" fill="#FFFFFF" r="4.5" stroke="#16A36A" stroke-width="2.5"></circle>
+<circle cx="425" cy="150" fill="#FFFFFF" r="4.5" stroke="#16A36A" stroke-width="2.5"></circle>
+<circle cx="585" cy="142" fill="#FFFFFF" r="4.5" stroke="#16A36A" stroke-width="2.5"></circle>
+</svg>
+</div>
+<!-- X-Axis Labels -->
+<div class="grid grid-cols-4 text-center font-label-md text-label-md text-on-surface-variant pt-2 border-t border-surface-container">
+<div>
+<span class="block text-on-surface font-semibold">الأسبوع الأول</span>
+<span class="text-label-sm text-[11px]">1 - 7 أكتوبر (270k ربح)</span>
+</div>
+<div>
+<span class="block text-on-surface font-semibold">الأسبوع الثاني</span>
+<span class="text-label-sm text-[11px]">8 - 14 أكتوبر (240k ربح)</span>
+</div>
+<div>
+<span class="block text-on-surface font-semibold">الأسبوع الثالث</span>
+<span class="text-label-sm text-[11px]">15 - 21 أكتوبر (330k ربح)</span>
+</div>
+<div>
+<span class="block text-on-surface font-semibold">الأسبوع الرابع (الحالي)</span>
+<span class="text-label-sm text-[11px]">22 - 28 أكتوبر (280.4k ربح)</span>
+</div>
+</div>
+</div>
+<!-- Sales Distribution by Channel Donut -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">توزيع المبيعات بالقنوات</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">حجم الإيرادات حسب نمط وقنوات التصريف</p>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">pie_chart</span>
+</div>
+<!-- Interactive Donut SVG -->
+<div class="relative flex items-center justify-center my-2">
+<svg class="w-48 h-48 transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background circle -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#E8EDFF" stroke-width="14"></circle>
+<!-- Segment 1: Wholesale (48%) -> stroke-dasharray: 114.6 238.8 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#001835" stroke-dasharray="114.6 238.8" stroke-dashoffset="0" stroke-width="14"></circle>
+<!-- Segment 2: Retail (22%) -> stroke-dasharray: 52.5 238.8 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#3E6186" stroke-dasharray="52.5 238.8" stroke-dashoffset="-114.6" stroke-width="14"></circle>
+<!-- Segment 3: E-commerce (18%) -> stroke-dasharray: 43 238.8 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#3E96FA" stroke-dasharray="43 238.8" stroke-dashoffset="-167.1" stroke-width="14"></circle>
+<!-- Segment 4: Corporate/Custom (12%) -> stroke-dasharray: 28.7 238.8 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#B2D5FF" stroke-dasharray="28.7 238.8" stroke-dashoffset="-210.1" stroke-width="14"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-[11px] text-on-surface-variant">إجمالي المبيعات</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">4.85M</span>
+<span class="font-label-sm text-[10px] text-[#16A36A]">ج.م محققة</span>
+</div>
+</div>
+<!-- Channel Breakdown Legend -->
+<div class="space-y-2 pt-space-xs border-t border-surface-container">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-primary"></span>
+<span class="text-on-surface">تجارة الجملة والتوكيلات</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">2,328,000 ج.م</span>
+<span class="font-label-sm text-on-surface-variant text-[11px]">(48%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-secondary"></span>
+<span class="text-on-surface">معارض وفروع التجزئة</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">1,067,000 ج.م</span>
+<span class="font-label-sm text-on-surface-variant text-[11px]">(22%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-[#3E96FA]"></span>
+<span class="text-on-surface">المتجر الإلكتروني B2C</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">873,000 ج.م</span>
+<span class="font-label-sm text-on-surface-variant text-[11px]">(18%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-[#B2D5FF]"></span>
+<span class="text-on-surface">عقود الزي الموحد والشركات</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">582,200 ج.م</span>
+<span class="font-label-sm text-on-surface-variant text-[11px]">(12%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Operational Visualizations (Production Lines Target vs Actual & Warehouse Balance) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Production Line Output: Planned vs Actual -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">أداء خطوط الإنتاج (المخطط مقابل الفعلي بالقطع)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">متابعة دقيقة لمعدلات الإنجاز اليومية لورديات العمل</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 font-label-sm text-[11px] text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded bg-surface-container-highest"></span> المخطط
+          </span>
+<span class="flex items-center gap-1 font-label-sm text-[11px] text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded bg-primary"></span> المنفذ الفعلي
+          </span>
+</div>
+</div>
+<div class="space-y-space-md pt-2">
+<!-- Line 1: T-Shirts -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">styler</span>
+              خط إنتاج التيشيرتات والبولو
+            </span>
+<span class="text-primary font-bold">18,500 / 20,000 قطعة <span class="text-[#16A36A] font-semibold text-[11px]">(92.5%)</span></span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-[92.5%] rounded-full transition-all"></div>
+</div>
+</div>
+<!-- Line 2: Shirts -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">dry_cleaning</span>
+              خط القمصان الكلاسيك والكاجوال
+            </span>
+<span class="text-primary font-bold">11,200 / 12,500 قطعة <span class="text-[#16A36A] font-semibold text-[11px]">(89.6%)</span></span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full w-[89.6%] rounded-full transition-all"></div>
+</div>
+</div>
+<!-- Line 3: Trousers & Jeans -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">roller_shades</span>
+              خط البنطلونات والجينز
+            </span>
+<span class="text-primary font-bold">7,800 / 9,500 قطعة <span class="text-[#E6A23C] font-semibold text-[11px]">(82.1%)</span></span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[82.1%] rounded-full transition-all"></div>
+</div>
+</div>
+<!-- Line 4: Sportswear & Hoodies -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-[#3E96FA] text-[18px]">sports_martial_arts</span>
+              خط الملابس الرياضية والهودي
+            </span>
+<span class="text-primary font-bold">14,100 / 15,000 قطعة <span class="text-[#16A36A] font-semibold text-[11px]">(94.0%)</span></span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="bg-[#3E96FA] h-full w-[94%] rounded-full transition-all"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-body-sm text-[12px] text-on-surface-variant border-t border-surface-container">
+<span>إجمالي القطع المصنعة هذا الشهر: <strong>51,600 قطعة</strong></span>
+<a class="text-primary hover:underline font-label-sm" href="#">عرض تفاصيل الورديات والمحطات ←</a>
+</div>
+</div>
+<!-- Inventory Valuation by Warehouse -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">تقييم المستودعات وحركة الخامات</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">رصيد الأقمشة والإكسسوارات الجاهزة والبضاعة التامة</p>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">inventory_2</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">مخزن الأقمشة والغزول</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="my-2">
+<div class="font-headline-md text-headline-md text-primary font-bold">9,800,000</div>
+<span class="text-label-sm text-[11px] text-on-surface-variant">ج.م (53% من المخزون)</span>
+</div>
+<div class="text-[11px] font-body-sm text-[#16A36A]">142,000 متر قماش متنوع</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">مخزن المنتج التام FG</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="my-2">
+<div class="font-headline-md text-headline-md text-on-surface font-bold">6,200,000</div>
+<span class="text-label-sm text-[11px] text-on-surface-variant">ج.م (34% من المخزون)</span>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant">38,400 قطعة جاهزة للشحن</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">إنتاج تحت التشغيل WIP</span>
+<span class="w-2 h-2 rounded-full bg-[#E6A23C]"></span>
+</div>
+<div class="my-2">
+<div class="font-headline-md text-headline-md text-on-surface font-bold">2,450,000</div>
+<span class="text-label-sm text-[11px] text-on-surface-variant">ج.م (13% من المخزون)</span>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant">بين محطات القص والتطريز</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">إكسسوارات ومستلزمات</span>
+<span class="w-2 h-2 rounded-full bg-[#3E96FA]"></span>
+</div>
+<div class="my-2">
+<div class="font-headline-md text-headline-md text-on-surface font-bold">1,820,000</div>
+<span class="text-label-sm text-[11px] text-on-surface-variant">ج.م (أزرار، سحابات، خيوط)</span>
+</div>
+<div class="text-[11px] font-body-sm text-[#16A36A]">كفاية تشغيل 45 يوماً</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-body-sm text-[12px] text-on-surface-variant border-t border-surface-container">
+<span>معدل دوران المخزون: <strong>4.8 دورة / سنة</strong></span>
+<button class="text-secondary font-label-sm hover:underline" type="button">طلب جرد دوري بالباركود</button>
+</div>
+</div>
+</div>
+<!-- Operational Alerts & Actionable Incidents -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-error text-[22px]">notifications_active</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">تنبيهات تشغيلية عاجلة تتطلب تدخلاً</h2>
+</div>
+<span class="inline-flex px-2 py-0.5 rounded text-[11px] font-label-sm bg-error-container text-on-error-container">3 تنبيهات حرجة</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Alert 1: Stock Reorder Threshold -->
+<div class="p-space-md rounded-lg bg-[#FEF6EB] text-on-surface flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-[#E6A23C] font-semibold">
+<span class="material-symbols-outlined text-[16px]">priority_high</span> خامات بلغت حد إعادة الطلب
+          </span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">اليوم 09:15 ص</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">غزل قطن مصري 100% تمشيط ناعم</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">الرصيد المتبقي بمخزن الخامات <strong>420 كجم</strong> فقط، والحد الأدنى الآمن للتشغيل 1,000 كجم.</p>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-error font-semibold text-label-sm">عجز محتمل خلال 48 ساعة</span>
+<button class="px-2.5 py-1 bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm shadow-sm hover:bg-surface-container" type="button">إصدار أمر شراء</button>
+</div>
+</div>
+<!-- Alert 2: Production Deadline Risk -->
+<div class="p-space-md rounded-lg bg-[#FCEBEB] text-on-surface flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-error font-semibold">
+<span class="material-symbols-outlined text-[16px]">error</span> موعد تسليم يقترب
+          </span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">اليوم 10:30 ص</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">أمر تشغيل #PO-2024-884</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">توريد 2,500 زي موحد (يونيفورم شركة بترول) متأخر بمرحلة الطباعة الحرارية بيوم كامل.</p>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-error font-semibold text-label-sm">تاريخ الشحن: غداً 05:00 م</span>
+<button class="px-2.5 py-1 bg-error text-on-error rounded font-label-sm text-label-sm shadow-sm hover:bg-[#93000A]" type="button">إعادة توجيه وردية</button>
+</div>
+</div>
+<!-- Alert 3: Supplier Payment Due -->
+<div class="p-space-md rounded-lg bg-surface-container-low text-on-surface flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-secondary font-semibold">
+<span class="material-symbols-outlined text-[16px]">pending</span> مستحقات موردين اليوم
+          </span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">اليوم 11:00 ص</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">شركة مصر للغزل والنسيج</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">فاتورة توريد خامات #INV-7714 بقيمة <strong>340,000 ج.م</strong> مستحقة السداد البنكي اليوم للاستفادة من خصم التعجيل.</p>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-secondary font-semibold text-label-sm">خصم متاح 2% (6,800 ج.م)</span>
+<button class="px-2.5 py-1 bg-primary text-on-primary rounded font-label-sm text-label-sm shadow-sm hover:bg-primary-container" type="button">اعتماد الدفع</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Performing Products Table (المنتجات الأكثر مبيعاً وربحية) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md overflow-hidden">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">stars</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">المنتجات والموديلات الأكثر مبيعاً وربحية</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">تحليل ربحية الموديل، حجم المبيعات المنجزة، والتكلفة الصناعية المباشرة للقطعة</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 bg-surface-container-low text-on-surface rounded-lg font-label-sm text-label-sm hover:bg-surface-container" type="button">فلترة بالموسم: شتاء 2024</button>
+<button class="px-space-sm py-1.5 bg-surface-container-low text-primary rounded-lg font-label-sm text-label-sm hover:bg-surface-container" type="button">عرض الكتالوج الكامل ←</button>
+</div>
+</div>
+<!-- Table Responsive Scroller -->
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-space-sm px-space-md text-right">الموديل والرمز (SKU)</th>
+<th class="py-space-sm px-space-md text-right">الفئة</th>
+<th class="py-space-sm px-space-md text-center">الكمية المباعة</th>
+<th class="py-space-sm px-space-md text-left">إجمالي الإيراد</th>
+<th class="py-space-sm px-space-md text-left">التكلفة الصناعية</th>
+<th class="py-space-sm px-space-md text-left">صافي الربح</th>
+<th class="py-space-sm px-space-md text-center">هامش الربح</th>
+<th class="py-space-sm px-space-md text-center">حالة المخزون</th>
+<th class="py-space-sm px-space-md text-center">إجراء</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Product Row 1 (Using Inspired Navy/Gold Polo Image https://lh3.googleusercontent.com/aida-public/AB6AXuCFU1ZC9JklS9RuCXtT7AP-DE4R7eCdKru6QoxlDDTDgPbYXaro64aas9_mDVjdsKhXxPy1GJhM23_im8fYqDelgB7HiF-eeIW1cIsr2VgaG-WdJbAB-v5ohYDzo_3AiRKzGFM7gh97PAghNGsd-J-Cvm3luAg8AjPHx4HppGUUMVI6NjO5PfDlERgEDus3kR5ZEFJU0cMaZ6ZlFJ2FuZlVy0FgUmecaKYIILRhpqdkv6VGhQGN-MCO) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<img alt="تيشيرت رجالي قطن بريميوم أسود كحلي بشعار سوِتكس الذهبي" class="w-12 h-14 object-cover rounded-lg shadow-sm shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFU1ZC9JklS9RuCXtT7AP-DE4R7eCdKru6QoxlDDTDgPbYXaro64aas9_mDVjdsKhXxPy1GJhM23_im8fYqDelgB7HiF-eeIW1cIsr2VgaG-WdJbAB-v5ohYDzo_3AiRKzGFM7gh97PAghNGsd-J-Cvm3luAg8AjPHx4HppGUUMVI6NjO5PfDlERgEDus3kR5ZEFJU0cMaZ6ZlFJ2FuZlVy0FgUmecaKYIILRhpqdkv6VGhQGN-MCO"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">تيشيرت رجالي قطن بريميوم كحلي/أسود</span>
+<span class="font-data-tabular text-[11px] text-outline font-mono">STX-TSH-BLK-M • شعار سوِتكس الذهبي</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ملابس كاجوال رجالي</td>
+<td class="py-space-sm px-space-md text-center font-data-tabular font-semibold">14,200 قطعة</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular font-semibold text-primary">1,846,000 ج.م</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular text-on-surface-variant">994,000 ج.م</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular font-bold text-[#16A36A]">852,000 ج.م</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-[11px] font-semibold bg-[#E8F8F0] text-[#16A36A]">46.1%</span>
+</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-[#16A36A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A36A]"></span> متوفر (3,400 قط.)
+              </span>
+</td>
+<td class="py-space-sm px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Product Row 2 (Using Inspired Grey/White Casual Image https://lh3.googleusercontent.com/aida-public/AB6AXuBclUUKY4OQ7jId4RU21MXDb7Uq9yTzp3-_aYG1KzGmOR0T9vh1gcIlvLn_3vClJySF1wSFlTpVb0gxeNbsIhI0vmaZ86b14qIM-d321Qfjf6KFaGCs0uGu7iZ-p_l4JcrZPTQgNb3RKhgWd8p5kKa6MYl__fksB2ESBCmXfU5PclMlReLT1Vlmbtmflw2KyYDV4NxW_Ge7OG85XDkOYPx1f-QJXh11Y9RvijfMtBxhvo31Ho0OgiL5) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<img alt="تيشيرت نسائي كاجوال رمادي مطرز بشعار سوِتكس" class="w-12 h-14 object-cover rounded-lg shadow-sm shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBclUUKY4OQ7jId4RU21MXDb7Uq9yTzp3-_aYG1KzGmOR0T9vh1gcIlvLn_3vClJySF1wSFlTpVb0gxeNbsIhI0vmaZ86b14qIM-d321Qfjf6KFaGCs0uGu7iZ-p_l4JcrZPTQgNb3RKhgWd8p5kKa6MYl__fksB2ESBCmXfU5PclMlReLT1Vlmbtmflw2KyYDV4NxW_Ge7OG85XDkOYPx1f-QJXh11Y9RvijfMtBxhvo31Ho0OgiL5"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">تيشيرت كاجوال رمادي / أبيض مطرز</span>
+<span class="font-data-tabular text-[11px] text-outline font-mono">STX-TSH-W-GRY • تطريز ذهبي صدر</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">ملابس كاجوال للجنسين</td>
+<td class="py-space-sm px-space-md text-center font-data-tabular font-semibold">9,800 قطعة</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular font-semibold text-primary">1,372,000 ج.م</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular text-on-surface-variant">784,000 ج.م</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular font-bold text-[#16A36A]">588,000 ج.م</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-[11px] font-semibold bg-[#E8F8F0] text-[#16A36A]">42.8%</span>
+</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-[#2B84C6]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2B84C6]"></span> تشغيل نشط (1,200 قط.)
+              </span>
+</td>
+<td class="py-space-sm px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Product Row 3: بنطلون جينز أزرق قطن ستريتش -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-12 h-14 object-cover rounded-lg shadow-sm shrink-0" data-alt="Folded luxury dark blue denim jeans made from stretch Egyptian cotton stacked neatly in an industrial garment warehouse setting with soft overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXQs0ZUP_R4QUAd3en2oEE3N72Lc9FF_gi6JED16JkgdcMTPfVcXqjWmTrR5hBslRAHkOR1Ky1vxfDcUoPEj0fDIZdsfi76osBRTJPFdHu88QTmaTpjyjXdyMbNN0NMBIXC7v75kM4CjpkK5P3B8TndKkvAuTjOIiSnFRk7GhjzUzT5AHPb_rjcUK3e4VzYd_l3oBDc3N7nb06zdZAUNPoCTKOLL_-Eu3QL9nyIfk"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">بنطلون جينز قطن ستريتش أزرق نيلي</span>
+<span class="font-data-tabular text-[11px] text-outline font-mono">STX-JNS-BLU • نسيج دينيم 12 أونصة</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">بناطيل ودينيم</td>
+<td class="py-space-sm px-space-md text-center font-data-tabular font-semibold">6,400 قطعة</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular font-semibold text-primary">2,240,000 ج.م</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular text-on-surface-variant">1,377,600 ج.م</td>
+<td class="py-space-sm px-space-md text-left font-data-tabular font-bold text-[#16A36A]">862,400 ج.م</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-[11px] font-semibold bg-[#E8F8F0] text-[#16A36A]">38.5%</span>
+</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-[#E6A23C]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E6A23C]"></span> مخزون منخفض (680 قط.)
+              </span>
+</td>
+<td class="py-space-sm px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bottom Section: Department Performance Scorecards & Live Activity Log -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-space-lg">
+<!-- Department Performance Cards (2 Cols) -->
+<div class="xl:col-span-2 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">كفاءة الأقسام والقطاعات التشغيلية</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">مؤشرات الأداء الرئيسية (KPIs) لكل قسم داخل الهيكل الإداري للمصنع</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/50 px-2 py-1 rounded">شهر أكتوبر 2024</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-space-sm">
+<!-- Department 1: المبيعات -->
+<div class="p-space-md rounded-lg bg-surface-container-low border-r-4 border-primary flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">قطاع المبيعات والتصدير</span>
+<span class="material-symbols-outlined text-primary text-[20px]">point_of_sale</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>نسبة تحقيق التارجت:</span>
+<span class="font-semibold text-primary">94.8%</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>عقود تصدير مفتوحة:</span>
+<span class="font-semibold text-on-surface">3 عقود</span>
+</div>
+</div>
+<div class="pt-1 text-[11px] font-label-sm text-[#16A36A] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> أداء متصاعد (+14.2%)
+          </div>
+</div>
+<!-- Department 2: إدارة الإنتاج -->
+<div class="p-space-md rounded-lg bg-surface-container-low border-r-4 border-secondary flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">إدارة خطوط الإنتاج</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">precision_manufacturing</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>كفاءة المعدات OEE:</span>
+<span class="font-semibold text-secondary">88.4%</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>أوامر منجزة بالموعد:</span>
+<span class="font-semibold text-on-surface">85.7%</span>
+</div>
+</div>
+<div class="pt-1 text-[11px] font-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span> ضمن الحدود التشغيلية المثلى
+          </div>
+</div>
+<!-- Department 3: مراقبة الجودة QC -->
+<div class="p-space-md rounded-lg bg-surface-container-low border-r-4 border-[#16A36A] flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">مراقبة الجودة AQL</span>
+<span class="material-symbols-outlined text-[#16A36A] text-[20px]">verified</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>معدل الفحص الأول:</span>
+<span class="font-semibold text-[#16A36A]">98.58%</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>مردودات العملاء:</span>
+<span class="font-semibold text-on-surface">0.12%</span>
+</div>
+</div>
+<div class="pt-1 text-[11px] font-label-sm text-[#16A36A] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> شهادة أيزو 9001 سارية
+          </div>
+</div>
+<!-- Department 4: المستودعات وسلاسل الإمداد -->
+<div class="p-space-md rounded-lg bg-surface-container-low border-r-4 border-[#3E96FA] flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">المستودعات وسلاسل الإمداد</span>
+<span class="material-symbols-outlined text-[#3E96FA] text-[20px]">inventory</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>دقة الجرد الدوري:</span>
+<span class="font-semibold text-on-surface">99.1%</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>متوسط زمن صرف الخام:</span>
+<span class="font-semibold text-on-surface">22 دقيقة</span>
+</div>
+</div>
+<div class="pt-1 text-[11px] font-label-sm text-[#3E96FA] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sync</span> ربط آلي مع الباركود
+          </div>
+</div>
+<!-- Department 5: الإدارة المالية -->
+<div class="p-space-md rounded-lg bg-surface-container-low border-r-4 border-primary flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">المالية والمحاسبة</span>
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>فترة تحصيل الديون DSO:</span>
+<span class="font-semibold text-primary">34 يوماً</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>التدفق النقدي التشغيلي:</span>
+<span class="font-semibold text-[#16A36A]">+845k ج.م</span>
+</div>
+</div>
+<div class="pt-1 text-[11px] font-label-sm text-[#16A36A] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> ملاءة مالية مستقرة
+          </div>
+</div>
+<!-- Department 6: الموارد البشرية والعمالة -->
+<div class="p-space-md rounded-lg bg-surface-container-low border-r-4 border-outline flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">الموارد البشرية والعمالة</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">badge</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>نسبة حضور الفنيين:</span>
+<span class="font-semibold text-on-surface">96.4%</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>القوة العاملة بالورديات:</span>
+<span class="font-semibold text-on-surface">324 عاملاً</span>
+</div>
+</div>
+<div class="pt-1 text-[11px] font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">groups</span> ورديتان صباحية ومسائية
+          </div>
+</div>
+</div>
+</div>
+<!-- Live Activity & Event Stream (1 Col) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-[#16A36A] animate-pulse"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface">سجل العمليات اللحظي</h2>
+</div>
+<span class="text-label-sm text-[11px] text-on-surface-variant">محدث الآن</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">آخر العمليات المعتمدة وإذون الصرف وأوامر التشغيل</p>
+<!-- Events List -->
+<div class="space-y-space-md mt-space-md">
+<!-- Event 1 -->
+<div class="flex items-start gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="w-7 h-7 rounded-full bg-[#E8F8F0] text-[#16A36A] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">إتمام أمر إنتاج #PRD-940</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">خط التيشيرت: تسليم 3,000 تيشيرت أسود كود STX-TSH-BLK للمستودع التام.</span>
+<span class="font-label-sm text-[10px] text-outline mt-1 font-mono">اليوم 11:42 ص • فني الجودة: م. عمر سامي</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex items-start gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="w-7 h-7 rounded-full bg-[#EAF3FC] text-[#2B84C6] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">شحن طلب بيع جملة #SO-5519</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">إلى توكيل المنصورة التجاري بإجمالي فاتورة 485,000 ج.م.</span>
+<span class="font-label-sm text-[10px] text-outline mt-1 font-mono">اليوم 11:15 ص • المشرف: كمال عبد الرازق</span>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex items-start gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="w-7 h-7 rounded-full bg-[#FEF6EB] text-[#E6A23C] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">move_to_inbox</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">إذن استلام فحص خامات GRN-102</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">توريد 1,200 كجم غزل قطن رمادي من المحلة الكبرى، قيد الفحص المعملي.</span>
+<span class="font-label-sm text-[10px] text-outline mt-1 font-mono">اليوم 10:20 ص • استلام: مخزن الخامات 1</span>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">تحصيل شيك بنكي آجل</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">إيداع 220,000 ج.م بحساب البنك الأهلي المصري من عميل التصدير سوتكس الأردن.</span>
+<span class="font-label-sm text-[10px] text-outline mt-1 font-mono">اليوم 09:30 ص • الحسابات العامة</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-sm border-t border-surface-container text-center">
+<button class="w-full py-1.5 bg-surface-container-low text-primary font-label-sm text-label-sm rounded-lg hover:bg-surface-container transition-colors" type="button">
+          عرض كامل سجل التدقيق والمراجعة الإدارية (Audit Log)
+        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive UI Micro-Script for Refresh Visual Effect -->
+<script>
+  document.getElementById('refreshMetricsBtn')?.addEventListener('click', function() {
+    const icon = document.getElementById('refreshIcon');
+    if (icon) {
+      icon.classList.add('rotate-180');
+      setTimeout(() => {
+        icon.classList.remove('rotate-180');
+      }, 500);
+    }
+  });
+</script></main>
