@@ -1,6 +1,7 @@
 import assert from "assert";
 import { CORE_ROLES } from "../lib/constants";
 import { RoleKey } from "../lib/types";
+import { solveProductMixLP, calculateEOQAndROP, prioritizeWorkOrdersOR } from "../lib/or-engine";
 
 // Helper functions under test
 function canAccessRoute(roleKey: RoleKey, route: string): boolean {
@@ -258,6 +259,75 @@ async function runFrontendLogicTests() {
 
     const po = { totalEGP: 285000, status: "in_shipping" };
     assert.strictEqual(po.status === "in_shipping", true);
+  });
+
+  // TEST 12: Operations Research (OR) Linear Programming, EOQ & Scheduling
+  test("12. Operations Research (OR) Product Mix LP, EOQ & Scheduling Algorithms", () => {
+    const mix = solveProductMixLP(
+      [
+        {
+          id: "p1",
+          skuCode: "SKU-1",
+          nameAr: "جاكيت جينز",
+          wholesalePrice: 600,
+          costPrice: 350,
+          fabricMetersPerPiece: 1.5,
+          minutesPerPiece: 30,
+          maxDemand: 1000,
+        },
+        {
+          id: "p2",
+          skuCode: "SKU-2",
+          nameAr: "تيشيرت بولو",
+          wholesalePrice: 250,
+          costPrice: 170,
+          fabricMetersPerPiece: 1.0,
+          minutesPerPiece: 15,
+          maxDemand: 1000,
+        },
+      ],
+      1500,
+      1000
+    );
+    assert(mix.totalProjectedProfit > 0, "LP Product Mix must generate positive profit");
+    assert(mix.totalFabricUsed <= 1500, "LP must respect fabric constraint");
+    assert(mix.totalHoursUsed <= 1000, "LP must respect line hours constraint");
+
+    const eoq = calculateEOQAndROP(
+      {
+        code: "FAB-1",
+        nameAr: "قماش دينيم",
+        availableQty: 100,
+        unit: "متر",
+        unitCost: 150,
+        dailyUsage: 50,
+        leadTimeDays: 6,
+      },
+      1200,
+      0.2
+    );
+    assert(eoq.eoq > 0, "EOQ must be positive");
+    assert.strictEqual(eoq.urgency, "CRITICAL", "Low stock vs safety stock must trigger CRITICAL urgency");
+
+    const sched = prioritizeWorkOrdersOR(
+      [
+        {
+          code: "WO-1",
+          productNameAr: "موديل أ",
+          customerAr: "عميل",
+          remainingQty: 1000,
+          lineNameAr: "خط 1",
+          lineDailyCapacity: 200,
+          lineOee: 85,
+          dueDate: "2026-11-25",
+          status: "SEWING",
+        },
+      ],
+      "خط 2",
+      new Date("2026-11-23")
+    );
+    assert.strictEqual(sched.length, 1);
+    assert.strictEqual(sched[0].riskLevel, "HIGH", "2 days left for 5 days work must be HIGH risk");
   });
 
   console.log("\n-------------------------------------------------------");

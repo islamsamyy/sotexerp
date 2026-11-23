@@ -1,54 +1,80 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { CORE_ROLES } from "@/lib/constants";
 import { RoleKey } from "@/lib/types";
-
 import { useERP } from "@/lib/erp-context";
 import { supabase, logAuditAction } from "@/lib/supabase";
+
+interface MatrixPermissionRow {
+  id: string;
+  module_name: string;
+  category: string;
+  owner_admin: boolean;
+  production_manager: boolean;
+  warehouse_manager: boolean;
+  finance_sales_manager: boolean;
+  sort_order: number;
+}
+
+const ROLE_COL_MAP: Record<RoleKey, keyof Pick<MatrixPermissionRow, "owner_admin" | "production_manager" | "warehouse_manager" | "finance_sales_manager">> = {
+  OWNER_ADMIN: "owner_admin",
+  PRODUCTION_MANAGER: "production_manager",
+  WAREHOUSE_MANAGER: "warehouse_manager",
+  FINANCE_SALES_MANAGER: "finance_sales_manager",
+};
 
 export default function RoleDetailPage() {
   const params = useParams();
   const { showToast, currentUser, roleConfig } = useERP();
-  const roleId = params?.id as RoleKey;
+  const roleId = (params?.id as RoleKey) || "OWNER_ADMIN";
   const role = CORE_ROLES[roleId] || CORE_ROLES["OWNER_ADMIN"];
+  const roleCol = ROLE_COL_MAP[roleId] || "owner_admin";
+
+  const [rows, setRows] = useState<MatrixPermissionRow[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
-  const [permissions, setPermissions] = useState<Record<string, boolean>>({
-    "products.view": true,
-    "products.create": role.key === "OWNER_ADMIN" || role.key === "PRODUCTION_MANAGER",
-    "products.edit": role.key === "OWNER_ADMIN" || role.key === "PRODUCTION_MANAGER",
-    "products.cost": role.canViewCost,
-    "inventory.view": true,
-    "inventory.issue": role.key !== "FINANCE_SALES_MANAGER",
-    "inventory.grn": role.key !== "FINANCE_SALES_MANAGER",
-    "production.view": role.key !== "FINANCE_SALES_MANAGER",
-    "production.manage": role.key === "OWNER_ADMIN" || role.key === "PRODUCTION_MANAGER",
-    "finance.view": role.canViewCost,
-    "finance.approve": role.canApproveFinancial,
-    "settings.manage": role.canManageUsers,
-  });
+  const fetchMatrix = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("role_permissions_matrix")
+        .select("*")
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      if (data) setRows(data as MatrixPermissionRow[]);
+    } catch (err: unknown) {
+      showToast("error", "تعذر تحميل صلاحيات الدور", err instanceof Error ? err.message : "خطأ غير متوقع");
+    } finally {
+      setIsLoading(false);
+    }
+  }, [showToast]);
 
-  const toggle = (k: string) => setPermissions(p => ({ ...p, [k]: !p[k] }));
+  useEffect(() => {
+    fetchMatrix();
+  }, [fetchMatrix]);
+
+  const toggle = (id: string) => {
+    setRows((prev) =>
+      prev.map((row) => (row.id === id ? { ...row, [roleCol]: !row[roleCol] } : row))
+    );
+  };
 
   const handleSavePermissions = async () => {
     setSaving(true);
     try {
-      const { error } = await supabase.from("role_permissions_matrix").upsert(
-        {
-          role_key: roleId,
-          permissions_json: permissions,
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: "role_key" }
+      const updates = rows.map((row) =>
+        supabase
+          .from("role_permissions_matrix")
+          .update({ [roleCol]: row[roleCol] })
+          .eq("id", row.id)
       );
-
-      if (error) {
-        // If table doesn't have onConflict on role_key, just log audit
-        console.warn("Role permissions update notice:", error);
-      }
+      const results = await Promise.all(updates);
+      const firstErr = results.find((r) => r.error)?.error;
+      if (firstErr) throw firstErr;
 
       await logAuditAction({
         userName: currentUser.nameAr,
@@ -57,13 +83,13 @@ export default function RoleDetailPage() {
         entityType: "roles",
         entityId: roleId,
         entityName: role.nameAr,
-        details: permissions,
+        details: Object.fromEntries(rows.map((r) => [r.id, r[roleCol]])),
         severity: "WARNING",
       });
 
       showToast("success", "تم حفظ صلاحيات الدور في Supabase", `تم تحديث مصفوفة الصلاحيات لدور: ${role.nameAr}`);
-    } catch (err: any) {
-      showToast("error", "فشل الحفظ", err?.message || "خطأ أثناء الحفظ");
+    } catch (err: unknown) {
+      showToast("error", "فشل الحفظ", err instanceof Error ? err.message : "خطأ أثناء الحفظ");
     } finally {
       setSaving(false);
     }
@@ -97,42 +123,41 @@ export default function RoleDetailPage() {
       {/* Permissions Editor */}
       <div className="p-5 rounded-xl border border-outline-variant/30 bg-surface-container-lowest space-y-4 shadow-xs">
         <h3 className="font-bold text-sm text-on-surface pb-2 border-b border-outline-variant/20">
-          محرر صلاحيات الوحدات التشغيلية
+          محرر صلاحيات الوحدات التشغيلية (مباشر من Supabase)
         </h3>
 
-        <div className="space-y-3">
-          {[
-            { key: "products.view", title: "كتالوج المنتجات — عرض واستعراض الموديلات" },
-            { key: "products.create", title: "كتالوج المنتجات — تكويد وتصميم موديل جديد" },
-            { key: "products.cost", title: "المنتجات والتسعير — الاطلاع على تكلفة التصنيع وهامش الربح" },
-            { key: "inventory.view", title: "المخازن — استعراض الأرصدة وحركات الأقمشة" },
-            { key: "inventory.issue", title: "المخازن — اعتماد وإصدار أذون صرف الخامات للإنتاج" },
-            { key: "production.view", title: "خطوط الإنتاج — متابعة أوامر التشغيل وكفاءة الخطوط" },
-            { key: "production.manage", title: "خطوط الإنتاج — جدولة الخطط وتوزيع الورديات" },
-            { key: "finance.view", title: "المالية — الاطلاع على القيود اليومية والخزينة" },
-            { key: "finance.approve", title: "المالية — اعتماد سندات الصرف والخصومات الاستثنائية" },
-            { key: "settings.manage", title: "إدارة النظام — إدارة المستخدمين وتعديل الصلاحيات" },
-          ].map((item) => (
-            <label
-              key={item.key}
-              className="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors"
-            >
-              <span className="text-xs font-medium text-on-surface">{item.title}</span>
-              <input
-                type="checkbox"
-                checked={permissions[item.key] ?? false}
-                onChange={() => toggle(item.key)}
-                className="w-4 h-4 rounded accent-primary cursor-pointer"
-              />
-            </label>
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="p-6 flex items-center justify-center gap-2 text-xs text-on-surface-variant">
+            <span className="material-symbols-outlined animate-spin text-primary">progress_activity</span>
+            <span>جاري تحميل الصلاحيات من قاعدة البيانات...</span>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {rows.map((item) => (
+              <label
+                key={item.id}
+                className="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors"
+              >
+                <div className="flex flex-col">
+                  <span className="text-xs font-medium text-on-surface">{item.module_name}</span>
+                  <span className="text-[10px] text-on-surface-variant">{item.category}</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={Boolean(item[roleCol])}
+                  onChange={() => toggle(item.id)}
+                  className="w-4 h-4 rounded accent-primary cursor-pointer"
+                />
+              </label>
+            ))}
+          </div>
+        )}
 
         <div className="pt-4 border-t border-outline-variant/20 flex justify-end">
           <button
             onClick={handleSavePermissions}
-            disabled={saving}
-            className="px-5 py-2 rounded-lg bg-primary text-on-primary text-xs font-bold hover:bg-primary-container transition-colors shadow-xs flex items-center gap-1.5"
+            disabled={saving || isLoading}
+            className="px-5 py-2 rounded-lg bg-primary text-on-primary text-xs font-bold hover:bg-primary-container transition-colors shadow-xs flex items-center gap-1.5 disabled:opacity-50"
           >
             {saving ? (
               <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -146,4 +171,3 @@ export default function RoleDetailPage() {
     </div>
   );
 }
-

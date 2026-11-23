@@ -34,7 +34,7 @@ export default function Sidebar({
   onToggleCollapse,
 }: SidebarProps) {
   const pathname = usePathname();
-  const { roleConfig, pendingApprovalsCount, unreadNotificationsCount } = useERP();
+  const { roleConfig, canAccessRoute, canViewCost, pendingApprovalsCount, unreadNotificationsCount } = useERP();
   const [menuFilter, setMenuFilter] = useState("");
 
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -72,16 +72,14 @@ export default function Sidebar({
     {
       key: "main",
       section: {
-        title: "الرئيسية والتشغيل",
+        title: "الرئيسية والقرارات",
         icon: "dashboard",
         prefix: "/",
         items: [
           { name: "لوحة التحكم المركزية", href: "/" },
-          { name: "التنبيهات العاجلة", href: "/alerts", badge: unreadNotificationsCount, badgeType: "error" },
-          { name: "المهام التشغيلية", href: "/tasks" },
+          { name: "محرك بحوث العمليات (OR)", href: "/optimization", badge: "OR", badgeType: "info" },
           { name: "الموافقات الإدارية", href: "/approvals", badge: pendingApprovalsCount, badgeType: "secondary" },
-          { name: "تقويم الوردية والتسليم", href: "/calendar" },
-          { name: "مركز التقارير والتحليلات", href: "/reports" },
+          { name: "التنبيهات والتقارير", href: "/reports", badge: unreadNotificationsCount, badgeType: "error" },
         ],
       },
     },
@@ -92,10 +90,8 @@ export default function Sidebar({
         icon: "checkroom",
         prefix: "/products",
         items: [
-          { name: "كتالوج المنتجات", href: "/products" },
-          { name: "تكويد موديل جديد", href: "/products/new" },
-          { name: "الألوان والمقاسات (SKUs)", href: "/products/skus" },
-          { name: "مصفوفة أسعار البيع والتكلفة", href: "/products/pricing" },
+          { name: "كتالوج المنتجات والـ SKUs", href: "/products" },
+          { name: "مصفوفة الأسعار والتكلفة", href: "/products/pricing", costRestricted: true },
         ],
       },
     },
@@ -107,10 +103,8 @@ export default function Sidebar({
         prefix: "/inventory",
         items: [
           { name: "أرصدة وحركات المخازن", href: "/inventory" },
-          { name: "أرصدة الأقمشة والإكسسوارات", href: "/inventory/fabrics" },
-          { name: "إذون الصرف والإضافة (GRN)", href: "/inventory/transactions" },
-          { name: "تحويلات الفروع والمخازن", href: "/inventory/transfers" },
-          { name: "الجرد الدوري والباركود", href: "/inventory/stock-count" },
+          { name: "أرصدة الأقمشة واللفات", href: "/inventory/fabrics" },
+          { name: "إذون الصرف والتحويلات", href: "/inventory/transactions" },
         ],
       },
     },
@@ -123,9 +117,7 @@ export default function Sidebar({
         items: [
           { name: "أوامر الإنتاج والتصنيع", href: "/production" },
           { name: "لوحة كفاءة الخطوط OEE", href: "/production/oee" },
-          { name: "تخطيط وموازنة الخطوط", href: "/production/planning" },
-          { name: "قوائم شجرة المواد (BOM)", href: "/production/bom" },
-          { name: "محطات ومراحل التشغيل", href: "/production/stages" },
+          { name: "شجرة المواد (BOM)", href: "/production/bom" },
         ],
       },
     },
@@ -137,7 +129,6 @@ export default function Sidebar({
         prefix: "/sales",
         items: [
           { name: "طلبات البيع والتصدير", href: "/sales" },
-          { name: "عروض الأسعار والتوكيلات", href: "/sales/quotations" },
           { name: "حسابات العملاء والتوكيلات", href: "/sales/customers" },
         ],
       },
@@ -150,9 +141,7 @@ export default function Sidebar({
         prefix: "/quality",
         items: [
           { name: "لوحة مؤشرات الجودة AQL", href: "/quality" },
-          { name: "فحص الخطوط المرحلي In-Line", href: "/quality/inline" },
-          { name: "سجل العيوب ومخطط باريتو", href: "/quality/defects" },
-          { name: "تقارير الفحص النهائي", href: "/quality/inspections" },
+          { name: "تقارير الفحص والعيوب", href: "/quality/inspections" },
         ],
       },
     },
@@ -164,8 +153,6 @@ export default function Sidebar({
         prefix: "/procurement",
         items: [
           { name: "أوامر الشراء والتوريد", href: "/procurement" },
-          { name: "مناقصات وعروض الموردين RFQ", href: "/procurement/quotations" },
-          { name: "الفواتير والمطابقة الثلاثية", href: "/procurement/invoices" },
           { name: "سجل الموردين المعتمدين", href: "/procurement/suppliers" },
         ],
       },
@@ -177,11 +164,9 @@ export default function Sidebar({
         icon: "account_balance",
         prefix: "/finance",
         items: [
-          { name: "المركز المالي والقيود", href: "/finance" },
-          { name: "شجرة الحسابات (COA)", href: "/finance/accounts" },
-          { name: "أعمار الديون والمديونيات", href: "/finance/ledgers" },
-          { name: "الخزينة والشيكات والبنوك", href: "/finance/treasury" },
-          { name: "الأرباح والخسائر (P&L)", href: "/finance/pnl" },
+          { name: "المركز المالي والقيود", href: "/finance", costRestricted: true },
+          { name: "الخزينة والشيكات والبنوك", href: "/finance/treasury", costRestricted: true },
+          { name: "الأرباح والخسائر (P&L)", href: "/finance/pnl", costRestricted: true },
         ],
       },
     },
@@ -193,8 +178,7 @@ export default function Sidebar({
         prefix: "/hr",
         items: [
           { name: "سجل الفنيين والعمالة", href: "/hr/employees" },
-          { name: "حضور وانصراف الورديات", href: "/hr/attendance" },
-          { name: "مسير الأجور وحوافز القطعة", href: "/hr/payroll" },
+          { name: "الأجور وحوافز القطعة", href: "/hr/payroll" },
         ],
       },
     },
@@ -206,15 +190,9 @@ export default function Sidebar({
         prefix: "/settings",
         items: [
           { name: "إدارة المستخدمين", href: "/settings/users" },
-          { name: "الأدوار الوظيفية", href: "/settings/roles" },
-          { name: "مقارنة الأدوار", href: "/settings/roles/compare" },
-          { name: "مصفوفة الصلاحيات", href: "/settings/permissions/matrix" },
-          { name: "نطاق الوصول للبيانات", href: "/settings/permissions/data-scope" },
-          { name: "مسارات الاعتماد والموافقات", href: "/settings/approvals/workflows" },
-          { name: "حدود الصلاحيات المالية", href: "/settings/approvals/limits" },
-          { name: "تفويض الصلاحيات المؤقت", href: "/settings/approvals/delegation" },
-          { name: "سجل التدقيق الشامل (Audit)", href: "/settings/audit-log" },
-          { name: "الأمان والجلسات النشطة", href: "/settings/security" },
+          { name: "الأدوار ومصفوفة الصلاحيات", href: "/settings/roles" },
+          { name: "حدود الاعتماد المالي", href: "/settings/approvals/limits" },
+          { name: "سجل التدقيق الشامل", href: "/settings/audit-log" },
         ],
       },
     },
@@ -222,10 +200,14 @@ export default function Sidebar({
 
   const filteredSections = sections
     .map(({ key, section }) => {
-      if (!menuFilter.trim()) return { key, section };
+      const authorizedItems = section.items.filter(
+        (i) => canAccessRoute(i.href) && (!i.costRestricted || canViewCost)
+      );
+      if (authorizedItems.length === 0) return { key, section: { ...section, items: [] } };
+      if (!menuFilter.trim()) return { key, section: { ...section, items: authorizedItems } };
       const q = menuFilter.trim().toLowerCase();
-      const matchedItems = section.items.filter((i) => i.name.toLowerCase().includes(q));
-      if (section.title.toLowerCase().includes(q)) return { key, section };
+      const matchedItems = authorizedItems.filter((i) => i.name.toLowerCase().includes(q));
+      if (section.title.toLowerCase().includes(q)) return { key, section: { ...section, items: authorizedItems } };
       return { key, section: { ...section, items: matchedItems } };
     })
     .filter(({ section }) => section.items.length > 0);

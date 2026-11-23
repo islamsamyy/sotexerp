@@ -29,16 +29,16 @@ export default function ApprovalLimitsPage() {
       const { data, error: fetchErr } = await supabase
         .from("approval_limits")
         .select("*")
-        .order("role_code");
+        .order("role_key");
       if (fetchErr) throw fetchErr;
       if (data && data.length > 0) {
         setLimits(
           data.map((r) => ({
-            roleKey: r.role_code as RoleKey,
-            maxPO: r.max_po_amount_egp ? `${Number(r.max_po_amount_egp).toLocaleString()} ج.م` : "غير محدود",
-            maxDiscount: r.max_discount_pct ? `حتى ${r.max_discount_pct}%` : "غير محدود (100%)",
-            maxStockScrap: r.max_scrap_amount_egp ? `حتى ${Number(r.max_scrap_amount_egp).toLocaleString()} ج.م` : "غير محدود",
-            canApprovePayroll: r.payroll_approval_level || "مصرح كامل",
+            roleKey: r.role_key as RoleKey,
+            maxPO: r.max_po || "غير محدود",
+            maxDiscount: r.max_discount || "غير محدود",
+            maxStockScrap: r.max_stock_scrap || "غير محدود",
+            canApprovePayroll: r.can_approve_payroll ? "مصرح كامل" : "محجوب",
           }))
         );
       } else {

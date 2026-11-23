@@ -29,7 +29,7 @@ export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
     canManageUsers: false,
     badgeColor: "bg-[#262B34] text-white border border-[#3E4552]",
     icon: "precision_manufacturing",
-    allowedNavPrefixes: ["/", "/dashboard", "/production", "/quality", "/inventory", "/alerts", "/tasks", "/calendar", "/hr"],
+    allowedNavPrefixes: ["/", "/dashboard", "/production", "/quality", "/inventory", "/alerts", "/tasks", "/calendar", "/hr", "/optimization"],
   },
   WAREHOUSE_MANAGER: {
     key: "WAREHOUSE_MANAGER",
@@ -44,7 +44,7 @@ export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
     canManageUsers: false,
     badgeColor: "bg-[#059669] text-white",
     icon: "warehouse",
-    allowedNavPrefixes: ["/", "/dashboard", "/inventory", "/procurement", "/alerts", "/tasks", "/products"],
+    allowedNavPrefixes: ["/", "/dashboard", "/inventory", "/procurement", "/alerts", "/tasks", "/products", "/optimization"],
   },
   FINANCE_SALES_MANAGER: {
     key: "FINANCE_SALES_MANAGER",
@@ -59,7 +59,7 @@ export const CORE_ROLES: Record<RoleKey, RoleDefinition> = {
     canManageUsers: false,
     badgeColor: "bg-[#D97706] text-white",
     icon: "account_balance",
-    allowedNavPrefixes: ["/", "/dashboard", "/sales", "/finance", "/procurement", "/products", "/approvals", "/alerts", "/reports"],
+    allowedNavPrefixes: ["/", "/dashboard", "/sales", "/finance", "/procurement", "/products", "/approvals", "/alerts", "/reports", "/optimization"],
   },
 };
 

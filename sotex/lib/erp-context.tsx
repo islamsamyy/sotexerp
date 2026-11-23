@@ -660,6 +660,7 @@ export function ERPProvider({ children }: { children: React.ReactNode }) {
     setActiveRoleState(role);
     setSupabaseRoleHeader(role);
     const newRole = rolesMap[role] || CORE_ROLES[role];
+    refreshData();
     showToast(
       "info",
       `تم التحويل إلى دور: ${newRole.nameAr}`,

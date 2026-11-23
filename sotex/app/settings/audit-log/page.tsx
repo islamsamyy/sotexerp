@@ -32,7 +32,7 @@ export default function AuditLogPage() {
       const { data, error: fetchErr } = await supabase
         .from("audit_logs")
         .select("*")
-        .order("timestamp", { ascending: false });
+        .order("created_at", { ascending: false });
       if (fetchErr) throw fetchErr;
       if (data) {
         setLogs(
@@ -40,21 +40,29 @@ export default function AuditLogPage() {
             const rawAct = (r.action || "").toUpperCase();
             let normAct: AuditEntry["action"] = "UPDATE";
             if (rawAct.includes("APPROV") || rawAct.includes("اعتماد")) normAct = "APPROVE";
-            else if (rawAct.includes("CREATE") || rawAct.includes("إضافة") || rawAct.includes("إنشاء") || rawAct.includes("تسجيل")) normAct = "CREATE";
-            else if (rawAct.includes("DELETE") || rawAct.includes("حذف")) normAct = "DELETE_ATTEMPT";
+            else if (rawAct.includes("CREATE") || rawAct.includes("إضافة") || rawAct.includes("إنشاء") || rawAct.includes("تسجيل") || rawAct.includes("إطلاق") || rawAct.includes("ترحيل")) normAct = "CREATE";
+            else if (rawAct.includes("DELETE") || rawAct.includes("حذف") || rawAct.includes("رفض")) normAct = "DELETE_ATTEMPT";
+
+            const sev = (r.severity || "INFO").toLowerCase();
+            const normSev: AuditEntry["severity"] =
+              sev === "critical" ? "critical" : sev === "warning" ? "warning" : "info";
 
             return {
               id: r.id,
-              actor: r.user_name || "مستخدم النظام",
-              actorRole: r.role_code || "OWNER_ADMIN",
+              actor: r.actor || "مستخدم النظام",
+              actorRole: r.actor_role || "OWNER_ADMIN",
               action: normAct,
               module: r.module || "العام",
               recordRef: r.record_ref || r.action,
-              timestamp: new Date(r.timestamp).toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" }),
-              ip: r.ip_address || "192.168.1.10",
-              oldVal: r.old_values ? JSON.stringify(r.old_values, null, 2) : undefined,
-              newVal: r.new_values ? JSON.stringify(r.new_values, null, 2) : r.action,
-              severity: (r.severity || "info") as AuditEntry["severity"],
+              timestamp:
+                r.timestamp_ar ||
+                (r.created_at
+                  ? new Date(r.created_at).toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" })
+                  : "الآن"),
+              ip: r.ip || "192.168.1.10",
+              oldVal: r.old_val && r.old_val !== "-" ? r.old_val : undefined,
+              newVal: r.new_val && r.new_val !== "-" ? r.new_val : r.action,
+              severity: normSev,
             };
           })
         );

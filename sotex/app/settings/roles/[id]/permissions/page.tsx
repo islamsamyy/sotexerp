@@ -12,7 +12,7 @@ import { supabase, logAuditAction } from "@/lib/supabase";
 export default function RolePermissionsEditPage() {
   const params = useParams();
   const router = useRouter();
-  const { showToast, currentUser, roleConfig } = useERP();
+  const { showToast, currentUser, roleConfig, refreshData } = useERP();
   const id = params?.id as RoleKey;
   const role = CORE_ROLES[id] || CORE_ROLES["OWNER_ADMIN"];
   const [saving, setSaving] = useState(false);
@@ -36,6 +36,18 @@ export default function RolePermissionsEditPage() {
     e.preventDefault();
     setSaving(true);
     try {
+      const { error: updateErr } = await supabase
+        .from("roles")
+        .update({
+          can_view_cost: permissions.viewCostPrice,
+          can_view_margins: permissions.viewMargins,
+          can_approve_financial: permissions.approvePurchaseOrders,
+          can_manage_users: permissions.manageUsers,
+        })
+        .eq("key", id);
+
+      if (updateErr) throw updateErr;
+
       await logAuditAction({
         userName: currentUser.nameAr,
         userRole: roleConfig.nameAr,
@@ -47,6 +59,7 @@ export default function RolePermissionsEditPage() {
         severity: "WARNING",
       });
 
+      await refreshData();
       showToast("success", "تم حفظ وتحديث مصفوفة الصلاحيات في Supabase", `تم تطبيق التعديلات على دور: ${role.nameAr}`);
       setTimeout(() => {
         router.push(`/settings/roles/${id}`);

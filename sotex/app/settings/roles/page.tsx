@@ -32,12 +32,12 @@ export default function RolesManagementPage() {
       const { data, error: fetchErr } = await supabase
         .from("roles")
         .select("*")
-        .order("code");
+        .order("key");
       if (fetchErr) throw fetchErr;
       if (data) {
         setRoles(
           data.map((r) => ({
-            code: r.code as RoleKey,
+            code: r.key as RoleKey,
             nameAr: r.name_ar,
             nameEn: r.name_en,
             categoryAr: r.category_ar,

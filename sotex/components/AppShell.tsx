@@ -15,6 +15,7 @@ const ROUTE_LABELS: Record<string, string> = {
   approvals: "مركز الموافقات الإدارية",
   calendar: "تقويم الورديات والتسليم",
   reports: "التقارير والتحليلات",
+  optimization: "محرك بحوث العمليات (OR)",
   products: "المنتجات والتصاميم",
   new: "إضافة وتكويد جديد",
   skus: "الألوان والمقاسات (SKUs)",
@@ -67,7 +68,7 @@ const ROUTE_LABELS: Record<string, string> = {
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { activeFacility, roleConfig, openModal } = useERP();
+  const { activeFacility, roleConfig, openModal, canAccessRoute, getRoleDefaultPath } = useERP();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -87,12 +88,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const segments = (pathname || "/").split("/").filter(Boolean);
 
+  const publicRoutes = ["/login", "/access-denied", "/access-request"];
+  const isAuthorized =
+    !pathname ||
+    publicRoutes.some((p) => pathname.startsWith(p)) ||
+    canAccessRoute(pathname);
+
   const mobileNavItems = [
     { label: "الرئيسية", href: "/dashboard", icon: "dashboard", match: (p: string) => p === "/" || p === "/dashboard" },
     { label: "الإنتاج", href: "/production", icon: "precision_manufacturing", match: (p: string) => p.startsWith("/production") },
     { label: "المخازن", href: "/inventory", icon: "warehouse", match: (p: string) => p.startsWith("/inventory") },
     { label: "المالية", href: "/finance", icon: "account_balance", match: (p: string) => p.startsWith("/finance") },
-  ];
+    { label: "OR", href: "/optimization", icon: "psychology", match: (p: string) => p.startsWith("/optimization") },
+  ].filter((item) => canAccessRoute(item.href));
 
   return (
     <>
@@ -174,7 +182,34 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* Main Page Content Container */}
         <main className="flex-1 pb-20 lg:pb-12 w-full max-w-[100vw] overflow-x-hidden">
-          {children}
+          {isAuthorized ? (
+            children
+          ) : (
+            <div className="p-gutter flex flex-col items-center justify-center min-h-[65vh] text-center">
+              <div className="max-w-md w-full p-8 rounded-2xl border border-error/30 bg-surface-container-lowest shadow-lg space-y-4">
+                <div className="w-16 h-16 mx-auto rounded-2xl bg-error/10 text-error flex items-center justify-center border border-error/20">
+                  <span className="material-symbols-outlined text-[34px]">gpp_maybe</span>
+                </div>
+                <h2 className="text-xl font-extrabold text-on-surface">
+                  غير مصرح بالوصول إلى هذه الشاشة
+                </h2>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  دورك الوظيفي الحالي (<strong>{roleConfig.nameAr}</strong>) لا يملك صلاحية الوصول إلى المسار{" "}
+                  <code className="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[11px]">{pathname}</code>{" "}
+                  وفق سياسات الأمان و PostgreSQL RLS.
+                </p>
+                <div className="pt-2 flex items-center justify-center gap-2">
+                  <Link
+                    href={getRoleDefaultPath()}
+                    className="px-5 py-2.5 rounded-xl bg-primary text-on-primary text-xs font-bold hover:bg-primary-container transition-all shadow-xs flex items-center gap-1.5"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">home</span>
+                    <span>العودة لشاشتي الرئيسية</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </main>
 
         {/* Mobile & Tablet Fixed Bottom Navigation Bar */}
